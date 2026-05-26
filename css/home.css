@@ -1,0 +1,401 @@
+/* --- HOME PAGE LAYOUT SYSTEM --- */
+.planet-system {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 450px; /* Wider to keep Akshay Srinivas in one line */
+    z-index: 10;
+    margin-top: 200px; /* Shorter offset to fit everything in vh */
+}
+
+/* Central glowing planet avatar */
+.planet-wrapper {
+    position: relative;
+    width: 260px; /* Compacted height to save vertical space */
+    height: 260px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+}
+
+.planet-core {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-image: url('../assets/images/avatar.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.45);
+    z-index: 2;
+    transition: transform 0.5s var(--ease-hover);
+}
+.planet-wrapper:hover .planet-core {
+    transform: scale(1.05);
+}
+
+/* Atmosphere Lens Flare Glow */
+.planet-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -45%;
+    left: -45%;
+    width: 190%;
+    height: 190%;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.18) 0%, rgba(30, 144, 255, 0.08) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    animation: atmosphere-pulse 4s ease-in-out infinite;
+}
+
+/* Text Detail System */
+.glitch-text {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(138, 43, 226, 0.4);
+    margin-bottom: 8px;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.tagline {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-contact);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.profile-bio {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* Social Icon Badges */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(12, 6, 22, 0.55);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s var(--ease-hover);
+    backdrop-filter: blur(5px);
+}
+.social-btn:hover {
+    border-color: var(--color-projects);
+    box-shadow: 0 0 12px rgba(30, 144, 255, 0.3);
+    transform: translateY(-2px);
+}
+.social-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+/* --- ASTEROID BUTTON SYSTEM --- */
+.asteroid-module {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 5;
+    will-change: transform;
+}
+
+.asteroid-rock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/astriod-1.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Drop-shadow glow wrapped to organic silhouette of the transparent rock PNG */
+    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.15));
+    transition: filter 0.3s var(--ease-hover), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+
+.asteroid-label {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 2;
+    transition: color 0.3s var(--ease-hover), text-shadow 0.3s var(--ease-hover), transform 0.3s var(--ease-hover);
+    pointer-events: none;
+    padding: 15px;
+    will-change: transform;
+}
+
+/* Hover effects for organic glowing asteroids */
+.asteroid-module:hover .asteroid-rock {
+    filter: drop-shadow(0 0 20px var(--hover-color, var(--primary))) brightness(1.1);
+    transform: scale(1.08) rotate(360deg);
+}
+.asteroid-module:hover .asteroid-label {
+    color: #fff;
+    text-shadow: 0 0 10px var(--hover-color, var(--primary));
+    transform: scale(1.08);
+}
+
+/* --- SYMMETRICAL ASTEROID COORDINATES (PC) --- */
+#ast-certificates {
+    width: 400px;
+    height: 250px;
+    top: 1%;
+    left: calc(50% - 200px);
+    --hover-color: var(--color-certificates);
+    animation: float-rock-3 7s ease-in-out infinite;
+}
+
+#ast-resume {
+    width: 440px;
+    height: 275px;
+    top: 12%;
+    left: 6%;
+    --hover-color: var(--color-resume);
+    animation: float-rock-1 6s ease-in-out infinite;
+}
+
+#ast-music {
+    width: 370px;
+    height: 230px;
+    top: 19%;
+    right: 8%;
+    --hover-color: var(--color-music);
+    animation: float-rock-4 5.5s ease-in-out infinite;
+}
+
+#ast-projects {
+    width: 480px;
+    height: 300px;
+    bottom: 12%;
+    left: 4%;
+    --hover-color: var(--color-projects);
+    animation: float-rock-2 6.5s ease-in-out infinite;
+}
+
+#ast-contact {
+    width: 410px;
+    height: 255px;
+    bottom: 12%;
+    right: 8%;
+    --hover-color: var(--color-contact);
+    animation: float-rock-5 6.2s ease-in-out infinite;
+}
+
+/* --- RESPONSIVE TABLET STYLING (< 768px) --- */
+@media (max-width: 768px) {
+    .planet-system {
+        margin-top: 80px;
+        width: 360px;
+    }
+    .glitch-text {
+        font-size: 1.8rem !important;
+    }
+    .planet-wrapper {
+        width: 140px;
+        height: 140px;
+    }
+    .planet-wrapper::before {
+        width: 250px;
+        height: 250px;
+        top: -30%;
+        left: -30%;
+    }
+    .asteroid-module {
+        width: 160px !important;
+        height: 100px !important;
+        /* Disable infinite float animations to prevent lag on mobile */
+        animation: none !important; 
+    }
+    .asteroid-label {
+        font-size: 0.88rem !important;
+        padding: 2px !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* Reposition comets symmetrically to form a neat mobile grid overlay */
+    #ast-certificates {
+        top: 3% !important;
+        left: calc(50% - 80px) !important;
+        right: auto !important;
+    }
+    #ast-resume {
+        top: 14% !important;
+        left: 4% !important;
+        right: auto !important;
+    }
+    #ast-music {
+        top: 14% !important;
+        right: 4% !important;
+        left: auto !important;
+    }
+    #ast-projects {
+        bottom: 16% !important;
+        left: 4% !important;
+        right: auto !important;
+    }
+    #ast-contact {
+        bottom: 16% !important;
+        right: 4% !important;
+        left: auto !important;
+    }
+}
+
+/* --- RESPONSIVE PHONE STYLING (< 580px) --- */
+@media (max-width: 580px) {
+    .hero-container {
+        padding: 10px;
+    }
+    
+    .planet-system {
+        margin-top: 60px;
+        width: 300px;
+    }
+    .glitch-text {
+        font-size: 1.45rem !important;
+    }
+    .planet-wrapper {
+        width: 110px;
+        height: 110px;
+    }
+    .planet-wrapper::before {
+        width: 200px;
+        height: 200px;
+        top: -33%;
+        left: -33%;
+    }
+
+    .asteroid-module {
+        width: 140px !important;
+        height: 85px !important;
+    }
+    
+    .asteroid-label {
+        font-size: 0.75rem !important;
+        padding: 0px !important;
+    }
+    
+    /* Stack social buttons vertically to avoid Contact comet collisions */
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .social-btn {
+        padding: 6px 14px;
+        font-size: 0.72rem;
+    }
+    
+    /* Grid Coordinates for 360px viewport */
+    #ast-certificates {
+        top: 3% !important;
+        left: calc(50% - 70px) !important;
+        right: auto !important;
+    }
+    #ast-resume {
+        top: 16% !important;
+        left: 2% !important;
+        right: auto !important;
+    }
+    #ast-music {
+        top: 16% !important;
+        right: 2% !important;
+        left: auto !important;
+    }
+    #ast-projects {
+        bottom: 18% !important;
+        left: 2% !important;
+        right: auto !important;
+    }
+    #ast-contact {
+        bottom: 18% !important;
+        right: 2% !important;
+        left: auto !important;
+    }
+}
+
+/* --- PLANET LASER SCANNING SYSTEM --- */
+.planet-wrapper {
+    --planet-size: 260px;
+    display: block;
+    overflow: hidden; /* Clips laser to circle bounds */
+}
+
+@media (max-width: 768px) {
+    .planet-wrapper {
+        --planet-size: 140px;
+    }
+}
+
+@media (max-width: 580px) {
+    .planet-wrapper {
+        --planet-size: 110px;
+    }
+}
+
+.planet-laser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.95), #b388ff, rgba(138, 43, 226, 0.95), transparent);
+    box-shadow: 0 0 15px #b388ff, 0 0 25px rgba(138, 43, 226, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+    transform: translateY(-10px);
+    will-change: transform, opacity;
+}
+
+.planet-wrapper:hover .planet-laser {
+    animation: laser-scan-gpu 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes laser-scan-gpu {
+    0% {
+        transform: translateY(-8px);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(var(--planet-size));
+        opacity: 0;
+    }
+}

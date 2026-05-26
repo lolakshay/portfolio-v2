@@ -1,0 +1,119 @@
+/* --- GPU ACCELERATED FLOATING KEYFRAMES --- */
+@keyframes float-rock-1 {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(8px, -15px, 0) rotate(3deg); }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-rock-2 {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(-10px, 12px, 0) rotate(-4deg); }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-rock-3 {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(12px, -8px, 0) rotate(2deg); }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-rock-4 {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(-6px, -14px, 0) rotate(-2deg); }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-rock-5 {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(10px, 10px, 0) rotate(5deg); }
+    100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+/* --- PULSING GLOWS --- */
+@keyframes atmosphere-pulse {
+    0% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.03); }
+    100% { opacity: 0.55; transform: scale(1); }
+}
+
+/* --- SCREEN SHAKE FOR SPLASH NAVIGATION --- */
+@keyframes portal-shake {
+    0% { transform: translate3d(0, 0, 0); }
+    10% { transform: translate3d(-3px, 2px, 0); }
+    20% { transform: translate3d(3px, -2px, 0); }
+    30% { transform: translate3d(-3px, -3px, 0); }
+    40% { transform: translate3d(2px, 3px, 0); }
+    50% { transform: translate3d(-1px, 2px, 0); }
+    60% { transform: translate3d(2px, -1px, 0); }
+    70% { transform: translate3d(-2px, -2px, 0); }
+    80% { transform: translate3d(3px, 2px, 0); }
+    90% { transform: translate3d(-1px, -1px, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+
+.screen-shake {
+    animation: portal-shake 400ms var(--ease-portal) forwards;
+}
+
+/* --- FADE-IN TEXT EFFECTS --- */
+@keyframes fade-in-hero {
+    0% { opacity: 0; transform: translate3d(0, 15px, 0); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.fade-in-element {
+    opacity: 0;
+    animation: fade-in-hero 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* --- NEBULA BACKGROUND SLOW PARALLAX DRIFT --- */
+@keyframes nebula-drift {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-48%, -52%) scale(1.05); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.nebula-glow {
+    animation: nebula-drift 30s ease-in-out infinite;
+}
+
+/* --- CRUMBLE EFFECT FOR ASTEROIDS --- */
+@keyframes crumble-rock {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.15)) brightness(1);
+    }
+    15% {
+        transform: scale(1.1) translate3d(-4px, 2px, 0) rotate(-6deg);
+        filter: drop-shadow(0 0 20px var(--hover-color, var(--primary))) brightness(1.2);
+    }
+    30% {
+        transform: scale(1.15) translate3d(4px, -3px, 0) rotate(6deg);
+        filter: drop-shadow(0 0 30px var(--hover-color, var(--primary))) brightness(1.4);
+    }
+    45% {
+        transform: scale(0.9) translate3d(-6px, -4px, 0) rotate(-10deg);
+    }
+    60% {
+        transform: scale(0.6) translate3d(6px, 4px, 0) rotate(15deg);
+        opacity: 0.8;
+        filter: drop-shadow(0 0 40px var(--hover-color, var(--primary))) blur(2px) brightness(1.8);
+    }
+    100% {
+        transform: scale(0) translate3d(0, 20px, 0) rotate(60deg);
+        opacity: 0;
+        filter: drop-shadow(0 0 0 transparent) blur(12px) brightness(2);
+    }
+}
+
+.asteroid-module.crumble .asteroid-rock {
+    animation: crumble-rock 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+}
+
+.asteroid-module.crumble .asteroid-label {
+    opacity: 0 !important;
+    transform: scale(0.85);
+    transition: opacity 150ms ease, transform 150ms ease !important;
+}
+
