@@ -50,6 +50,8 @@
     preloadSfx('hover', 'assets/audio/menu.m4a');
     preloadSfx('go', 'assets/audio/go-menu.m4a');
     preloadSfx('come', 'assets/audio/come-menu.m4a');
+    preloadSfx('chest_open', 'assets/audio/subway-surfers-open-box.mp3');
+    preloadSfx('chest_close', 'assets/audio/Chest_close.mp3');
 
     // Trigger instant sounds with Web Audio API (0ms latency buffer source)
     function playSfx(name) {
@@ -102,6 +104,24 @@
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
                     osc.start(now);
                     osc.stop(now + 0.32);
+                } else if (name === 'chest_open') {
+                    // Loot blip sweep
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(260, now);
+                    osc.frequency.exponentialRampToValueAtTime(1200, now + 0.6);
+                    gain.gain.setValueAtTime(0.06, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+                    osc.start(now);
+                    osc.stop(now + 0.7);
+                } else if (name === 'chest_close') {
+                    // Low rumble slam slam
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(180, now);
+                    osc.frequency.exponentialRampToValueAtTime(60, now + 0.4);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+                    osc.start(now);
+                    osc.stop(now + 0.65);
                 }
             } catch (e) {}
         }
@@ -114,6 +134,8 @@
         if (!soundBuffers['hover']) preloadSfx('hover', 'assets/audio/menu.m4a');
         if (!soundBuffers['go']) preloadSfx('go', 'assets/audio/go-menu.m4a');
         if (!soundBuffers['come']) preloadSfx('come', 'assets/audio/come-menu.m4a');
+        if (!soundBuffers['chest_open']) preloadSfx('chest_open', 'assets/audio/subway-surfers-open-box.mp3');
+        if (!soundBuffers['chest_close']) preloadSfx('chest_close', 'assets/audio/Chest_close.mp3');
         
         document.removeEventListener('mousemove', warmUpAudio);
         document.removeEventListener('click', warmUpAudio);
@@ -518,6 +540,386 @@
         );
         camera.position.set(2.5, 1.8, 4.2);
 
+        const categories = {
+            events: [
+                {
+                    name: "Accurate Service Locator",
+                    issuer: "Vendor Discoverability App",
+                    id: "EVT-ASL-2024",
+                    rarity: "rare",
+                    desc: "Developed a mobile application concept that helps users discover and interact with unlisted local vendors and roadside stalls using GPS, voice, text, and camera-based search, promoting small businesses and community growth.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Atomquest 2024",
+                    issuer: "Atomberg",
+                    id: "EVT-AQ-2024",
+                    rarity: "epic",
+                    desc: "Designed an ESP32-based centralized control system that bridges smart and non-smart appliances, enabling seamless control of lights, fans, outlets, and other devices through a single multifunctional knob with Wi-Fi connectivity.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Pentathon CTF 2025",
+                    issuer: "Team Gix Notion",
+                    id: "EVT-PCTF-2025",
+                    rarity: "legendary",
+                    desc: "Secured 46th place out of 3,524+ teams worldwide (Top 1.31%) in a 48-hour cybersecurity competition, solving challenges across Web Exploitation, Forensics, Reverse Engineering, and Miscellaneous categories as part of Team Gix Notion.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Thiran 2024 - Smart Emergency Speed Breaker System",
+                    issuer: "Thiran IoT Exhibition",
+                    id: "EVT-THI-2024",
+                    rarity: "epic",
+                    desc: "Developed an embedded IoT solution that uses authenticated wireless communication and a hydraulic retractable speed breaker to provide uninterrupted passage for emergency vehicles while maintaining public safety through automated alerts and fail-safe mechanisms.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Shine Healthcare Hackathon 2025",
+                    issuer: "Bongos Therapy for Autism Children",
+                    id: "EVT-SHH-2025",
+                    rarity: "rare",
+                    desc: "Developed and presented an interactive therapy system for children with autism at the Shine Healthcare Hackathon 2025, advancing from ~1500 teams to the Top 350 and showcasing a functional prototype at the regional pre-finale.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "SIH 2025 - Internal Round (2nd Place)",
+                    issuer: "AI-Powered Timetable Management System",
+                    id: "EVT-SIH-2025",
+                    rarity: "rare",
+                    desc: "Developed a smart scheduling platform that automatically generates conflict-free academic timetables by considering faculty availability, room constraints, internships, and NEP activities, with customizable scheduling and multi-view timetable management.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "WYF Dr. Kalam Awards 2025",
+                    issuer: "World Youth Federation",
+                    id: "EVT-DKA-2025",
+                    rarity: "epic",
+                    desc: "Shortlisted for the World Youth Federation (WYF) Dr. Kalam Awards 2025, presenting an innovative project among talented teams and gaining recognition for technical creativity and impact.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Bharatiya Antariksh Hackathon 2025",
+                    issuer: "Knowledge Graph–Enhanced AI Chatbot",
+                    id: "EVT-BAH-2025",
+                    rarity: "legendary",
+                    desc: "Built an AI assistant combining LLMs, RAG, Knowledge Graphs, and ontology-based reasoning to deliver accurate, context-aware responses with real-time intent detection, adaptive learning, and dynamic visual content generation.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Moodmate - Emotion-Aware AI Assistant",
+                    issuer: "Sankalp 101",
+                    id: "EVT-MM-2025",
+                    rarity: "rare",
+                    desc: "Proposed an AI system that adapts content and recommendations based on users’ emotional states, enabling personalized, empathetic interactions to improve focus, well-being, and overall user experience.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Statathon 2025 Govt",
+                    issuer: "AI-Powered Occupational Classification System",
+                    id: "EVT-STA-2025",
+                    rarity: "epic",
+                    desc: "Developed a semantic search and data quality enhancement platform that uses NLP and machine learning to automatically classify free-text job descriptions into NCO codes, improving survey accuracy and reducing manual effort.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "IIC Regional Meet 2025",
+                    issuer: "Ministry of Education Innovation Cell",
+                    id: "EVT-IIC-2025",
+                    rarity: "common",
+                    desc: "Shortlisted to present a project at the IIC Regional Meet 2025, gaining valuable feedback from industry experts and engaging with innovators, entrepreneurs, and startup-focused communities.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Microsoft M365 Developer Event",
+                    issuer: "Microsoft Ecosystem",
+                    id: "EVT-MS-2025",
+                    rarity: "common",
+                    desc: "Attended a Microsoft ecosystem event that highlighted the challenges of building scalable, production-ready software, reinforcing the importance of solving real-world problems beyond local development and prototypes.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Google Cloud AI Series",
+                    issuer: "Google Cloud Ecosystem",
+                    id: "EVT-GC-2025",
+                    rarity: "common",
+                    desc: "Attended a hands-on AI workshop focused on AI agents, agent workflows, and Gemini CLI, gaining practical insights into modern cloud-based AI development and deployment.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "SRCAS Hackathon 2.0",
+                    issuer: "AI-Powered Cybercrime Assistance Platform",
+                    id: "EVT-SRCAS-2.0",
+                    rarity: "epic",
+                    desc: "Developed a RAG-based web platform that helps cybercrime victims identify incidents, analyze evidence, and receive guidance aligned with Indian Cybercrime SOPs using LLMs, multimodal AI, voice input, and secure evidence handling.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "AI-Powered Vulnerability Audit Generator",
+                    issuer: "Global Israel Ariel Hackathon",
+                    id: "EVT-ARIEL-2026",
+                    rarity: "legendary",
+                    desc: "Developed a secure application that analyzes vulnerability reports using a locally hosted LLM, automatically generating professional audit reports with risk assessments, severity classification, remediation recommendations, and PDF export while preserving data privacy.",
+                    images: ["assets/images/srec-ariel-hackathon.png", "assets/images/cert-placeholder.png"]
+                },
+                {
+                    name: "AI Agent-Based Phone Number Validation API",
+                    issuer: "Thiran 2026 Finalist",
+                    id: "EVT-THI-2026",
+                    rarity: "legendary",
+                    desc: "Developed an agentic AI middleware that validates bulk phone numbers before message delivery, helping organizations reduce communication costs by filtering invalid contacts through an intelligent multi-agent decision-making workflow.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "NIT Trichy DSA Workshop",
+                    issuer: "NIT Trichy",
+                    id: "EVT-NIT-2025",
+                    rarity: "common",
+                    desc: "Attended a Data Structures and Algorithms workshop at NIT Trichy, gaining practical insights into problem-solving, algorithmic thinking, and real-world applications of core computer science concepts.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Inno Blitz",
+                    issuer: "Sri Ramakrishna Engineering College",
+                    id: "EVT-IB-2025",
+                    rarity: "rare",
+                    desc: "Secured 3rd place with a cash prize for an IoT project developed and presented at Sri Ramakrishna Engineering College.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Atomquest 2025",
+                    issuer: "Autonomous Robotic Cleaning Bot",
+                    id: "EVT-AQ-2025",
+                    rarity: "epic",
+                    desc: "Proposed an intelligent cleaning robot capable of navigating obstacle-filled environments and efficiently collecting diverse dry waste using integrated cleaning mechanisms, sensors, and autonomous path-planning.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "SAP Hackfest 2025",
+                    issuer: "Ethical AI Resume Analysis Platform",
+                    id: "EVT-SAP-2025",
+                    rarity: "legendary",
+                    desc: "Reached the final round for developing an explainable AI system that provides fair, privacy-preserving resume feedback using LLMs and XAI techniques, ensuring transparent recommendations while mitigating bias in hiring.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "ACM ICPC Selection Attempt",
+                    issuer: "ACM ICPC First Year",
+                    id: "EVT-ICPC-2023",
+                    rarity: "common",
+                    desc: "Participated in ACM ICPC regional selection during the first year of college. Experienced rigorous competitive programming challenges and advanced algorithms under time pressure.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "RTX AI PC Day 2025",
+                    issuer: "NVIDIA RTX AI PC",
+                    id: "EVT-RTX-2025",
+                    rarity: "common",
+                    desc: "Explored emerging AI PC technologies, gaming hardware, and creator-focused workflows through hands-on demonstrations, industry showcases, and community interactions at NVIDIA's RTX AI PC Day event.",
+                    image: "assets/images/cert-placeholder.png"
+                }
+            ],
+            certificates: [
+                {
+                    name: "C Programming Training",
+                    issuer: "IIT Bombay Spoken Tutorial",
+                    id: "CERT-IITB-C",
+                    rarity: "common",
+                    highlight: "Credits: 2",
+                    desc: "Awarded for the successful completion of C language programming training, verified by IIT Bombay Spoken Tutorial program.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "C++ Programming Training",
+                    issuer: "IIT Bombay Spoken Tutorial",
+                    id: "CERT-IITB-CPP",
+                    rarity: "common",
+                    highlight: "Credits: 2",
+                    desc: "Awarded for the successful completion of C++ language programming training, verified by IIT Bombay Spoken Tutorial program.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Python 3.4.3 Training",
+                    issuer: "IIT Bombay Spoken Tutorial",
+                    id: "CERT-IITB-PY",
+                    rarity: "common",
+                    highlight: "Credits: 2",
+                    desc: "Awarded for the successful completion of Python 3.4.3 programming training, verified by IIT Bombay Spoken Tutorial program.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Design Thinking - A Primer",
+                    issuer: "NPTEL",
+                    id: "CERT-NPTEL-DT",
+                    rarity: "rare",
+                    highlight: "Score: 78% (Elite + Silver, Credit: 1)",
+                    desc: "Completed the certification course on Design Thinking - A Primer with a final score of 78%, earning an Elite + Silver badge and 1 academic credit.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Introduction to Internet of Things",
+                    issuer: "NPTEL",
+                    id: "CERT-NPTEL-IOT",
+                    rarity: "epic",
+                    highlight: "Score: 75% (Elite + Silver, Credits: 4)",
+                    desc: "Completed the certification course on Introduction to Internet of Things with a final score of 75%, earning an Elite + Silver badge and 4 academic credits.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Introduction to AI Concepts",
+                    issuer: "Microsoft Azure",
+                    id: "CERT-MS-AI",
+                    rarity: "rare",
+                    highlight: "Azure Certified",
+                    desc: "Successfully completed training on fundamental AI concepts, cloud environments, and intelligent system architectures on Microsoft Azure.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Basics of Python",
+                    issuer: "Infosys Springboard",
+                    id: "CERT-INFY-PY",
+                    rarity: "common",
+                    highlight: "Infosys Verified",
+                    desc: "Acquired fundamental knowledge of Python programming, data types, object-oriented concepts, and basic data structures.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Full-Stack Development",
+                    issuer: "SkillUp",
+                    id: "CERT-SKILLUP-FS",
+                    rarity: "epic",
+                    highlight: "Professional Course",
+                    desc: "Completed full-stack engineering training covering front-end and back-end integration, database modeling, and server-side deployment.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "MATLAB Onramp",
+                    issuer: "MathWorks",
+                    id: "CERT-MAT-ONRAMP",
+                    rarity: "common",
+                    highlight: "MathWorks Certified",
+                    desc: "Completed introductory training on MATLAB variables, syntax, data visualization, and scripting pipelines.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "MATLAB for Statics Data",
+                    issuer: "MathWorks",
+                    id: "CERT-MAT-STATICS",
+                    rarity: "rare",
+                    highlight: "Data Science",
+                    desc: "Completed MathWorks certification on applying MATLAB routines for statistical analysis, structural statics data modeling, and mathematical calculations.",
+                    image: "assets/images/cert-placeholder.png"
+                }
+            ],
+            achievements: [
+                {
+                    name: "Atomquest 2024",
+                    issuer: "Atomberg",
+                    id: "ACH-AQ-2024",
+                    rarity: "epic",
+                    highlight: "Finalist - All India",
+                    desc: "Designed an ESP32-based centralized control system that bridges smart and non-smart appliances, enabling seamless control of lights, fans, outlets, and other devices through a single multifunctional knob with Wi-Fi connectivity.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Pentathon CTF 2025",
+                    issuer: "Team Gix Notion",
+                    id: "ACH-PCTF-2025",
+                    rarity: "legendary",
+                    highlight: "46th Place Worldwide (Top 1.31%)",
+                    desc: "Secured 46th place out of 3,524+ teams worldwide in a 48-hour cybersecurity competition, solving challenges across Web Exploitation, Forensics, Reverse Engineering, and Miscellaneous categories.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Shine Healthcare Hackathon 2025",
+                    issuer: "Bongos Therapy for Autism Children",
+                    id: "ACH-SHH-2025",
+                    rarity: "rare",
+                    highlight: "Top 350 Finalist",
+                    desc: "Developed and presented an interactive therapy system for children with autism at the Shine Healthcare Hackathon 2025, advancing from ~1500 teams to the Top 350 and showcasing a functional prototype at the regional pre-finale.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "SIH 2025 - Internal Round",
+                    issuer: "AI-Powered Timetable Management System",
+                    id: "ACH-SIH-2025",
+                    rarity: "rare",
+                    highlight: "2nd Place",
+                    desc: "Developed a smart scheduling platform that automatically generates conflict-free academic timetables by considering faculty availability, room constraints, internships, and NEP activities, with customizable scheduling and multi-view timetable management.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "WYF Dr. Kalam Awards 2025",
+                    issuer: "World Youth Federation",
+                    id: "ACH-DKA-2025",
+                    rarity: "epic",
+                    highlight: "Shortlisted",
+                    desc: "Shortlisted for the World Youth Federation (WYF) Dr. Kalam Awards 2025, presenting an innovative project among talented teams and gaining recognition for technical creativity and impact.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "IIC Regional Meet 2025",
+                    issuer: "Ministry of Education Innovation Cell",
+                    id: "ACH-IIC-2025",
+                    rarity: "common",
+                    highlight: "National Selection - Top 3000",
+                    desc: "Shortlisted to present a project at the IIC Regional Meet 2025, gaining valuable feedback from industry experts and engaging with innovators, entrepreneurs, and startup-focused communities. Selected in Top 3000 out of 14,000+ teams.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "SRCAS Hackathon 2.0",
+                    issuer: "AI-Powered Cybercrime Assistance Platform",
+                    id: "ACH-SRCAS-2025",
+                    rarity: "epic",
+                    highlight: "Top 10 Finalist",
+                    desc: "Developed a RAG-based web platform that helps cybercrime victims identify incidents, analyze evidence, and receive guidance aligned with Indian Cybercrime SOPs using LLMs, multimodal AI, voice input, and secure evidence handling. Ranked top 10 out of 100 teams of 3.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Global Israel Ariel Hackathon",
+                    issuer: "AI-Powered Vulnerability Audit Generator",
+                    id: "ACH-ARIEL-2026",
+                    rarity: "legendary",
+                    highlight: "International Finalist",
+                    desc: "Developed a secure application that analyzes vulnerability reports using a locally hosted LLM, automatically generating professional audit reports with risk assessments, severity classification, remediation recommendations, and PDF export while preserving data privacy.",
+                    images: ["assets/images/srec-ariel-hackathon.png", "assets/images/cert-placeholder.png"]
+                },
+                {
+                    name: "Thiran 2026",
+                    issuer: "AI Agent-Based Phone Validation API",
+                    id: "ACH-THI-2026",
+                    rarity: "legendary",
+                    highlight: "Finalist",
+                    desc: "Developed an agentic AI middleware that validates bulk phone numbers before message delivery, helping organizations reduce communication costs by filtering invalid contacts through an intelligent multi-agent decision-making workflow.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "Inno Blitz Hackathon",
+                    issuer: "Sri Ramakrishna Engineering College",
+                    id: "ACH-IB-2025",
+                    rarity: "rare",
+                    highlight: "3rd Place - Cash Prize",
+                    desc: "Secured 3rd place with a cash prize for an innovative IoT project designed and prototyped during the Inno Blitz event at Sri Ramakrishna Engineering College.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "SAP Hackfest 2025",
+                    issuer: "Ethical AI Resume Analysis Platform",
+                    id: "ACH-SAP-2025",
+                    rarity: "legendary",
+                    highlight: "Final Round Finalist",
+                    desc: "Reached the final round at SAP Hackfest 2025. Developed an explainable AI system that provides fair, privacy-preserving resume feedback using LLMs and XAI techniques, ensuring transparent recommendations while mitigating bias in hiring.",
+                    image: "assets/images/cert-placeholder.png"
+                }
+            ]
+        };
+
+        const categoryCardsData = [
+            { id: "certificates", name: "Certificates", description: "Official Course Completions & Academics", rarity: "epic" },
+            { id: "achievements", name: "Achievements", description: "Bronze Medals, Project Awards, Milestones", rarity: "legendary" },
+            { id: "events", name: "Events", description: "Hackathons, Workshops, Speaking Engagements", rarity: "rare" }
+        ];
+
         function showStaticCardsFallback() {
             const cardContainer = document.getElementById("cardContainer");
             if (!cardContainer) return;
@@ -531,70 +933,24 @@
 
             cardContainer.className = "static-fallback-grid";
 
-            certificateData.forEach(cert => {
+            categoryCardsData.forEach(cat => {
                 const card = document.createElement("div");
-                card.className = "card static-reveal " + cert.rarity;
+                card.className = "card category-card static-reveal " + cat.rarity;
                 card.innerHTML = `
                     <div class="card-flipper" style="transform: rotateY(0deg);">
                         <div class="card-front">
-                            <div class="card-image-wrapper">
-                                <img class="card-cert-img" src="assets/images/cert-placeholder.png" alt="${cert.name}">
-                                <div class="card-zoom-overlay">
-                                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                                </div>
-                            </div>
-                            <div class="card-info-pane">
-                                <span class="card-issuer">${cert.issuer}</span>
-                                <h3 class="card-title">${cert.name}</h3>
-                                <p class="card-id">${cert.id}</p>
-                                <span class="card-badge">${cert.rarity.toUpperCase()}</span>
-                            </div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-back-logo">TGNAS</div>
+                            <span class="card-issuer">Achievements Folder</span>
+                            <h3 class="card-title">${cat.name}</h3>
+                            <p class="card-desc">${cat.description}</p>
+                            <span class="card-badge">${cat.rarity.toUpperCase()}</span>
                         </div>
                     </div>
                 `;
 
-                const imgWrap = card.querySelector('.card-image-wrapper');
-                if (imgWrap) {
-                    imgWrap.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        let lightbox = document.querySelector('.cert-lightbox');
-                        if (!lightbox) {
-                            lightbox = document.createElement('div');
-                            lightbox.className = 'cert-lightbox';
-                            lightbox.innerHTML = `
-                                <div class="cert-lightbox-close">✕</div>
-                                <div class="cert-lightbox-content">
-                                    <img class="cert-lightbox-img" src="" alt="Certificate Preview">
-                                    <h4 class="cert-lightbox-title"></h4>
-                                </div>
-                            `;
-                            document.body.appendChild(lightbox);
-                            
-                            const closeLbox = lightbox.querySelector('.cert-lightbox-close');
-                            closeLbox.addEventListener('click', () => {
-                                playSfx('menu');
-                                lightbox.classList.remove('active');
-                            });
-                            lightbox.addEventListener('click', (ev) => {
-                                if (ev.target === lightbox) {
-                                    playSfx('menu');
-                                    lightbox.classList.remove('active');
-                                }
-                            });
-                        }
-
-                        playSfx('go');
-                        const img = lightbox.querySelector('.cert-lightbox-img');
-                        const title = lightbox.querySelector('.cert-lightbox-title');
-                        img.src = "assets/images/cert-placeholder.png";
-                        title.textContent = `${cert.issuer} - ${cert.name}`;
-                        
-                        lightbox.classList.add('active');
-                    });
-                }
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openCategoryListSpace(cat.id);
+                });
 
                 cardContainer.appendChild(card);
             });
@@ -645,17 +1001,7 @@
         const cards = [];
         const clock = new THREE.Clock();
         let animationFrameId = null;
-
-        const certificateData = [
-            { name: "Cloud Operations", issuer: "AWS Academy", id: "AWS-78921-X9", rarity: "common" },
-            { name: "Mobile Web Specialist", issuer: "Google Developers", id: "GOOG-FPS-60-A", rarity: "rare" },
-            { name: "Machine Learning", issuer: "Stanford Online", id: "STAN-ML-3392", rarity: "epic" },
-            { name: "Full Stack Developer", issuer: "Udacity Nano", id: "UDAC-FS-0082", rarity: "legendary" },
-            { name: "AI Bot Architect", issuer: "Nvidia Deep Learning", id: "NVID-AI-4402", rarity: "epic" },
-            { name: "Python Automation", issuer: "Python Institute", id: "PY-AUTO-9911", rarity: "common" },
-            { name: "Cybersecurity Analyst", issuer: "CompTIA Security+", id: "SEC-9021-X", rarity: "rare" },
-            { name: "ICPC Championship Medal", issuer: "ACM ICPC", id: "ICPC-MEDAL-2024", rarity: "legendary" }
-        ];
+        let isRenderPaused = false;
 
         function createCards() {
             const cardContainer = document.getElementById("cardContainer");
@@ -663,24 +1009,17 @@
             cardContainer.innerHTML = '';
             cards.length = 0;
 
-            certificateData.forEach(cert => {
+            categoryCardsData.forEach(cat => {
                 const card = document.createElement("div");
-                card.className = "card " + cert.rarity;
+                card.className = "card category-card " + cat.rarity;
+                card.dataset.categoryId = cat.id;
                 card.innerHTML = `
                     <div class="card-flipper">
                         <div class="card-front">
-                            <div class="card-image-wrapper">
-                                <img class="card-cert-img" src="assets/images/cert-placeholder.png" alt="${cert.name}">
-                                <div class="card-zoom-overlay">
-                                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                                </div>
-                            </div>
-                            <div class="card-info-pane">
-                                <span class="card-issuer">${cert.issuer}</span>
-                                <h3 class="card-title">${cert.name}</h3>
-                                <p class="card-id">${cert.id}</p>
-                                <span class="card-badge">${cert.rarity.toUpperCase()}</span>
-                            </div>
+                            <span class="card-issuer">Achievements Folder</span>
+                            <h3 class="card-title">${cat.name}</h3>
+                            <p class="card-desc">${cat.description}</p>
+                            <span class="card-badge">${cat.rarity.toUpperCase()}</span>
                         </div>
                         <div class="card-back">
                             <div class="card-back-logo">TGNAS</div>
@@ -694,49 +1033,543 @@
                     }
                 });
 
-                const imgWrap = card.querySelector('.card-image-wrapper');
-                if (imgWrap) {
-                    imgWrap.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        let lightbox = document.querySelector('.cert-lightbox');
-                        if (!lightbox) {
-                            lightbox = document.createElement('div');
-                            lightbox.className = 'cert-lightbox';
-                            lightbox.innerHTML = `
-                                <div class="cert-lightbox-close">✕</div>
-                                <div class="cert-lightbox-content">
-                                    <img class="cert-lightbox-img" src="" alt="Certificate Preview">
-                                    <h4 class="cert-lightbox-title"></h4>
-                                </div>
-                            `;
-                            document.body.appendChild(lightbox);
-                            
-                            const closeLbox = lightbox.querySelector('.cert-lightbox-close');
-                            closeLbox.addEventListener('click', () => {
-                                playSfx('menu');
-                                lightbox.classList.remove('active');
-                            });
-                            lightbox.addEventListener('click', (ev) => {
-                                if (ev.target === lightbox) {
-                                    playSfx('menu');
-                                    lightbox.classList.remove('active');
-                                }
-                            });
-                        }
-
-                        playSfx('go');
-                        const img = lightbox.querySelector('.cert-lightbox-img');
-                        const title = lightbox.querySelector('.cert-lightbox-title');
-                        img.src = "assets/images/cert-placeholder.png";
-                        title.textContent = `${cert.issuer} - ${cert.name}`;
-                        
-                        lightbox.classList.add('active');
-                    });
-                }
+                card.addEventListener('click', (e) => {
+                    if (!opened) return;
+                    e.stopPropagation();
+                    openCategoryListSpace(cat.id);
+                });
 
                 cardContainer.appendChild(card);
                 cards.push(card);
             });
+        }
+
+        function openCategoryListSpace(catId) {
+            playSfx('go');
+            isRenderPaused = true;
+            
+            const isMobile = window.innerWidth <= 900;
+            let overlay = document.querySelector('.category-list-space');
+            if (overlay) {
+                overlay.parentNode.removeChild(overlay);
+            }
+
+            overlay = document.createElement('div');
+            overlay.className = 'category-list-space';
+            overlay.dataset.catId = catId;
+
+            const items = categories[catId] || [];
+
+            if (isMobile) {
+                // Mobile Reels / Shorts Layout
+                let slidesHTML = '';
+                const N = items.length;
+                
+                // Render 3 copies of items for seamless infinite looping scroll
+                for (let copy = 0; copy < 3; copy++) {
+                    items.forEach((item, index) => {
+                        const globalIndex = copy * N + index;
+                        let images = [];
+                        if (Array.isArray(item.images)) {
+                            images = item.images;
+                        } else if (item.image) {
+                            images = [item.image];
+                        } else {
+                            images = ["assets/images/cert-placeholder.png"];
+                        }
+
+                        let slideImagesHTML = '';
+                        images.forEach((imgUrl, idx) => {
+                            slideImagesHTML += `<img src="${imgUrl}" class="${idx === 0 ? 'active' : ''}" alt="${item.name}">`;
+                        });
+
+                        const highlightHTML = item.highlight ? `<span class="shorts-highlight">${item.highlight}</span>` : '';
+                        slidesHTML += `
+                            <div class="mobile-shorts-slide" data-index="${index}" data-global-index="${globalIndex}">
+                                <div class="shorts-image-wrapper">
+                                    <div class="shorts-slides-container">
+                                        ${slideImagesHTML}
+                                    </div>
+                                    <button class="shorts-arrow arrow-left">‹</button>
+                                    <button class="shorts-arrow arrow-right">›</button>
+                                    <div class="shorts-like-heart-icon">🤍</div>
+                                    <div class="instagram-heart">❤️</div>
+                                </div>
+                                <div class="shorts-info-pane">
+                                    <div class="shorts-issuer-row">
+                                        <span class="shorts-issuer">${item.issuer}</span>
+                                        ${highlightHTML}
+                                    </div>
+                                    <h2 class="shorts-title">${item.name}</h2>
+                                    <p class="shorts-desc">${item.desc}</p>
+                                    <span class="shorts-id">Cred ID: ${item.id}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                let menuItemsHTML = '';
+                items.forEach((item, index) => {
+                    const thumbImg = Array.isArray(item.images) ? item.images[0] : (item.image || "assets/images/cert-placeholder.png");
+                    menuItemsHTML += `
+                        <div class="mobile-menu-item-card ${index === 0 ? 'active' : ''}" data-index="${index}">
+                            <div class="mobile-menu-thumb">
+                                <img src="${thumbImg}" alt="${item.name}">
+                            </div>
+                            <div class="mobile-menu-meta">
+                                <span class="mobile-menu-issuer">${item.issuer}</span>
+                                <h4 class="mobile-menu-item-title">${item.name}</h4>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                const prettyCatName = catId === 'events' ? 'Events' : (catId === 'achievements' ? 'Achievements' : 'Certificates');
+
+                overlay.innerHTML = `
+                    <div class="list-space-close">✕</div>
+                    <div class="mobile-shorts-header">
+                        <button class="mobile-select-btn">SELECT ${prettyCatName}</button>
+                    </div>
+                    <div class="mobile-shorts-container">
+                        ${slidesHTML}
+                    </div>
+                    <div class="mobile-menu-backdrop"></div>
+                    <div class="mobile-select-menu">
+                        <div class="mobile-menu-header">
+                            <h3 class="mobile-menu-title">Select ${prettyCatName}</h3>
+                            <span class="mobile-menu-close">✕</span>
+                        </div>
+                        <div class="mobile-menu-list">
+                            ${menuItemsHTML}
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(overlay);
+
+                // Add close overlay listener
+                const closeBtn = overlay.querySelector('.list-space-close');
+                closeBtn.addEventListener('click', () => {
+                    playSfx('menu');
+                    overlay.classList.remove('active');
+                    isRenderPaused = false;
+                    const homeBtn = document.querySelector(".home-btn");
+                    if (homeBtn && opened) homeBtn.style.display = "none";
+                });
+
+                // Set up mobile double-tap and slides logic
+                const slides = overlay.querySelectorAll('.mobile-shorts-slide');
+                const container = overlay.querySelector('.mobile-shorts-container');
+                const selectBtn = overlay.querySelector('.mobile-select-btn');
+                const selectMenu = overlay.querySelector('.mobile-select-menu');
+                const menuClose = overlay.querySelector('.mobile-menu-close');
+                const menuBackdrop = overlay.querySelector('.mobile-menu-backdrop');
+                const menuCards = overlay.querySelectorAll('.mobile-menu-item-card');
+
+                // Close menu function
+                function closeMenu() {
+                    selectMenu.classList.remove('active');
+                    menuBackdrop.classList.remove('active');
+                }
+
+                selectBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    playSfx('hover');
+                    selectMenu.classList.add('active');
+                    menuBackdrop.classList.add('active');
+                });
+
+                menuClose.addEventListener('click', closeMenu);
+                menuBackdrop.addEventListener('click', closeMenu);
+
+                menuCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        playSfx('go');
+                        const idx = parseInt(card.getAttribute('data-index'), 10);
+                        menuCards.forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                        closeMenu();
+
+                        // Scroll to corresponding slide in Copy 1
+                        const targetSlide = slides[N + idx];
+                        if (targetSlide) {
+                            targetSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+
+                // Track scroll to update active card in SELECT menu and handle infinite loop boundary wraps
+                let lastScrollTime = 0;
+                let isResettingScroll = false;
+
+                container.addEventListener('scroll', () => {
+                    const H = container.clientHeight;
+                    if (!H) return;
+
+                    const scrollTop = container.scrollTop;
+
+                    // Infinite scroll reset boundaries
+                    if (!isResettingScroll) {
+                        if (scrollTop >= (2 * N - 0.5) * H) {
+                            isResettingScroll = true;
+                            container.scrollTop = scrollTop - N * H;
+                            setTimeout(() => { isResettingScroll = false; }, 50);
+                            return;
+                        } else if (scrollTop <= (N - 0.5) * H) {
+                            isResettingScroll = true;
+                            container.scrollTop = scrollTop + N * H;
+                            setTimeout(() => { isResettingScroll = false; }, 50);
+                            return;
+                        }
+                    }
+
+                    // Update active menu tab
+                    const now = Date.now();
+                    if (now - lastScrollTime < 100) return;
+                    lastScrollTime = now;
+
+                    const activeIdx = Math.round(scrollTop / H) % N;
+                    if (activeIdx >= 0 && activeIdx < N) {
+                        menuCards.forEach((c, idx) => {
+                            if (idx === activeIdx) {
+                                c.classList.add('active');
+                            } else {
+                                c.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+
+                // Set up slide slideshow and double-tap for each slide
+                slides.forEach((slide, sIdx) => {
+                    const imgWrapper = slide.querySelector('.shorts-image-wrapper');
+                    const imgContainer = slide.querySelector('.shorts-slides-container');
+                    const images = imgContainer.querySelectorAll('img');
+                    const arrowLeft = slide.querySelector('.arrow-left');
+                    const arrowRight = slide.querySelector('.arrow-right');
+                    const likeIcon = slide.querySelector('.shorts-like-heart-icon');
+                    const igHeart = slide.querySelector('.instagram-heart');
+
+                    // Multiple images handling
+                    let currentSlideIdx = 0;
+                    function showSlide(index) {
+                        if (images.length <= 1) return;
+                        let targetIndex = index;
+                        if (targetIndex >= images.length) targetIndex = 0;
+                        if (targetIndex < 0) targetIndex = images.length - 1;
+
+                        images[currentSlideIdx].classList.remove('active');
+                        images[targetIndex].classList.add('active');
+                        currentSlideIdx = targetIndex;
+                    }
+
+                    if (images.length > 1) {
+                        arrowLeft.style.display = 'flex';
+                        arrowRight.style.display = 'flex';
+
+                        arrowLeft.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            playSfx('hover');
+                            showSlide(currentSlideIdx - 1);
+                        });
+                        arrowRight.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            playSfx('hover');
+                            showSlide(currentSlideIdx + 1);
+                        });
+                    } else {
+                        arrowLeft.style.display = 'none';
+                        arrowRight.style.display = 'none';
+                    }
+
+                    // Like icon toggle
+                    likeIcon.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        playSfx('hover');
+                        likeIcon.classList.toggle('liked');
+                        if (likeIcon.classList.contains('liked')) {
+                            likeIcon.innerHTML = '❤️';
+                        } else {
+                            likeIcon.innerHTML = '🤍';
+                        }
+                    });
+
+                    // Double tap heart pop-up logic
+                    let lastTap = 0;
+                    imgWrapper.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const now = Date.now();
+                        if (now - lastTap < 300) {
+                            // Trigger double tap
+                            playSfx('go');
+                            likeIcon.classList.add('liked');
+                            likeIcon.innerHTML = '❤️';
+
+                            // Big popping heart animation using GSAP
+                            gsap.killTweensOf(igHeart);
+                            gsap.fromTo(igHeart,
+                                { scale: 0, opacity: 0, rotation: -15 },
+                                {
+                                    scale: 1.4,
+                                    opacity: 1,
+                                    rotation: 10,
+                                    duration: 0.4,
+                                    ease: "back.out(2.5)",
+                                    onComplete: () => {
+                                        gsap.to(igHeart, {
+                                            scale: 1.6,
+                                            opacity: 0,
+                                            y: -50,
+                                            duration: 0.5,
+                                            delay: 0.15,
+                                            ease: "power2.in"
+                                        });
+                                    }
+                                }
+                            );
+                        }
+                        lastTap = now;
+                    });
+                });
+
+                // Set initial scroll position to start of Copy 1 (index N) on mount
+                setTimeout(() => {
+                    const H = container.clientHeight || window.innerHeight;
+                    container.scrollTop = N * H;
+                }, 50);
+            } else {
+                // PC Layout
+                overlay.innerHTML = `
+                    <div class="list-space-close">✕</div>
+                    <div class="list-space-container">
+                        <div class="list-space-left-pane">
+                            <div class="preview-img-wrapper">
+                                <div class="preview-slides-container" style="width: 100%; height: 100%; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000;">
+                                    <!-- Slides will be inserted dynamically -->
+                                </div>
+                                <button class="slider-arrow arrow-left">‹</button>
+                                <button class="slider-arrow arrow-right">›</button>
+                            </div>
+                            <div class="preview-info">
+                                <span class="preview-issuer"></span>
+                                <h2 class="preview-title"></h2>
+                                <span class="preview-highlight-badge" style="display: none; align-self: flex-start; padding: 4px 10px; border-radius: 6px; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 900; background: rgba(255, 42, 133, 0.15); border: 1.5px solid #ff2a85; color: #ff2a85; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; box-shadow: 0 0 10px rgba(255, 42, 133, 0.2);"></span>
+                                <p class="preview-id"></p>
+                                <p class="preview-desc"></p>
+                            </div>
+                        </div>
+                        <div class="list-space-right-pane">
+                            <h3 class="grid-header-title">Select Achievement</h3>
+                            <div class="achievements-grid"></div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+
+                const closeBtn = overlay.querySelector('.list-space-close');
+                closeBtn.addEventListener('click', () => {
+                    playSfx('menu');
+                    overlay.classList.remove('active');
+                    isRenderPaused = false;
+                    if (window.achievementSlideshowInterval) {
+                        clearInterval(window.achievementSlideshowInterval);
+                        window.achievementSlideshowInterval = null;
+                    }
+                    const homeBtn = document.querySelector(".home-btn");
+                    if (homeBtn && opened) homeBtn.style.display = "none";
+                });
+
+                const homeBtn = document.querySelector(".home-btn");
+                if (homeBtn) homeBtn.style.display = "none";
+
+                const grid = overlay.querySelector('.achievements-grid');
+                grid.innerHTML = '';
+
+                const previewImgContainer = overlay.querySelector('.preview-slides-container') || overlay.querySelector('.preview-img-wrapper');
+                const previewIssuer = overlay.querySelector('.preview-issuer');
+                const previewTitle = overlay.querySelector('.preview-title');
+                const previewHighlightBadge = overlay.querySelector('.preview-highlight-badge');
+                const previewId = overlay.querySelector('.preview-id');
+                const previewDesc = overlay.querySelector('.preview-desc');
+
+                function selectItem(item, gridCard) {
+                    grid.querySelectorAll('.grid-item-card').forEach(c => c.classList.remove('active'));
+                    if (gridCard) gridCard.classList.add('active');
+
+                    // Clear any running slideshow intervals
+                    if (window.achievementSlideshowInterval) {
+                        clearInterval(window.achievementSlideshowInterval);
+                        window.achievementSlideshowInterval = null;
+                    }
+
+                    // Resolve image array
+                    let images = [];
+                    if (Array.isArray(item.images)) {
+                        images = item.images;
+                    } else if (item.image) {
+                        images = [item.image];
+                    } else {
+                        images = ["assets/images/cert-placeholder.png"];
+                    }
+
+                    if (previewImgContainer) {
+                        previewImgContainer.innerHTML = '';
+                        images.forEach((imgUrl, idx) => {
+                            const img = document.createElement('img');
+                            img.className = 'preview-img';
+                            img.src = imgUrl;
+                            img.alt = item.name;
+                            img.style.cssText = `
+                                position: absolute;
+                                inset: 0;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                                background: #000;
+                                opacity: ${idx === 0 ? 1 : 0};
+                                transition: opacity 0.4s ease-in-out;
+                            `;
+                            previewImgContainer.appendChild(img);
+                        });
+                    }
+
+                    const arrowLeft = overlay.querySelector('.arrow-left');
+                    const arrowRight = overlay.querySelector('.arrow-right');
+
+                    let currentSlideIdx = 0;
+
+                    function showSlide(index) {
+                        const slides = previewImgContainer.querySelectorAll('.preview-img');
+                        if (slides.length <= 1) return;
+
+                        let targetIndex = index;
+                        if (targetIndex >= slides.length) targetIndex = 0;
+                        if (targetIndex < 0) targetIndex = slides.length - 1;
+
+                        slides[currentSlideIdx].style.opacity = '0';
+                        slides[targetIndex].style.opacity = '1';
+                        currentSlideIdx = targetIndex;
+                    }
+
+                    if (images.length > 1) {
+                        if (arrowLeft) arrowLeft.style.display = 'flex';
+                        if (arrowRight) arrowRight.style.display = 'flex';
+
+                        // Start auto cycle
+                        window.achievementSlideshowInterval = setInterval(() => {
+                            showSlide(currentSlideIdx + 1);
+                        }, 3000);
+                    } else {
+                        if (arrowLeft) arrowLeft.style.display = 'none';
+                        if (arrowRight) arrowRight.style.display = 'none';
+                    }
+
+                    // Reset arrow event listeners to prevent duplicate clicks
+                    if (arrowLeft && arrowRight) {
+                        const newArrowLeft = arrowLeft.cloneNode(true);
+                        const newArrowRight = arrowRight.cloneNode(true);
+                        arrowLeft.parentNode.replaceChild(newArrowLeft, arrowLeft);
+                        arrowRight.parentNode.replaceChild(newArrowRight, arrowRight);
+
+                        newArrowLeft.onclick = (e) => {
+                            e.stopPropagation();
+                            playSfx('hover');
+                            if (window.achievementSlideshowInterval) {
+                                clearInterval(window.achievementSlideshowInterval);
+                                window.achievementSlideshowInterval = setInterval(() => {
+                                    showSlide(currentSlideIdx + 1);
+                                }, 3000);
+                            }
+                            showSlide(currentSlideIdx - 1);
+                        };
+
+                        newArrowRight.onclick = (e) => {
+                            e.stopPropagation();
+                            playSfx('hover');
+                            if (window.achievementSlideshowInterval) {
+                                clearInterval(window.achievementSlideshowInterval);
+                                window.achievementSlideshowInterval = setInterval(() => {
+                                    showSlide(currentSlideIdx + 1);
+                                }, 3000);
+                            }
+                            showSlide(currentSlideIdx + 1);
+                        };
+                    }
+
+                    const animTargets = [previewImgContainer, previewIssuer, previewTitle, previewId, previewDesc];
+                    if (item.highlight && previewHighlightBadge) {
+                        animTargets.push(previewHighlightBadge);
+                    }
+
+                    gsap.fromTo(animTargets,
+                        { opacity: 0, y: 10 },
+                        { opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" }
+                    );
+
+                    previewIssuer.textContent = item.issuer;
+                    previewTitle.textContent = item.name;
+                    
+                    if (item.highlight) {
+                        if (previewHighlightBadge) {
+                            previewHighlightBadge.textContent = item.highlight;
+                            previewHighlightBadge.style.display = 'inline-block';
+                        }
+                    } else {
+                        if (previewHighlightBadge) {
+                            previewHighlightBadge.style.display = 'none';
+                        }
+                    }
+
+                    previewId.textContent = `Credential ID / Date: ${item.id}`;
+                    previewDesc.textContent = item.desc;
+                }
+
+                items.forEach((item, index) => {
+                    const gridCard = document.createElement('div');
+                    gridCard.className = `grid-item-card ${item.rarity}`;
+                    
+                    let glowColor = "rgba(255,255,255,0.4)";
+                    let borderCol = "rgba(255,255,255,0.2)";
+                    if (item.rarity === 'rare') { glowColor = "rgba(30,144,255,0.6)"; borderCol = "#1e90ff"; }
+                    else if (item.rarity === 'epic') { glowColor = "rgba(138,43,226,0.6)"; borderCol = "#8a2be2"; }
+                    else if (item.rarity === 'legendary') { glowColor = "rgba(255,215,0,0.6)"; borderCol = "#ffd700"; }
+                    
+                    gridCard.style.setProperty('--glow-color', glowColor);
+                    gridCard.style.setProperty('--border-color', borderCol);
+
+                    const thumbImg = Array.isArray(item.images) ? item.images[0] : (item.image || "assets/images/cert-placeholder.png");
+                    const highlightHTML = item.highlight ? `<span class="grid-card-highlight">${item.highlight}</span>` : '';
+                    gridCard.innerHTML = `
+                        <div class="grid-card-thumbnail">
+                            <img src="${thumbImg}" alt="${item.name}">
+                        </div>
+                        <div class="grid-card-meta">
+                            <span class="grid-card-issuer">${item.issuer}</span>
+                            <h4 class="grid-card-title">${item.name}</h4>
+                            ${highlightHTML}
+                        </div>
+                    `;
+
+                    gridCard.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        playSfx('hover');
+                        selectItem(item, gridCard);
+                    });
+
+                    grid.appendChild(gridCard);
+
+                    if (index === 0) {
+                        selectItem(item, gridCard);
+                    }
+                });
+            }
+
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 50);
         }
 
         let revealTimelines = [];
@@ -747,6 +1580,11 @@
 
             const homeBtn = document.querySelector(".home-btn");
             if (homeBtn) homeBtn.style.display = "none";
+
+            const cardContainer = document.getElementById("cardContainer");
+            if (cardContainer) {
+                cardContainer.style.pointerEvents = "auto";
+            }
 
             revealTimelines.forEach(t => t.kill());
             revealTimelines = [];
@@ -759,33 +1597,49 @@
                 }
             });
 
-            const positions = [
-                { x: 13, y: 22 }, { x: 37, y: 22 }, { x: 63, y: 22 }, { x: 87, y: 22 },
-                { x: 13, y: 76 }, { x: 37, y: 76 }, { x: 63, y: 76 }, { x: 87, y: 76 }
-            ];
+            let positions;
+            const isMobile = window.innerWidth <= 900;
+            if (isMobile) {
+                positions = [
+                    { left: "20%", top: "52%" },
+                    { left: "50%", top: "52%" },
+                    { left: "80%", top: "52%" }
+                ];
+            } else {
+                positions = [
+                    { left: "24%", top: "52%" },
+                    { left: "50%", top: "52%" },
+                    { left: "76%", top: "52%" }
+                ];
+            }
 
             cards.forEach((card, index) => {
-                const p = positions[index];
+                const pos = positions[index];
                 const flipper = card.querySelector('.card-flipper');
                 const tl = gsap.timeline({ delay: index * 0.22 });
                 revealTimelines.push(tl);
 
+                // Apply a dynamic entry flight path with rotational sways
+                const startRot = (index === 0) ? -25 : (index === 2 ? 25 : -10);
+                const overshootRot = (index === 0) ? 8 : (index === 2 ? -8 : 4);
+                
                 tl.fromTo(card,
-                    { left: "50%", top: "58%", opacity: 0, scale: 0.1, x: 0, y: 0, rotation: 0 },
-                    { opacity: 1, scale: 1.2, duration: 0.5 }
+                    { left: "50%", top: "58%", opacity: 0, scale: 0.05, rotation: startRot },
+                    { opacity: 1, scale: 1.14, rotation: overshootRot, duration: 0.5, ease: "power2.out" }
                 )
                 .to(card, {
-                    left: p.x + "%",
-                    top: p.y + "%",
+                    left: pos.left,
+                    top: pos.top,
                     scale: 1,
-                    duration: 0.9,
-                    ease: "back.out(1.4)"
+                    rotation: 0,
+                    duration: 0.95,
+                    ease: "back.out(1.2)"
                 })
                 .to(flipper, {
                     rotateY: 0,
-                    duration: 0.6,
+                    duration: 0.75,
                     ease: "power2.out"
-                });
+                }, "-=0.6");
             });
         }
 
@@ -828,66 +1682,102 @@
         );
 
         let isDragging = false;
-        let startX = 0, startY = 0;
+        let startX = null, startY = null;
+        let clickStartTime = 0;
 
-        function onMouseDown(e) {
-            startX = e.clientX;
-            startY = e.clientY;
+        function handleStart(clientX, clientY) {
+            startX = clientX;
+            startY = clientY;
             isDragging = false;
+            clickStartTime = Date.now();
+            console.log("handleStart registered startX:", startX, "startY:", startY);
         }
 
-        function onMouseUp(e) {
-            const diffX = Math.abs(e.clientX - startX);
-            const diffY = Math.abs(e.clientY - startY);
-            if (diffX > 6 || diffY > 6) {
+        function handleMove(clientX, clientY) {
+            if (startX === null || startY === null) return;
+            const diffX = Math.abs(clientX - startX);
+            const diffY = Math.abs(clientY - startY);
+            if (diffX > 30 || diffY > 30) {
                 isDragging = true;
             }
         }
 
-        function onClick(event) {
-            if (opened || isDragging) return;
+        function handleEnd(clientX, clientY, event) {
+            startX = null;
+            startY = null;
 
-            if (event.target.closest('.hud-btn') || event.target.closest('#closeButton')) return;
+            if (opened) return;
 
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
-
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-            raycaster.setFromCamera(mouse, camera);
-            const intersects = raycaster.intersectObjects(scene.children, true);
-
-            if (intersects.length > 0) {
-                openChest();
+            const clickDuration = Date.now() - clickStartTime;
+            if (clickDuration > 300 && isDragging) {
+                isDragging = false;
+                console.log("handleEnd ignored chest activation due to drag event (duration:", clickDuration, "ms)");
+                return;
             }
+
+            isDragging = false;
+
+            if (event && event.target && (event.target.closest('.hud-btn') || event.target.closest('#closeButton'))) return;
+
+            console.log("handleEnd chest activation");
+            openChest();
+        }
+
+        function onPointerDown(e) {
+            handleStart(e.clientX, e.clientY);
+        }
+
+        function onPointerUp(e) {
+            handleEnd(e.clientX, e.clientY, e);
+        }
+
+        function onPointerMoveDrag(e) {
+            handleMove(e.clientX, e.clientY);
         }
 
         function openChest() {
-            if (opened) return;
-            opened = true;
+            try {
+                if (opened) return;
+                opened = true;
 
-            playSfx('go');
+                try {
+                    playSfx('chest_open');
+                } catch (soundErr) {
+                    console.error("Chest sound play error:", soundErr);
+                }
 
-            const hint = document.getElementById("hint");
-            if (hint) hint.style.display = "none";
+                const hint = document.getElementById("hint");
+                if (hint) hint.style.display = "none";
 
-            const homeBtn = document.querySelector(".home-btn");
-            if (homeBtn) homeBtn.style.display = "none";
+                const homeBtn = document.querySelector(".home-btn");
+                if (homeBtn) homeBtn.style.display = "none";
 
-            if (closeAnim) closeAnim.stop();
-            if (openAnim) {
-                openAnim.reset();
-                openAnim.play();
+                try {
+                    if (closeAnim) closeAnim.stop();
+                    if (openAnim) {
+                        openAnim.reset();
+                        openAnim.play();
+                    }
+                } catch (animErr) {
+                    console.error("Chest animation play error:", animErr);
+                }
+
+                setTimeout(() => {
+                    try {
+                        if (latch) latch.visible = false;
+                    } catch (err) {}
+                }, 300);
+
+                setTimeout(() => {
+                    try {
+                        revealCards();
+                    } catch (revealErr) {
+                        console.error("Reveal cards error:", revealErr);
+                    }
+                }, 900);
+            } catch (globalErr) {
+                console.error("Global openChest error:", globalErr);
             }
-
-            setTimeout(() => {
-                if (latch) latch.visible = false;
-            }, 300);
-
-            setTimeout(() => {
-                revealCards();
-            }, 900);
         }
 
         const closeBtn = document.getElementById("closeButton");
@@ -916,6 +1806,7 @@
                 });
 
                 setTimeout(() => {
+                    playSfx('chest_close');
                     if (latch) latch.visible = true;
 
                     if (openAnim) openAnim.stop();
@@ -924,6 +1815,12 @@
                         closeAnim.play();
                     }
                     opened = false;
+
+                    const cardContainer = document.getElementById("cardContainer");
+                    if (cardContainer) {
+                        cardContainer.style.pointerEvents = "none";
+                        cardContainer.scrollTop = 0;
+                    }
 
                     cards.forEach(card => {
                         gsap.killTweensOf(card);
@@ -947,8 +1844,12 @@
         function animate() {
             animationFrameId = requestAnimationFrame(animate);
 
+            const delta = clock.getDelta();
+
+            if (isRenderPaused) return;
+
             if (mixer) {
-                mixer.update(clock.getDelta());
+                mixer.update(delta);
             }
 
             if (latch && opened) {
@@ -960,10 +1861,28 @@
         }
         animate();
 
+        let lastWidth = window.innerWidth;
         function onResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const wasMobile = lastWidth <= 900;
+            const isMobile = window.innerWidth <= 900;
+            lastWidth = window.innerWidth;
+
+            if (wasMobile !== isMobile) {
+                const overlay = document.querySelector('.category-list-space');
+                if (overlay) {
+                    const catId = overlay.dataset.catId;
+                    if (catId) {
+                        openCategoryListSpace(catId);
+                    } else {
+                        overlay.remove();
+                        isRenderPaused = false;
+                    }
+                }
+            }
         }
 
         let chestHovered = false;
@@ -994,19 +1913,19 @@
             }
         }
 
-        window.addEventListener('mousedown', onMouseDown);
-        window.addEventListener('mouseup', onMouseUp);
-        window.addEventListener('click', onClick);
-        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('pointerdown', onPointerDown, true);
+        window.addEventListener('pointerup', onPointerUp, true);
+        window.addEventListener('pointermove', onPointerMoveDrag, true);
+        window.addEventListener('pointermove', onMouseMove);
         window.addEventListener('resize', onResize);
 
         cleanupCertificates3D = () => {
             cancelAnimationFrame(animationFrameId);
             document.body.style.cursor = 'default';
-            window.removeEventListener('mousedown', onMouseDown);
-            window.removeEventListener('mouseup', onMouseUp);
-            window.removeEventListener('click', onClick);
-            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('pointerdown', onPointerDown, true);
+            window.removeEventListener('pointerup', onPointerUp, true);
+            window.removeEventListener('pointermove', onPointerMoveDrag, true);
+            window.removeEventListener('pointermove', onMouseMove);
             window.removeEventListener('resize', onResize);
 
             if (controls) {
@@ -1039,6 +1958,13 @@
 
             const lightbox = document.querySelector('.cert-lightbox');
             if (lightbox) lightbox.remove();
+
+            if (window.achievementSlideshowInterval) {
+                clearInterval(window.achievementSlideshowInterval);
+                window.achievementSlideshowInterval = null;
+            }
+            const spaceOverlay = document.querySelector('.category-list-space');
+            if (spaceOverlay) spaceOverlay.remove();
         };
     }
 
