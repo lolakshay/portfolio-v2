@@ -20,7 +20,8 @@
         ],
         "github": "https://github.com/lolakshay/wocal",
         "linkedin": "",
-        "demo_video": "https://lolakshay.github.io/wocal",
+        "demo_video": "",
+        "link" : "https://lolakshay.github.io/wocal/",
         "images": [
             "assets/images/cert-placeholder.png"
         ],
@@ -216,8 +217,8 @@
             "JavaScript",
             "REST APIs"
         ],
-        "github": "",
-        "linkedin": "",
+        "github": "https://github.com/lolakshay/SRCAS-RAG-LLM",
+        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_i-was-grateful-for-the-shortlisting-of-my-activity-7407229435860611072-M3Cv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
             "assets/event-assets/srcas-2.0/image1.png",
@@ -350,21 +351,28 @@
         "video": "assets/project-demo-videos/tamil-git-commands.mp4"
     },
     {
-        "project_name": "Personal Portfolio Website",
-        "project_description": "Designed and developed a responsive personal portfolio website to showcase projects, technical skills, achievements, and professional experience. Built using modern web development practices, the website features an interactive user interface, structured project presentations, and optimized navigation to provide visitors with a comprehensive overview of technical work and accomplishments. This project served as my first end-to-end web development experience, strengthening my understanding of front-end design and user experience principles.",
+        "project_name": "Printify – Printing Shop Management & Billing System",
+        "project_description": "Developed a desktop application for local printing businesses to streamline document printing, billing, and transaction management. The system enables operators to easily handle customer print requests, calculate printing costs, generate invoices, and maintain financial records through a centralized interface. It supports drag-and-drop document handling, PDF processing, image management, automated print workflows, and receipt generation, reducing manual effort while improving operational efficiency for small-scale printing shops.",
         "tech_stack": [
-            "HTML",
-            "CSS",
-            "JavaScript"
+            "Python",
+            "Tkinter",
+            "TkinterDnD2",
+            "PyMuPDF",
+            "Pillow (PIL)",
+            "ReportLab",
+            "PyAutoGUI",
+            "PDF Processing",
+            "Invoice Generation",
+            "Desktop Application Development",
+            "Print Automation"
         ],
-        "github": "https://github.com/lolakshay/portfolio",
-        "link": "https://lolakshay.github.io/portfolio/",
-        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_portfoliowebsite-webdevelopment-frontend-activity-7337868466781110275-atsw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
+        "github": "",
+        "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/event-assets/project-printify/image1.png"
         ],
-        "video": "assets/project-demo-videos/portfolio.mp4"
+        "video": ""
     },
     {
         "project_name": "AI-Powered Agentic Municipal Resolution Platform",
@@ -396,6 +404,69 @@
         "video": "assets/project-demo-videos/ai-agentic-municiple-corpration-thiran-1st-project.mp4"
     },
     {
+        "project_name": "Bongos Therapy for Autism Children",
+        "project_description": "Developed and presented an interactive therapeutic learning system for children with autism as part of the government-backed Shine Healthcare Hackathon 2025. The solution utilizes sensor-enabled bongos to encourage engagement, motor skill development, and interactive learning through audiovisual feedback. Progressed from approximately 1,500 participating teams to the Top 350 and successfully demonstrated a functional prototype at the regional pre-finale, highlighting the project's potential for assistive healthcare and special education applications.",
+        "tech_stack": [
+            "Raspberry Pi 4",
+            "Linux",
+            "Piezoelectric Sensors",
+            "Embedded Systems",
+            "Hardware Prototyping",
+            "Sensor Integration",
+            "Audio-Visual Feedback Systems"
+        ],
+        "github": "",
+        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_thrilled-to-share-that-our-team-was-shortlisted-activity-7365738870962802688-IkCo?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
+        "demo_video": "https://youtu.be/OByPd4BrNpI",
+        "images": [
+            "assets/event-assets/shine-health-care-hackathon/image1.png",
+            "assets/event-assets/shine-health-care-hackathon/image2.jpeg"
+        ],
+        "video": ""
+    },
+    {
+        "project_name": "TGNAS Coder – Personal AI Coding Assistant Portal",
+        "project_description": "Developed a self-hosted AI coding assistant platform designed to provide complete control over AI-assisted software development workflows. The portal features configurable model parameters such as temperature and top-p sampling, persistent multi-session chat history stored locally, and a modern web-based interface optimized for productivity. The system supports interchangeable AI providers, allowing seamless switching between APIs when usage limits are reached, ensuring uninterrupted access to coding assistance. Built to overcome the limitations of conventional AI coding tools, the project emphasizes flexibility, customization, privacy, and user-controlled AI interactions.",
+        "tech_stack": [
+            "Python",
+            "Flask",
+            "OpenAI API",
+            "NVIDIA API",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "REST APIs",
+            "Prompt Engineering",
+            "Local Data Storage",
+            "Web Development",
+            "AI Assistants"
+        ],
+        "github": "https://github.com/lolakshay/tgnas-chatgpt-interface",
+        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_buildinpublic-ai-developertools-activity-7375432830769729536-aWr7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
+        "demo_video": "",
+        "images": [
+            "assets/images/cert-placeholder.png"
+        ],
+        "video": "assets/project-demo-videos/tgnas-chatgpt-style-interface.mp4"
+    },
+    {
+        "project_name": "Personal Portfolio Website (First) ",
+        "project_description": "Designed and developed a responsive personal portfolio website to showcase projects, technical skills, achievements, and professional experience. Built using modern web development practices, the website features an interactive user interface, structured project presentations, and optimized navigation to provide visitors with a comprehensive overview of technical work and accomplishments. This project served as my first end-to-end web development experience, strengthening my understanding of front-end design and user experience principles.",
+        "tech_stack": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "github": "https://github.com/lolakshay/portfolio",
+        "link": "https://lolakshay.github.io/portfolio/",
+        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_portfoliowebsite-webdevelopment-frontend-activity-7337868466781110275-atsw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
+        "demo_video": "",
+        "images": [
+            "assets/images/cert-placeholder.png"
+        ],
+        "video": "assets/project-demo-videos/portfolio.mp4"
+    },
+    {
         "project_name": "Accurate Service Locator",
         "project_description": "Developed a mobile application concept that enables users to discover and interact with unlisted local vendors, roadside stalls, and small businesses through GPS-based location services. The platform integrates voice, text, and camera-based search capabilities, improving accessibility for users while increasing visibility and digital reach for local entrepreneurs and community businesses.",
         "tech_stack": [
@@ -412,6 +483,7 @@
         ],
         "video": ""
     },
+    
     {
         "project_name": "Centralized Smart Appliance Control System",
         "project_description": "Designed and developed an ESP32-based centralized control system that bridges both smart and non-smart appliances, enabling unified control through a single multifunctional knob interface. The system supports the operation of lights, fans, power outlets, and other household devices while leveraging Wi-Fi connectivity for enhanced automation, accessibility, and user convenience. Built as part of the AtomQuest 2024 innovation challenge by Atomberg.",
@@ -429,29 +501,6 @@
         "images": [
             "assets/event-assets/atomquest-2024/image1.png",
             "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.jpg"
-        ],
-        "video": ""
-    },
-    {
-        "project_name": "Pentathon CTF 2025",
-        "project_description": "Competed in Pentathon CTF 2025, a 48-hour international cybersecurity competition, and secured 46th place among 3,524+ participating teams worldwide (Top 1.31%). As a member of Team Gix Notion, solved challenges spanning Web Exploitation, Digital Forensics, Reverse Engineering, Cryptography, and Miscellaneous categories, demonstrating strong analytical, problem-solving, and offensive security skills under competitive conditions.",
-        "tech_stack": [
-            "Kali Linux",
-            "Burp Suite",
-            "Wireshark",
-            "Nmap",
-            "John the Ripper",
-            "Hashcat",
-            "Ghidra",
-            "CyberChef",
-            "Python",
-            "Linux"
-        ],
-        "github": "",
-        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_pentathon-phase-1-2025-from-what-activity-7317565560102268931-IE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
-        "demo_video": "",
-        "images": [
-            "assets/event-assets/pentathon-2025/image1.jpg"
         ],
         "video": ""
     },
@@ -478,27 +527,31 @@
         ],
         "video": ""
     },
+    
     {
-        "project_name": "Bongos Therapy for Autism Children",
-        "project_description": "Developed and presented an interactive therapeutic learning system for children with autism as part of the government-backed Shine Healthcare Hackathon 2025. The solution utilizes sensor-enabled bongos to encourage engagement, motor skill development, and interactive learning through audiovisual feedback. Progressed from approximately 1,500 participating teams to the Top 350 and successfully demonstrated a functional prototype at the regional pre-finale, highlighting the project's potential for assistive healthcare and special education applications.",
+        "project_name": "Pentathon CTF 2025",
+        "project_description": "Competed in Pentathon CTF 2025, a 48-hour international cybersecurity competition, and secured 46th place among 3,524+ participating teams worldwide (Top 1.31%). As a member of Team Gix Notion, solved challenges spanning Web Exploitation, Digital Forensics, Reverse Engineering, Cryptography, and Miscellaneous categories, demonstrating strong analytical, problem-solving, and offensive security skills under competitive conditions.",
         "tech_stack": [
-            "Raspberry Pi 4",
-            "Linux",
-            "Piezoelectric Sensors",
-            "Embedded Systems",
-            "Hardware Prototyping",
-            "Sensor Integration",
-            "Audio-Visual Feedback Systems"
+            "Kali Linux",
+            "Burp Suite",
+            "Wireshark",
+            "Nmap",
+            "John the Ripper",
+            "Hashcat",
+            "Ghidra",
+            "CyberChef",
+            "Python",
+            "Linux"
         ],
         "github": "",
-        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_thrilled-to-share-that-our-team-was-shortlisted-activity-7365738870962802688-IkCo?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
-        "demo_video": "https://youtu.be/OByPd4BrNpI",
+        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_pentathon-phase-1-2025-from-what-activity-7317565560102268931-IE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
+        "demo_video": "",
         "images": [
-            "assets/event-assets/shine-health-care-hackathon/image1.png",
-            "assets/event-assets/shine-health-care-hackathon/image2.jpeg"
+            "assets/event-assets/pentathon-2025/image1.jpg"
         ],
         "video": ""
     },
+    
     {
         "project_name": "Ethical AI Resume Analysis Platform",
         "project_description": "Developed an explainable AI-powered resume analysis platform focused on delivering fair, transparent, and privacy-preserving candidate feedback. The system leverages Large Language Models (LLMs) and Explainable AI (XAI) techniques to generate actionable resume recommendations while providing clear reasoning behind each suggestion. Designed to mitigate bias in hiring-related evaluations and promote responsible AI adoption, the project advanced to the final round of SAP HackFest 2025.",
@@ -541,31 +594,7 @@
         ],
         "video": ""
     },
-    {
-        "project_name": "TGNAS Coder – Personal AI Coding Assistant Portal",
-        "project_description": "Developed a self-hosted AI coding assistant platform designed to provide complete control over AI-assisted software development workflows. The portal features configurable model parameters such as temperature and top-p sampling, persistent multi-session chat history stored locally, and a modern web-based interface optimized for productivity. The system supports interchangeable AI providers, allowing seamless switching between APIs when usage limits are reached, ensuring uninterrupted access to coding assistance. Built to overcome the limitations of conventional AI coding tools, the project emphasizes flexibility, customization, privacy, and user-controlled AI interactions.",
-        "tech_stack": [
-            "Python",
-            "Flask",
-            "OpenAI API",
-            "NVIDIA API",
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "REST APIs",
-            "Prompt Engineering",
-            "Local Data Storage",
-            "Web Development",
-            "AI Assistants"
-        ],
-        "github": "https://github.com/lolakshay/tgnas-chatgpt-interface",
-        "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_buildinpublic-ai-developertools-activity-7375432830769729536-aWr7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
-        "demo_video": "",
-        "images": [
-            "assets/images/cert-placeholder.png"
-        ],
-        "video": "assets/project-demo-videos/tgnas-chatgpt-style-interface.mp4"
-    },
+    
     {
         "project_name": "AI-Powered Interview Preparation Assistant",
         "project_description": "Developed a desktop-based AI interview preparation platform that simulates real interview experiences using adaptive question generation, speech interaction, and automated answer evaluation. The application allows users to select interview difficulty levels and the number of questions while leveraging webcam integration for a realistic interview environment. Questions can be delivered through text-to-speech (TTS), and the system captures spoken responses using speech recognition. AI models analyze user answers against expected responses, evaluate relevance and completeness, and generate detailed scores and feedback to help users improve their technical and behavioral interview performance.",
@@ -581,30 +610,6 @@
             "Natural Language Processing (NLP)",
             "AI-Powered Evaluation",
             "Desktop Application Development"
-        ],
-        "github": "",
-        "linkedin": "",
-        "demo_video": "",
-        "images": [
-            "assets/images/cert-placeholder.png"
-        ],
-        "video": ""
-    },
-    {
-        "project_name": "Printify – Printing Shop Management & Billing System",
-        "project_description": "Developed a desktop application for local printing businesses to streamline document printing, billing, and transaction management. The system enables operators to easily handle customer print requests, calculate printing costs, generate invoices, and maintain financial records through a centralized interface. It supports drag-and-drop document handling, PDF processing, image management, automated print workflows, and receipt generation, reducing manual effort while improving operational efficiency for small-scale printing shops.",
-        "tech_stack": [
-            "Python",
-            "Tkinter",
-            "TkinterDnD2",
-            "PyMuPDF",
-            "Pillow (PIL)",
-            "ReportLab",
-            "PyAutoGUI",
-            "PDF Processing",
-            "Invoice Generation",
-            "Desktop Application Development",
-            "Print Automation"
         ],
         "github": "",
         "linkedin": "",
