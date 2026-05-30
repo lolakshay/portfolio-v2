@@ -1806,6 +1806,8 @@
             if (opened) return;
 
             const clickDuration = Date.now() - clickStartTime;
+            console.log("handleEnd called: clickDuration =", clickDuration, "isDragging =", isDragging);
+
             if (clickDuration > 300 && isDragging) {
                 isDragging = false;
                 console.log("handleEnd ignored chest activation due to drag event (duration:", clickDuration, "ms)");
@@ -1814,10 +1816,44 @@
 
             isDragging = false;
 
-            if (event && event.target && (event.target.closest('.hud-btn') || event.target.closest('#closeButton'))) return;
+            if (event && event.target && (event.target.closest('.hud-btn') || event.target.closest('#closeButton') || event.target.closest('.list-space-close') || event.target.closest('.category-list-space'))) {
+                console.log("handleEnd ignored click on HUD / Close button / List overlay");
+                return;
+            }
 
-            console.log("handleEnd chest activation");
-            openChest();
+            // Raycast check to see if the user clicked on the chest/scene objects
+            let intersectsChest = false;
+            try {
+                const raycaster = new THREE.Raycaster();
+                const mouse = new THREE.Vector2();
+                mouse.x = (clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(scene.children, true);
+                if (intersects.length > 0) {
+                    intersectsChest = true;
+                    console.log("handleEnd: Raycast intersected object:", intersects[0].object.name);
+                }
+            } catch (err) {
+                console.error("Raycasting error in handleEnd:", err);
+            }
+
+            const isTouch = event && (event.pointerType === 'touch' || event.type.startsWith('touch') || (event.touches && event.touches.length > 0));
+            const isMobile = window.innerWidth <= 900;
+            const isDesktopChestArea = !isMobile && !isTouch &&
+                clientX > window.innerWidth * 0.24 &&
+                clientX < window.innerWidth * 0.76 &&
+                clientY > window.innerHeight * 0.28 &&
+                clientY < window.innerHeight * 0.82;
+
+            console.log("handleEnd: intersectsChest =", intersectsChest, "isDesktopChestArea =", isDesktopChestArea, "isMobile =", isMobile, "isTouch =", isTouch);
+
+            if (intersectsChest || isDesktopChestArea || isMobile || isTouch) {
+                console.log("handleEnd chest activation triggered!");
+                openChest();
+            } else {
+                console.log("handleEnd ignored click outside chest area");
+            }
         }
 
         function onPointerDown(e) {

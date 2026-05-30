@@ -87,70 +87,7 @@
                 </header>
 
                 <div class="projects-grid">
-                    <!-- PROJECT CARD TEMPLATE
-                    Copy one entire .project-card block below to add a new project.
-                    Replace:
-                    1. .project-tech text
-                    2. .project-title text
-                    3. .project-desc text
-                    4. image src/alt OR replace the image with a video tag
-                    5. .project-link href
-                    -->
-                    <article class="project-card">
-                        <span class="project-tech">FastAPI & Python</span>
-                        <h3 class="project-title">Cybersecurity RAG Chatbot</h3>
-                        <p class="project-desc">
-                            Retrieval-augmented assistant over local knowledge sources with encrypted vector storage, streaming responses, and clean API boundaries for deployment.
-                        </p>
-                        <div class="project-media">
-                            <img src="assets/images/astriod-1.png" alt="Cybersecurity RAG chatbot project preview">
-                        </div>
-                        <a href="https://github.com" target="_blank" rel="noopener" class="project-link" aria-label="View Cybersecurity RAG Chatbot source code on GitHub">
-                            SOURCE CODE &rarr;
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-tech">WebGL & JS</span>
-                        <h3 class="project-title">Zero-Gravity Physics Canvas</h3>
-                        <p class="project-desc">
-                            A canvas-based motion system with starfield rendering, low-cost particle updates, and responsive collision behavior tuned for smooth interaction.
-                        </p>
-                        <div class="project-media">
-                            <img src="assets/images/astriod-1.png" alt="Zero-gravity physics canvas project preview">
-                        </div>
-                        <a href="https://github.com" target="_blank" rel="noopener" class="project-link" aria-label="View Zero-Gravity Physics Canvas source code on GitHub">
-                            SOURCE CODE &rarr;
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-tech">NodeJS & Web Audio</span>
-                        <h3 class="project-title">Space Radio Console</h3>
-                        <p class="project-desc">
-                            Retro audio deck powered by Web Audio oscillators, frequency controls, and lowpass filtering for a playable synthesized ambience tool.
-                        </p>
-                        <div class="project-media">
-                            <img src="assets/images/astriod-1.png" alt="Space radio console project preview">
-                        </div>
-                        <a href="https://github.com" target="_blank" rel="noopener" class="project-link" aria-label="View Space Radio Console source code on GitHub">
-                            SOURCE CODE &rarr;
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <span class="project-tech">HTML, CSS & JS</span>
-                        <h3 class="project-title">Cosmic Portfolio System</h3>
-                        <p class="project-desc">
-                            Multi-page interactive portfolio with portal transitions, persistent starfield ambience, responsive asteroid navigation, and glass UI surfaces.
-                        </p>
-                        <div class="project-media">
-                            <img src="assets/images/avatar.png" alt="Cosmic portfolio system project preview">
-                        </div>
-                        <a href="https://github.com" target="_blank" rel="noopener" class="project-link" aria-label="View Cosmic Portfolio System source code on GitHub">
-                            SOURCE CODE &rarr;
-                        </a>
-                    </article>
+                    <!-- Cards will be populated dynamically from js/projects.js -->
                 </div>
             </section>
         </div>
@@ -163,9 +100,39 @@
         <div class="portal-layer portal-layer-2"></div>
     </div>
 
+    <!-- Detailed Project Modal -->
+    <div class="project-modal-overlay" id="projectModal">
+        <div class="project-modal-close" id="projectModalClose">✕</div>
+        <div class="project-modal-container">
+            <!-- Left Side: Title, Full Description, Tech Stack, Links -->
+            <div class="project-modal-left">
+                <h2 class="project-modal-title" id="modalTitle">Project Title</h2>
+                <div class="project-modal-desc-container">
+                    <p class="project-modal-desc" id="modalDesc"></p>
+                </div>
+                <div class="project-modal-tech-section">
+                    <h4 class="tech-section-title">Technologies Used</h4>
+                    <div class="project-tags" id="modalTags"></div>
+                </div>
+                <div class="project-modal-links-section" id="modalLinks"></div>
+            </div>
+            
+            <!-- Right Side: Image Slider -->
+            <div class="project-modal-right">
+                <div class="project-slider-wrapper">
+                    <div class="project-slides-container" id="modalSlides"></div>
+                    <button class="project-slider-arrow prev" id="modalPrev">‹</button>
+                    <button class="project-slider-arrow next" id="modalNext">›</button>
+                </div>
+                <div class="project-slider-dots" id="modalDots"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Application Execution Scripts -->
     <script src="js/transition.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/projects.js"></script>
 </body>
 </html>
