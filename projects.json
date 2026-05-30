@@ -11,7 +11,7 @@
       "demo_video": "https://github.com/lolakshay/Accurate-Service-Locator"
     },
     {
-      "project_name": "AtomQuest 2024 – Centralized Smart Appliance Control System",
+      "project_name": "Centralized Smart Appliance Control System",
       "project_description": "Designed and developed an ESP32-based centralized control system that bridges both smart and non-smart appliances, enabling unified control through a single multifunctional knob interface. The system supports the operation of lights, fans, power outlets, and other household devices while leveraging Wi-Fi connectivity for enhanced automation, accessibility, and user convenience. Built as part of the AtomQuest 2024 innovation challenge by Atomberg.",
       "tech_stack": [
         "ESP32",
@@ -26,7 +26,7 @@
       "demo_video": "https://youtu.be/p5M1e6pX1iQ"
     },
     {
-      "project_name": "Pentathon CTF 2025",
+      "project_name": "Capture the Flag - CTF",
       "project_description": "Competed in Pentathon CTF 2025, a 48-hour international cybersecurity competition, and secured 46th place among 3,524+ participating teams worldwide (Top 1.31%). As a member of Team Gix Notion, solved challenges spanning Web Exploitation, Digital Forensics, Reverse Engineering, Cryptography, and Miscellaneous categories, demonstrating strong analytical, problem-solving, and offensive security skills under competitive conditions.",
       "tech_stack": [
         "Kali Linux",
@@ -45,7 +45,7 @@
       "demo_video": ""
     },
     {
-      "project_name": "Thiran 2024 – Smart Emergency Speed Breaker System",
+      "project_name": "Smart Emergency Speed Breaker System",
       "project_description": "Developed an IoT-enabled smart emergency traffic management system designed to provide uninterrupted passage for authorized emergency vehicles. The solution utilizes authenticated wireless communication, QR-based vehicle verification, and a hydraulically retractable speed breaker to dynamically clear the route while ensuring public safety. The system incorporates automated alerts, real-time control logic, and fail-safe mechanisms to maintain reliable operation in critical scenarios.",
       "tech_stack": [
         "ESP32",
@@ -63,7 +63,7 @@
       "demo_video": ""
     },
     {
-      "project_name": "Shine Healthcare Hackathon 2025 – Bongos Therapy for Autism Children",
+      "project_name": "Bongos Therapy for Autism Children",
       "project_description": "Developed and presented an interactive therapeutic learning system for children with autism as part of the government-backed Shine Healthcare Hackathon 2025. The solution utilizes sensor-enabled bongos to encourage engagement, motor skill development, and interactive learning through audiovisual feedback. Progressed from approximately 1,500 participating teams to the Top 350 and successfully demonstrated a functional prototype at the regional pre-finale, highlighting the project's potential for assistive healthcare and special education applications.",
       "tech_stack": [
         "Raspberry Pi 4",
@@ -79,7 +79,7 @@
       "demo_video": "https://youtu.be/OByPd4BrNpI"
     },
     {
-      "project_name": "SAP HackFest 2025 – Ethical AI Resume Analysis Platform",
+      "project_name": "Ethical AI Resume Analysis Platform",
       "project_description": "Developed an explainable AI-powered resume analysis platform focused on delivering fair, transparent, and privacy-preserving candidate feedback. The system leverages Large Language Models (LLMs) and Explainable AI (XAI) techniques to generate actionable resume recommendations while providing clear reasoning behind each suggestion. Designed to mitigate bias in hiring-related evaluations and promote responsible AI adoption, the project advanced to the final round of SAP HackFest 2025.",
       "tech_stack": [
         "Python",
@@ -127,7 +127,7 @@
       "demo_video": ""
     },
     {
-      "project_name": "AtomQuest 2025 – Autonomous Robotic Cleaning Bot",
+      "project_name": "Autonomous Robotic Cleaning Bot",
       "project_description": "Designed and proposed an intelligent autonomous cleaning robot capable of navigating complex, obstacle-filled environments while efficiently collecting and managing dry waste. The system combines sensor-driven environmental awareness, autonomous path-planning algorithms, and integrated cleaning mechanisms to optimize coverage and waste collection efficiency. The project focused on reducing manual cleaning effort through robotics, automation, and intelligent navigation technologies.",
       "tech_stack": [
         "Raspberry Pi",
@@ -158,7 +158,7 @@
       "demo_video": ""
     },
     {
-      "project_name": "Bharatiya Antariksh Hackathon 2025 – Knowledge Graph–Enhanced AI Chatbot",
+      "project_name": "Knowledge Graph  – Enhanced AI Chatbot",
       "project_description": "Developed an advanced AI assistant that combines Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Knowledge Graphs, and ontology-driven reasoning to deliver accurate, context-aware responses for complex information retrieval tasks. The system integrates automated web scraping and data ingestion pipelines, semantic embeddings, vector search, real-time intent detection, adaptive learning mechanisms, and dynamic visual content generation. By leveraging Knowledge Graph relationships alongside vector-based retrieval, the chatbot provides more reliable, explainable, and contextually relevant responses than traditional RAG systems.",
       "tech_stack": [
         "Python",
@@ -180,7 +180,7 @@
       "demo_video": ""
     },
     {
-      "project_name": "SIH 2025 – AI-Powered Timetable Management System",
+      "project_name": "AI-Powered Timetable Management System",
       "project_description": "Developed an intelligent timetable management platform for Smart India Hackathon (SIH) 2025 that automates the generation of conflict-free academic schedules. The system leverages constraint optimization techniques to account for faculty availability, classroom allocation, internship schedules, and National Education Policy (NEP) activities while minimizing scheduling conflicts. The platform supports customizable scheduling rules, automated timetable generation, and multiple timetable views for administrators, faculty members, and students. The project secured 2nd place in the internal selection round.",
       "tech_stack": [
         "Python",
@@ -198,7 +198,7 @@
       "demo_video": "https://youtu.be/cZvVrea5N_0"
     },
     {
-      "project_name": "SRCAS Hackathon 2.0 – AI-Powered Cybercrime Assistance Platform",
+      "project_name": "AI-Powered Cybercrime Assistance Platform",
       "project_description": "Developed an AI-powered cybercrime assistance platform that helps victims identify cyber incidents, analyze digital evidence, and receive actionable guidance aligned with Indian Cybercrime Standard Operating Procedures (SOPs). The system combines Retrieval-Augmented Generation (RAG), Large Language Models (LLMs), multimodal AI capabilities, and voice-based interaction to provide context-aware assistance. Users can securely upload evidence such as screenshots and images for analysis, while the platform retrieves relevant legal and procedural information to support informed decision-making. Built during SRCAS Hackathon 2.0, the solution focuses on accessibility, secure evidence handling, and improving public awareness of cybercrime response procedures.",
       "tech_stack": [
         "Python",
@@ -221,7 +221,7 @@
       "demo_video": ""
     },
     {
-      "project_name": "STATATHON 2025 – AI-Powered Occupational Classification System",
+      "project_name": "AI-Powered Occupational Classification System",
       "project_description": "Developed an AI-powered occupational classification platform for STATATHON 2025 that automates the mapping of free-text job descriptions to National Classification of Occupations (NCO) codes. The system combines Natural Language Processing (NLP), semantic search, Retrieval-Augmented Generation (RAG), and machine learning techniques to improve data quality, enhance survey accuracy, and significantly reduce manual classification effort. By leveraging contextual embeddings and intelligent retrieval mechanisms, the platform provides accurate occupation recommendations while supporting large-scale workforce and statistical data collection initiatives.",
       "tech_stack": [
         "Python",
