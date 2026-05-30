@@ -1,32 +1,6 @@
 (function () {
     const projectsData = [
     {
-        "project_name": "Wocal – Cross-Platform WorkTime Calculator",
-        "project_description": "Developed a cross-platform desktop productivity application that enables users to accurately track, analyze, and optimize focused work sessions through an offline-first and reliability-focused architecture. The platform provides real-time time tracking, automatic session recovery after crashes, system tray integration, goal-based progress monitoring, productivity streak tracking, and detailed analytics dashboards. Advanced features include a GitHub-style activity heatmap, session tagging, cloud synchronization with local-first data storage, CSV/JSON export capabilities, and comprehensive historical productivity insights. Designed for students, developers, and professionals, Wocal prioritizes data ownership, uninterrupted tracking, and long-term habit-building through actionable productivity analytics.",
-        "tech_stack": [
-            "Python",
-            "Desktop Application Development",
-            "Firebase Authentication",
-            "Firebase APIs",
-            "JSON",
-            "CSV Export",
-            "Local Data Storage",
-            "Cloud Synchronization",
-            "System Tray Integration",
-            "Data Visualization",
-            "Analytics Dashboard",
-            "Cross-Platform Development",
-            "Offline-First Architecture"
-        ],
-        "github": "https://github.com/lolakshay/wocal",
-        "linkedin": "",
-        "link":"https://lolakshay.github.io/wocal",
-        "demo_video": "",
-        "images": [
-            "assets/images/cert-placeholder.png"
-        ]
-    },
-    {
         "project_name": "Accurate Service Locator",
         "project_description": "Developed a mobile application concept that enables users to discover and interact with unlisted local vendors, roadside stalls, and small businesses through GPS-based location services. The platform integrates voice, text, and camera-based search capabilities, improving accessibility for users while increasing visibility and digital reach for local entrepreneurs and community businesses.",
         "tech_stack": [
@@ -561,6 +535,31 @@
         ]
     },
     {
+        "project_name": "Wocal – Cross-Platform WorkTime Calculator",
+        "project_description": "Developed a cross-platform desktop productivity application that enables users to accurately track, analyze, and optimize focused work sessions through an offline-first and reliability-focused architecture. The platform provides real-time time tracking, automatic session recovery after crashes, system tray integration, goal-based progress monitoring, productivity streak tracking, and detailed analytics dashboards. Advanced features include a GitHub-style activity heatmap, session tagging, cloud synchronization with local-first data storage, CSV/JSON export capabilities, and comprehensive historical productivity insights. Designed for students, developers, and professionals, Wocal prioritizes data ownership, uninterrupted tracking, and long-term habit-building through actionable productivity analytics.",
+        "tech_stack": [
+            "Python",
+            "Desktop Application Development",
+            "Firebase Authentication",
+            "Firebase APIs",
+            "JSON",
+            "CSV Export",
+            "Local Data Storage",
+            "Cloud Synchronization",
+            "System Tray Integration",
+            "Data Visualization",
+            "Analytics Dashboard",
+            "Cross-Platform Development",
+            "Offline-First Architecture"
+        ],
+        "github": "https://github.com/lolakshay/wocal",
+        "linkedin": "",
+        "demo_video": "https://lolakshay.github.io/wocal",
+        "images": [
+            "assets/images/cert-placeholder.png"
+        ]
+    },
+    {
         "project_name": "Automatic Certificate Name Generator",
         "project_description": "Developed a Python-based certificate automation system that generates personalized certificates in bulk by dynamically inserting participant names into predefined certificate templates. The application eliminates manual editing by processing participant data from structured sources and automatically producing customized certificates with consistent formatting and layout. Designed to support academic events, workshops, competitions, and organizational programs, the system significantly reduces certificate preparation time while minimizing human errors in name entry and document generation.",
         "tech_stack": [
@@ -696,59 +695,6 @@
         }
     }
 
-    // Render loop
-    const grid = document.querySelector('.projects-grid');
-    if (grid) {
-        grid.innerHTML = '';
-        projectsData.forEach((p, idx) => {
-            const images = p.images || ["assets/images/cert-placeholder.png"];
-            const firstImage = images[0];
-            const name = p.project_name;
-            const shortDesc = truncateDescription(p.project_description);
-            
-            // Limit to top 4 tech tags
-            const topTags = p.tech_stack.slice(0, 4);
-            const tagsHTML = topTags.map(tag => {
-                const tagClass = getTagClass(tag);
-                return `<span class="project-tag ${tagClass}">${tag}</span>`;
-            }).join('\n                            ');
-
-            const card = document.createElement('article');
-            card.className = 'project-card';
-            card.dataset.index = idx;
-            
-            card.innerHTML = `
-                <div class="project-media">
-                    <img src="${firstImage}" alt="${name}" loading="lazy">
-                </div>
-                <h3 class="project-title">${name}</h3>
-                <p class="project-desc">${shortDesc}</p>
-                <div class="project-card-footer">
-                    <div class="project-tags">
-                        ${tagsHTML}
-                    </div>
-                    <div class="project-links">
-                        ${getLinksHTML(p)}
-                    </div>
-                </div>
-            `;
-            
-            // Card click listener (excluding icon clicks)
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('.project-icon-link')) return;
-                e.stopPropagation();
-                try {
-                    playSfx('hover');
-                    openProjectModal(idx);
-                } catch (err) {
-                    console.error("Modal error:", err);
-                }
-            });
-            
-            grid.appendChild(card);
-        });
-    }
-
     // Modal Details Slider logic
     let currentSlideIdx = 0;
     let modalSlideshowInterval = null;
@@ -866,24 +812,86 @@
         currentSlideIdx = targetIndex;
     }
 
-    // Close Modal actions
-    const modal = document.getElementById('projectModal');
-    const closeBtn = document.getElementById('projectModalClose');
-    if (modal && closeBtn) {
-        closeBtn.onclick = () => {
-            playSfx('menu');
-            modal.classList.remove('active');
-            document.body.style.overflow = ''; // Unlock background scrolling
-            if (modalSlideshowInterval) {
-                clearInterval(modalSlideshowInterval);
-                modalSlideshowInterval = null;
-            }
-        };
-        // Clicking backdrop closes modal
-        modal.onclick = (e) => {
-            if (e.target === modal) {
-                closeBtn.onclick();
-            }
-        };
+    window.initProjects = function () {
+        // Render loop
+        const grid = document.querySelector('.projects-grid');
+        if (grid) {
+            grid.innerHTML = '';
+            projectsData.forEach((p, idx) => {
+                const images = p.images || ["assets/images/cert-placeholder.png"];
+                const firstImage = images[0];
+                const name = p.project_name;
+                const shortDesc = truncateDescription(p.project_description);
+                
+                // Limit to top 4 tech tags
+                const topTags = p.tech_stack.slice(0, 4);
+                const tagsHTML = topTags.map(tag => {
+                    const tagClass = getTagClass(tag);
+                    return `<span class="project-tag ${tagClass}">${tag}</span>`;
+                }).join('\n                            ');
+
+                const card = document.createElement('article');
+                card.className = 'project-card';
+                card.dataset.index = idx;
+                
+                card.innerHTML = `
+                    <div class="project-media">
+                        <img src="${firstImage}" alt="${name}" loading="lazy">
+                    </div>
+                    <h3 class="project-title">${name}</h3>
+                    <p class="project-desc">${shortDesc}</p>
+                    <div class="project-card-footer">
+                        <div class="project-tags">
+                            ${tagsHTML}
+                        </div>
+                        <div class="project-links">
+                            ${getLinksHTML(p)}
+                        </div>
+                    </div>
+                `;
+                
+                // Card click listener (excluding icon clicks)
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.project-icon-link')) return;
+                    e.stopPropagation();
+                    try {
+                        playSfx('hover');
+                        openProjectModal(idx);
+                    } catch (err) {
+                        console.error("Modal error:", err);
+                    }
+                });
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Close Modal actions
+        const modal = document.getElementById('projectModal');
+        const closeBtn = document.getElementById('projectModalClose');
+        if (modal && closeBtn) {
+            closeBtn.onclick = () => {
+                playSfx('menu');
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Unlock background scrolling
+                if (modalSlideshowInterval) {
+                    clearInterval(modalSlideshowInterval);
+                    modalSlideshowInterval = null;
+                }
+            };
+            // Clicking backdrop closes modal
+            modal.onclick = (e) => {
+                if (e.target === modal) {
+                    closeBtn.onclick();
+                }
+            };
+        }
+    };
+
+    // Run once immediately
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.initProjects);
+    } else {
+        window.initProjects();
     }
 })();

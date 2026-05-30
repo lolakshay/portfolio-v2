@@ -375,6 +375,9 @@
     /* --- PROJECTS Module --- */
     function initProjectsModule() {
         console.log("Projects module loaded.");
+        if (window.initProjects) {
+            window.initProjects();
+        }
     }
 
     /* --- MUSIC RADIO PLAYER MODULE --- */

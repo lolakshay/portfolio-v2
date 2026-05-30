@@ -264,12 +264,10 @@
 }
 
 .projects-feed-header {
-    position: sticky;
-    top: 0;
-    z-index: 2;
+    position: relative;
     padding: 6px 0 20px;
-    background: linear-gradient(180deg, rgba(8, 2, 15, 0.96) 0%, rgba(8, 2, 15, 0.82) 68%, rgba(8, 2, 15, 0) 100%);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
 }
 
 .projects-grid {
