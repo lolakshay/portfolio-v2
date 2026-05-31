@@ -377,6 +377,15 @@
         console.log("Projects module loaded.");
         if (window.initProjects) {
             window.initProjects();
+        } else {
+            const script = document.createElement('script');
+            script.src = 'js/projects.js';
+            script.onload = () => {
+                if (window.initProjects) {
+                    window.initProjects();
+                }
+            };
+            document.body.appendChild(script);
         }
     }
 

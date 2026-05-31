@@ -590,7 +590,8 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/event-assets/atomquest-2025/image1.png"
+            "assets/event-assets/atomquest-2025/image1.png",
+            
         ],
         "video": ""
     },
