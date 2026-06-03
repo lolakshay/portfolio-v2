@@ -214,6 +214,11 @@
             cleanupCertificates3D = null;
         }
 
+        if (typeof window.cleanupMusicPlayer === 'function') {
+            window.cleanupMusicPlayer();
+            window.cleanupMusicPlayer = null;
+        }
+
         fetch(url)
             .then(res => res.text())
             .then(html => {
@@ -256,7 +261,15 @@
 
     let hasArrivedAtLeastOnce = false;
     function initPageModules(url) {
-        const file = url.split('/').pop() || 'index.html';
+        let cleanUrl = url;
+        try {
+            // Strip any query strings or hashes
+            const urlObj = new URL(url, window.location.origin);
+            cleanUrl = urlObj.pathname;
+        } catch (e) {
+            cleanUrl = url.split('?')[0].split('#')[0];
+        }
+        const file = cleanUrl.split('/').pop() || 'index.html';
 
         if (file === 'index.html' || file === '') {
             initHomeModule();
@@ -390,62 +403,19 @@
     }
 
     /* --- MUSIC RADIO PLAYER MODULE --- */
-    let synthActive = false;
-    let audioContext, oscillator, gainNode;
-
     function initMusicModule() {
-        const playBtn = document.getElementById('radio-play');
-        const stationLabel = document.getElementById('radio-station');
-        const freqSlider = document.getElementById('radio-freq');
-
-        if (!playBtn) return;
-
-        playBtn.addEventListener('click', () => {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
-            if (synthActive) {
-                if (oscillator) {
-                    oscillator.stop();
-                    oscillator.disconnect();
+        console.log("Music module loaded.");
+        if (window.initMusicPlayer) {
+            window.initMusicPlayer();
+        } else {
+            const script = document.createElement('script');
+            script.src = 'js/music.js';
+            script.onload = () => {
+                if (window.initMusicPlayer) {
+                    window.initMusicPlayer();
                 }
-                playBtn.textContent = 'PLAY RADIO';
-                playBtn.classList.remove('playing');
-                stationLabel.textContent = 'STATION: OFFLINE';
-                synthActive = false;
-            } else {
-                oscillator = audioContext.createOscillator();
-                gainNode = audioContext.createGain();
-
-                oscillator.type = 'sawtooth';
-                oscillator.frequency.value = parseFloat(freqSlider.value);
-                
-                const filter = audioContext.createBiquadFilter();
-                filter.type = 'lowpass';
-                filter.frequency.value = 350;
-
-                gainNode.gain.setValueAtTime(0.08, audioContext.currentTime);
-
-                oscillator.connect(filter);
-                filter.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-
-                oscillator.start();
-                playBtn.textContent = 'PAUSE RADIO';
-                playBtn.classList.add('playing');
-                stationLabel.textContent = `STATION: COSMIC HUM (${freqSlider.value} Hz)`;
-                synthActive = true;
-            }
-        });
-
-        if (freqSlider) {
-            freqSlider.addEventListener('input', () => {
-                if (oscillator && synthActive) {
-                    oscillator.frequency.value = parseFloat(freqSlider.value);
-                    stationLabel.textContent = `STATION: COSMIC HUM (${freqSlider.value} Hz)`;
-                }
-            });
+            };
+            document.body.appendChild(script);
         }
     }
 

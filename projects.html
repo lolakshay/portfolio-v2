@@ -90,6 +90,34 @@
                     <!-- Cards will be populated dynamically from js/projects.js -->
                 </div>
             </section>
+            <!-- Detailed Project Modal -->
+            <div class="project-modal-overlay" id="projectModal">
+                <div class="project-modal-close" id="projectModalClose">✕</div>
+                <div class="project-modal-container">
+                    <!-- Left Side: Title, Full Description, Tech Stack, Links -->
+                    <div class="project-modal-left">
+                        <h2 class="project-modal-title" id="modalTitle">Project Title</h2>
+                        <div class="project-modal-desc-container">
+                            <p class="project-modal-desc" id="modalDesc"></p>
+                        </div>
+                        <div class="project-modal-tech-section">
+                            <h4 class="tech-section-title">Technologies Used</h4>
+                            <div class="project-tags" id="modalTags"></div>
+                        </div>
+                        <div class="project-modal-links-section" id="modalLinks"></div>
+                    </div>
+                    
+                    <!-- Right Side: Image Slider -->
+                    <div class="project-modal-right">
+                        <div class="project-slider-wrapper">
+                            <div class="project-slides-container" id="modalSlides"></div>
+                            <button class="project-slider-arrow prev" id="modalPrev">‹</button>
+                            <button class="project-slider-arrow next" id="modalNext">›</button>
+                        </div>
+                        <div class="project-slider-dots" id="modalDots"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -98,35 +126,6 @@
     <div class="portal-transition">
         <div class="portal-layer portal-layer-1"></div>
         <div class="portal-layer portal-layer-2"></div>
-    </div>
-
-    <!-- Detailed Project Modal -->
-    <div class="project-modal-overlay" id="projectModal">
-        <div class="project-modal-close" id="projectModalClose">✕</div>
-        <div class="project-modal-container">
-            <!-- Left Side: Title, Full Description, Tech Stack, Links -->
-            <div class="project-modal-left">
-                <h2 class="project-modal-title" id="modalTitle">Project Title</h2>
-                <div class="project-modal-desc-container">
-                    <p class="project-modal-desc" id="modalDesc"></p>
-                </div>
-                <div class="project-modal-tech-section">
-                    <h4 class="tech-section-title">Technologies Used</h4>
-                    <div class="project-tags" id="modalTags"></div>
-                </div>
-                <div class="project-modal-links-section" id="modalLinks"></div>
-            </div>
-            
-            <!-- Right Side: Image Slider -->
-            <div class="project-modal-right">
-                <div class="project-slider-wrapper">
-                    <div class="project-slides-container" id="modalSlides"></div>
-                    <button class="project-slider-arrow prev" id="modalPrev">‹</button>
-                    <button class="project-slider-arrow next" id="modalNext">›</button>
-                </div>
-                <div class="project-slider-dots" id="modalDots"></div>
-            </div>
-        </div>
     </div>
 
     <!-- Application Execution Scripts -->
