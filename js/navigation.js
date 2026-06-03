@@ -126,6 +126,7 @@
             } catch (e) {}
         }
     }
+    window.playSfx = playSfx;
 
     // Warm-up Web Audio Context on first cursor move or gesture
     function warmUpAudio() {
@@ -506,6 +507,37 @@
     /* --- RESUME MODULE --- */
     function initResumeModule() {
         console.log("Resume module loaded.");
+        
+        window.switchResumeTab = function(tabId) {
+            if (window.playSfx) window.playSfx('hover');
+
+            // Remove active class from all buttons and panels
+            document.querySelectorAll('.console-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.console-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // Set active to selected button and panel
+            const activeBtn = document.querySelector(`.console-tab-btn[data-tab="${tabId}"]`);
+            const activePanel = document.getElementById(`panel-${tabId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+            if (activePanel) activePanel.classList.add('active');
+        };
+
+        window.triggerResumePrint = function() {
+            if (window.playSfx) window.playSfx('go');
+            window.print();
+        };
+
+        // Play snappy click feedback on hover over all console actions
+        const interactives = document.querySelectorAll('.console-tab-btn, .console-btn-sm, .download-cv-btn');
+        interactives.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                if (window.playSfx) window.playSfx('hover');
+            });
+        });
     }
 
     /* --- CERTIFICATES 3D MODULE --- */
