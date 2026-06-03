@@ -1680,9 +1680,9 @@
             const isMobile = window.innerWidth <= 900;
             if (isMobile) {
                 positions = [
-                    { left: "20%", top: "52%" },
-                    { left: "50%", top: "52%" },
-                    { left: "80%", top: "52%" }
+                    { left: "50%", top: "33%" },
+                    { left: "50%", top: "51%" },
+                    { left: "50%", top: "69%" }
                 ];
             } else {
                 positions = [

@@ -1748,45 +1748,62 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .card.category-card {
-        width: clamp(90px, 26vw, 220px) !important;
-        height: clamp(155px, 42vh, 320px) !important;
-        padding: clamp(8px, 1.8vh, 16px) !important;
+        width: 290px !important;
+        height: 160px !important;
+        padding: 0 !important;
+    }
+
+    .card.category-card .card-front {
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        padding: 20px 14px !important;
+        gap: 2px !important;
     }
 
     .card.category-card .card-issuer {
-        font-size: clamp(0.35rem, 1.1vw, 0.55rem) !important;
-        white-space: nowrap !important;
-        overflow: visible !important;
-        letter-spacing: 0.5px !important;
-    }
-
-    .card.category-card .folder-label {
-        font-size: clamp(0.4rem, 1.3vw, 0.6rem) !important;
+        font-size: 0.55rem !important;
+        color: rgba(255, 255, 255, 0.4) !important;
+        text-transform: uppercase !important;
         letter-spacing: 1px !important;
-        margin-top: clamp(2px, 0.8vh, 6px) !important;
+        display: block !important;
+        margin: 0 !important;
     }
 
     .card.category-card .card-title {
-        font-size: clamp(0.5rem, 2vw, 1.1rem) !important;
-        white-space: nowrap !important;
+        font-size: 1.05rem !important;
+        font-weight: 900 !important;
+        margin: 2px 0 0 0 !important;
+        color: #fff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+        text-align: left !important;
+        white-space: normal !important;
         overflow: visible !important;
-        text-overflow: clip !important;
-        margin: clamp(4px, 1vh, 10px) 0 !important;
+        line-height: 1.2 !important;
     }
 
     .card.category-card .card-desc {
-        font-size: clamp(0.48rem, 1.8vw, 0.8rem) !important;
+        font-size: 0.72rem !important;
+        color: rgba(255, 255, 255, 0.7) !important;
         line-height: 1.35 !important;
-        margin-bottom: clamp(10px, 2.5vh, 24px) !important;
+        margin: 0 !important;
+        text-align: left !important;
+        white-space: normal !important;
+        overflow: visible !important;
     }
 
-    .card.category-card .rarity-badge {
-        font-size: clamp(0.48rem, 1.8vw, 0.75rem) !important;
-        padding: clamp(3px, 0.8vh, 6px) clamp(6px, 1.5vw, 12px) !important;
+    .card.category-card .card-badge {
+        font-size: 0.58rem !important;
+        padding: 2px 8px !important;
+        border-radius: 8px !important;
+        align-self: flex-start !important;
+        margin-top: 2px !important;
+        display: inline-block !important;
     }
 
     .card.category-card .card-back-logo {
-        font-size: clamp(1rem, 3.5vw, 1.8rem) !important;
+        font-size: 1.2rem !important;
+        letter-spacing: 2px !important;
     }
 
     /* Mobile Reels / Shorts Layout */
