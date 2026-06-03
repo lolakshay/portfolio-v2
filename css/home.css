@@ -126,6 +126,12 @@
     will-change: transform;
 }
 
+.asteroid-module:hover,
+.asteroid-module.active-hover {
+    animation-play-state: paused !important;
+    z-index: 15 !important;
+}
+
 .asteroid-rock {
     position: absolute;
     width: 100%;
@@ -157,11 +163,13 @@
 }
 
 /* Hover effects for organic glowing asteroids */
-.asteroid-module:hover .asteroid-rock {
+.asteroid-module:hover .asteroid-rock,
+.asteroid-module.active-hover .asteroid-rock {
     filter: drop-shadow(0 0 20px var(--hover-color, var(--primary))) brightness(1.1);
     transform: scale(1.08) rotate(360deg);
 }
-.asteroid-module:hover .asteroid-label {
+.asteroid-module:hover .asteroid-label,
+.asteroid-module.active-hover .asteroid-label {
     color: #fff;
     text-shadow: 0 0 10px var(--hover-color, var(--primary));
     transform: scale(1.08);
@@ -189,7 +197,7 @@
 #ast-music {
     width: 420px;
     height: 300px;
-    top: 19%;
+    top: 9%;
     right: 6%;
     --hover-color: var(--color-music);
     animation: float-rock-4 5.5s ease-in-out infinite;

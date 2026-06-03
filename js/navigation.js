@@ -145,24 +145,67 @@
     document.addEventListener('click', warmUpAudio);
     document.addEventListener('touchstart', warmUpAudio);
 
-    // Delegated hover sound logic for comets
+    // Proximity-based hover highlight and sound logic for comets
     let lastHoveredComet = null;
-    document.addEventListener('mouseover', (e) => {
-        const comet = e.target.closest('.asteroid-module');
-        if (comet && comet !== lastHoveredComet) {
-            lastHoveredComet = comet;
-            playSfx('hover');
-        }
+    let mouseX = 0;
+    let mouseY = 0;
+    let isMouseActive = false;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        isMouseActive = true;
     });
 
-    document.addEventListener('mouseout', (e) => {
-        const comet = e.target.closest('.asteroid-module');
-        if (comet && (!e.relatedTarget || !e.relatedTarget.closest('.asteroid-module') || e.relatedTarget.closest('.asteroid-module') !== comet)) {
-            if (lastHoveredComet === comet) {
-                lastHoveredComet = null;
-            }
-        }
+    document.addEventListener('mouseleave', () => {
+        isMouseActive = false;
+        const comets = document.querySelectorAll('.asteroid-module');
+        comets.forEach(c => c.classList.remove('active-hover'));
+        lastHoveredComet = null;
     });
+
+    function updateProximityHover() {
+        requestAnimationFrame(updateProximityHover);
+        if (!isMouseActive) return;
+
+        const comets = document.querySelectorAll('.asteroid-module');
+        if (comets.length === 0) {
+            lastHoveredComet = null;
+            return;
+        }
+
+        // If hovering over another key UI component, clear asteroid highlight
+        const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
+        if (elementUnderMouse && elementUnderMouse.closest('.planet-system, .hud-btn, .social-btn, .audio-btn')) {
+            comets.forEach(c => c.classList.remove('active-hover'));
+            lastHoveredComet = null;
+            return;
+        }
+
+        let closestComet = null;
+        let minDistance = Infinity;
+
+        comets.forEach(comet => {
+            const rect = comet.getBoundingClientRect();
+            // Calculate distance to element center
+            const cometX = rect.left + rect.width / 2;
+            const cometY = rect.top + rect.height / 2;
+            const dist = Math.hypot(mouseX - cometX, mouseY - cometY);
+            if (dist < minDistance) {
+                minDistance = dist;
+                closestComet = comet;
+            }
+        });
+
+        // Trigger hover glow on the closest comet
+        if (closestComet && closestComet !== lastHoveredComet) {
+            comets.forEach(c => c.classList.remove('active-hover'));
+            closestComet.classList.add('active-hover');
+            lastHoveredComet = closestComet;
+            playSfx('hover');
+        }
+    }
+    requestAnimationFrame(updateProximityHover);
 
     // Delegated click listener for links and HUD audio button
     document.addEventListener('click', (e) => {
