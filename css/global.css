@@ -200,10 +200,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     transform: translateY(-2px);
 }
 .audio-btn {
-    top: 25px;
-    left: 25px;
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     padding: 0;
     display: flex;
     align-items: center;
@@ -278,8 +276,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     --color-contact: #ff007f;
 }
 
-/* --- STANDALONE FLOATING CONTROLS --- */
-#nav-theme-btn {
+/* --- STANDALONE FLOATING CONTROLS & UNIFIED VOLUME SYSTEM --- */
+.header-volume {
     position: fixed;
     top: 25px;
     left: 25px;
@@ -315,12 +313,59 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.floating-control-btn.audio-btn {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 42px;
-    height: 42px;
+/* Unified Volume System */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.volume-slider {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.15);
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+    background: var(--color-contact, #8a2be2);
+}
+
+/* Hover/Focus reveal for desktop */
+@media (min-width: 769px) {
+    .volume-container:hover .volume-slider,
+    .volume-container:focus-within .volume-slider {
+        width: 70px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* On mobile viewports: always visible and fully functional */
+@media (max-width: 768px) {
+    .volume-container .volume-slider {
+        width: 60px !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
 }
 
 .floating-control-btn:hover {

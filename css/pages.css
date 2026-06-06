@@ -1232,12 +1232,29 @@ input[type="range"]::-webkit-slider-thumb {
 @media (max-width: 768px) {
     .sound-modal-overlay {
         justify-content: center;
-        align-items: flex-end;
-        padding: 20px;
+        align-items: center;
+        padding: 15px;
     }
     .sound-modal {
-        max-width: 100%;
-        padding: 20px !important;
+        max-width: 340px;
+        padding: 16px !important;
+        border-radius: 8px;
+    }
+    .sound-modal-title {
+        font-size: 0.95rem !important;
+        margin-bottom: 6px !important;
+    }
+    .sound-modal-text {
+        font-size: 0.78rem !important;
+        margin-bottom: 12px !important;
+        line-height: 1.4 !important;
+    }
+    .sound-modal-options {
+        gap: 6px !important;
+    }
+    .sound-modal-btn {
+        padding: 8px 12px !important;
+        font-size: 0.72rem !important;
     }
 }
 
@@ -2815,37 +2832,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 20px;
 }
 
-.volume-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
-.volume-slider {
-    width: 70px;
-    -webkit-appearance: none;
-    background: rgba(255, 255, 255, 0.15);
-    height: 4px;
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease;
-}
-
-.volume-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-}
 
 .hq-badge {
     background: rgba(255, 20, 147, 0.18);
@@ -3167,26 +3154,7 @@ input[type="range"]::-webkit-slider-thumb {
         display: none !important; /* Hide badges on mobile */
     }
 
-    .volume-container {
-        gap: 0 !important;
-    }
 
-    .volume-slider {
-        display: block !important;
-        width: 0 !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        margin-left: 0 !important;
-        transition: width 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), margin-left 0.25s ease !important;
-    }
-
-    .volume-container:hover .volume-slider,
-    .volume-container:focus-within .volume-slider {
-        width: 65px !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        margin-left: 8px !important;
-    }
 
     .rating-btn {
         padding: 4px 8px !important;

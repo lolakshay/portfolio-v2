@@ -1,5 +1,7 @@
 (function () {
-    // Sound FX mute preference state
+    // Sound FX volume and mute preference state
+    let sfxVolume = parseFloat(localStorage.getItem('cosmic-sfx-volume') || '0.5');
+    let lastNonZeroSfxVolume = parseFloat(localStorage.getItem('cosmic-sfx-last-volume') || '0.5');
     let isSfxMuted = localStorage.getItem('cosmic-sfx-muted') === 'true';
 
     // SVG icons for enabled/disabled SFX states
@@ -55,15 +57,21 @@
 
     // Trigger instant sounds with Web Audio API (0ms latency buffer source)
     function playSfx(name) {
-        if (isSfxMuted) return;
+        const currentMute = localStorage.getItem('cosmic-sfx-muted') === 'true';
+        const currentVol = parseFloat(localStorage.getItem('cosmic-sfx-volume') || '0.5');
+        
+        if (currentMute || currentVol === 0) return;
         initSfxContext();
         
         // Play custom decoded mp3 file buffer if ready
         const buffer = soundBuffers[name];
         if (buffer && sfxContext) {
             const source = sfxContext.createBufferSource();
+            const gainNode = sfxContext.createGain();
             source.buffer = buffer;
-            source.connect(sfxContext.destination);
+            gainNode.gain.setValueAtTime(currentVol, sfxContext.currentTime);
+            source.connect(gainNode);
+            gainNode.connect(sfxContext.destination);
             source.start(0);
             return;
         }
@@ -82,7 +90,7 @@
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(580, now);
                     osc.frequency.exponentialRampToValueAtTime(1100, now + 0.04);
-                    gain.gain.setValueAtTime(0.035, now);
+                    gain.gain.setValueAtTime(0.035 * currentVol, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
                     osc.start(now);
                     osc.stop(now + 0.07);
@@ -91,7 +99,7 @@
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(350, now);
                     osc.frequency.exponentialRampToValueAtTime(1500, now + 0.12);
-                    gain.gain.setValueAtTime(0.05, now);
+                    gain.gain.setValueAtTime(0.05 * currentVol, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
                     osc.start(now);
                     osc.stop(now + 0.18);
@@ -100,7 +108,7 @@
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(800, now);
                     osc.frequency.exponentialRampToValueAtTime(180, now + 0.28);
-                    gain.gain.setValueAtTime(0.04, now);
+                    gain.gain.setValueAtTime(0.04 * currentVol, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
                     osc.start(now);
                     osc.stop(now + 0.32);
@@ -109,7 +117,7 @@
                     osc.type = 'sawtooth';
                     osc.frequency.setValueAtTime(260, now);
                     osc.frequency.exponentialRampToValueAtTime(1200, now + 0.6);
-                    gain.gain.setValueAtTime(0.06, now);
+                    gain.gain.setValueAtTime(0.06 * currentVol, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
                     osc.start(now);
                     osc.stop(now + 0.7);
@@ -118,7 +126,7 @@
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(180, now);
                     osc.frequency.exponentialRampToValueAtTime(60, now + 0.4);
-                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.setValueAtTime(0.08 * currentVol, now);
                     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
                     osc.start(now);
                     osc.stop(now + 0.65);
@@ -241,6 +249,31 @@
     function toggleSfxMute() {
         isSfxMuted = !isSfxMuted;
         localStorage.setItem('cosmic-sfx-muted', isSfxMuted.toString());
+        
+        if (isSfxMuted) {
+            sfxVolume = 0;
+        } else {
+            sfxVolume = lastNonZeroSfxVolume;
+        }
+        localStorage.setItem('cosmic-sfx-volume', sfxVolume.toString());
+        
+        // Sync header slider UI
+        const headerVolumeSlider = document.getElementById('header-volume-slider');
+        if (headerVolumeSlider) {
+            headerVolumeSlider.value = sfxVolume;
+        }
+        
+        // Sync music player
+        if (window.globalAudioElement) {
+            window.globalAudioElement.volume = sfxVolume;
+        }
+        
+        // Sync music page player slider if present
+        const musicSlider = document.getElementById('volume-slider');
+        if (musicSlider) {
+            musicSlider.value = sfxVolume;
+        }
+        
         updateAudioButtonUI();
     }
 
@@ -340,10 +373,45 @@
         const hamburger = document.getElementById('nav-hamburger');
         const themeBtn = document.getElementById('nav-theme-btn');
         const overlay = document.getElementById('cosmic-menu-overlay');
+        const headerVolumeSlider = document.getElementById('header-volume-slider');
 
         // Apply saved theme on init
         const savedTheme = localStorage.getItem('cosmic-theme') || 'purple';
         document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Sync header volume slider with saved preference
+        if (headerVolumeSlider) {
+            headerVolumeSlider.value = sfxVolume;
+            headerVolumeSlider.oninput = (e) => {
+                const vol = parseFloat(e.target.value);
+                sfxVolume = vol;
+                localStorage.setItem('cosmic-sfx-volume', vol.toString());
+                if (vol > 0) {
+                    lastNonZeroSfxVolume = vol;
+                    localStorage.setItem('cosmic-sfx-last-volume', vol.toString());
+                    isSfxMuted = false;
+                } else {
+                    isSfxMuted = true;
+                }
+                localStorage.setItem('cosmic-sfx-muted', isSfxMuted.toString());
+                
+                // Sync with global music player if active
+                if (typeof window.setMusicVolume === 'function') {
+                    window.setMusicVolume(vol);
+                } else {
+                    if (window.globalAudioElement) {
+                        window.globalAudioElement.volume = vol;
+                    }
+                    // Sync with music page player slider if present on the page
+                    const musicSlider = document.getElementById('volume-slider');
+                    if (musicSlider) {
+                        musicSlider.value = vol;
+                    }
+                }
+                
+                updateAudioButtonUI();
+            };
+        }
 
         // Hamburger Menu Toggle
         if (hamburger) {
@@ -2253,6 +2321,7 @@
     }
 
     function createSoundConsentModal() {
+        document.body.style.overflow = 'hidden';
         const overlay = document.createElement('div');
         overlay.id = 'sound-modal-overlay';
         overlay.className = 'sound-modal-overlay';
@@ -2273,6 +2342,7 @@
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 sessionStorage.setItem('cosmic-sound-unlocked', 'true');
+                document.body.style.overflow = '';
                 
                 // Warm up context and play sweep
                 initSfxContext();
