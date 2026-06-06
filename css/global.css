@@ -226,3 +226,311 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     height: 14px;
     fill: currentColor;
 }
+
+/* Hide legacy HUD controls globally in favor of the new unified floating navbar */
+.hud-btn {
+    display: none !important;
+}
+
+/* --- COSMIC COLOR SCHEME DATA THEMES --- */
+/* Default Purple Theme */
+:root, [data-theme="purple"] {
+    --primary: #8a2bbe;
+    --primary-glow: rgba(138, 43, 226, 0.45);
+    --glass-border: rgba(138, 43, 226, 0.25);
+    --color-resume: #8a2bbe;
+    --color-projects: #1e90ff;
+    --color-certificates: #ff007f;
+    --color-music: #7b2cbf;
+    --color-contact: #00ffff;
+}
+
+[data-theme="blue"] {
+    --primary: #00a2ff;
+    --primary-glow: rgba(0, 162, 255, 0.45);
+    --glass-border: rgba(0, 162, 255, 0.25);
+    --color-resume: #00a2ff;
+    --color-projects: #00a2ff;
+    --color-certificates: #00d2ff;
+    --color-music: #0088ff;
+    --color-contact: #00ffff;
+}
+
+[data-theme="pink"] {
+    --primary: #ff007f;
+    --primary-glow: rgba(255, 0, 127, 0.45);
+    --glass-border: rgba(255, 0, 127, 0.25);
+    --color-resume: #ff007f;
+    --color-projects: #ff00ab;
+    --color-certificates: #ff0055;
+    --color-music: #d9006c;
+    --color-contact: #00ffff;
+}
+
+[data-theme="cyan"] {
+    --primary: #00ffff;
+    --primary-glow: rgba(0, 255, 255, 0.45);
+    --glass-border: rgba(0, 255, 255, 0.25);
+    --color-resume: #00ffff;
+    --color-projects: #00e5ff;
+    --color-certificates: #00ffaa;
+    --color-music: #00cccc;
+    --color-contact: #ff007f;
+}
+
+/* --- STANDALONE FLOATING CONTROLS --- */
+#nav-theme-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1010;
+}
+
+.floating-right-controls {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1010;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.floating-control-btn {
+    background: rgba(12, 6, 22, 0.55);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    outline: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    cursor: pointer;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-control-btn.audio-btn {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 42px;
+    height: 42px;
+}
+
+.floating-control-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 0 15px var(--primary-glow);
+    transform: scale(1.08);
+}
+
+.nav-svg-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: fill 0.3s ease;
+}
+
+/* Hamburger lines style */
+.hamburger-btn {
+    flex-direction: column;
+    gap: 4.5px;
+}
+
+.hamburger-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 1px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.3s ease, 
+                background-color 0.3s ease;
+}
+
+/* Active hamburger states based on body.menu-active */
+body.menu-active .hamburger-btn .line-1 {
+    transform: translateY(6.5px) rotate(45deg);
+}
+
+body.menu-active .hamburger-btn .line-2 {
+    opacity: 0;
+}
+
+body.menu-active .hamburger-btn .line-3 {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* --- COSMIC MENU OVERLAY --- */
+.cosmic-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 2, 15, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.5s;
+    overflow-y: auto;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+body.menu-active .cosmic-menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-overlay-inner {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.menu-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .menu-grid-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    .menu-card {
+        padding: 16px 20px;
+    }
+    .menu-card-title {
+        font-size: 1.35rem;
+    }
+    .menu-card-num {
+        font-size: 0.75rem;
+        margin-bottom: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-grid-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 100%;
+    }
+    .menu-card {
+        padding: 10px 16px;
+        border-radius: 6px;
+    }
+    .menu-card-title {
+        font-size: 1.15rem;
+    }
+    .menu-card-num {
+        font-size: 0.65rem;
+        margin-bottom: 0px;
+    }
+}
+
+/* White tilted cards exactly matching the image */
+.menu-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 36px 24px;
+    text-decoration: none;
+    color: #08020f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+}
+
+body.menu-active .menu-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Different tilts for each card to create the beautiful organic floating grid from the image */
+.card-tilt-1 { transform: rotate(-3deg); transition-delay: 0.03s; }
+.card-tilt-2 { transform: rotate(2deg); transition-delay: 0.06s; }
+.card-tilt-3 { transform: rotate(-1.5deg); transition-delay: 0.09s; }
+.card-tilt-4 { transform: rotate(1.5deg); transition-delay: 0.12s; }
+.card-tilt-5 { transform: rotate(-2deg); transition-delay: 0.15s; }
+.card-tilt-6 { transform: rotate(2.5deg); transition-delay: 0.18s; }
+.card-tilt-7 { transform: rotate(-1deg); transition-delay: 0.21s; }
+
+/* Tilt overrides when active menu is active */
+body.menu-active .menu-card.card-tilt-1 { transform: translateY(0) rotate(-3deg) scale(1); }
+body.menu-active .menu-card.card-tilt-2 { transform: translateY(0) rotate(2deg) scale(1); }
+body.menu-active .menu-card.card-tilt-3 { transform: translateY(0) rotate(-1.5deg) scale(1); }
+body.menu-active .menu-card.card-tilt-4 { transform: translateY(0) rotate(1.5deg) scale(1); }
+body.menu-active .menu-card.card-tilt-5 { transform: translateY(0) rotate(-2deg) scale(1); }
+body.menu-active .menu-card.card-tilt-6 { transform: translateY(0) rotate(2.5deg) scale(1); }
+body.menu-active .menu-card.card-tilt-7 { transform: translateY(0) rotate(-1deg) scale(1); }
+
+.menu-card:hover {
+    transform: scale(1.06) rotate(0deg) !important;
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4), 
+                0 0 25px var(--primary-glow);
+}
+
+.menu-card-num {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: rgba(8, 2, 15, 0.45);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.menu-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.menu-card:hover .menu-card-title {
+    color: var(--primary);
+}
+
+/* Overlay footer styling */
+.menu-overlay-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    width: 100%;
+}
+
+.menu-overlay-footer .footer-meta {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}

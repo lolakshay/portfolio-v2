@@ -303,8 +303,61 @@
             });
     }
 
+    function initFloatingNavbar() {
+        const hamburger = document.getElementById('nav-hamburger');
+        const themeBtn = document.getElementById('nav-theme-btn');
+        const overlay = document.getElementById('cosmic-menu-overlay');
+
+        // Apply saved theme on init
+        const savedTheme = localStorage.getItem('cosmic-theme') || 'purple';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Hamburger Menu Toggle
+        if (hamburger) {
+            hamburger.onclick = (e) => {
+                e.stopPropagation();
+                document.body.classList.toggle('menu-active');
+                if (window.playSfx) window.playSfx('hover');
+            };
+        }
+
+        // Theme Toggle Button (cycles colors)
+        if (themeBtn) {
+            themeBtn.onclick = (e) => {
+                e.stopPropagation();
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'purple';
+                const themes = ['purple', 'blue', 'pink', 'cyan'];
+                const nextIndex = (themes.indexOf(currentTheme) + 1) % themes.length;
+                const nextTheme = themes[nextIndex];
+                
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                localStorage.setItem('cosmic-theme', nextTheme);
+                if (window.playSfx) window.playSfx('go');
+            };
+        }
+
+        // Close menu when clicking on any link inside the overlay (for dynamic transitions)
+        const overlayLinks = document.querySelectorAll('.cosmic-menu-overlay a');
+        overlayLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('menu-active');
+            });
+        });
+
+        // Close dropdown when clicking outside the menu grid on the overlay background
+        if (overlay) {
+            overlay.onclick = (e) => {
+                if (e.target === overlay || e.target.classList.contains('menu-overlay-inner')) {
+                    document.body.classList.remove('menu-active');
+                    if (window.playSfx) window.playSfx('hover');
+                }
+            };
+        }
+    }
+
     let hasArrivedAtLeastOnce = false;
     function initPageModules(url) {
+        initFloatingNavbar();
         let cleanUrl = url;
         try {
             // Strip any query strings or hashes
@@ -600,6 +653,79 @@
         const categories = {
             events: [
                 {
+                    name: "Bharatiya Antariksh Hackathon 2025",
+                    issuer: "Knowledge Graph–Enhanced AI Chatbot",
+                    id: "EVT-BAH-2025",
+                    rarity: "legendary",
+                    desc: "Built an AI assistant combining LLMs, RAG, Knowledge Graphs, and ontology-based reasoning to deliver accurate, context-aware responses with real-time intent detection, adaptive learning, and dynamic visual content generation.",
+                    images: [
+                        "assets/event-assets/isro-hackathon/certificate.png",
+                        "assets/event-assets/isro-hackathon/image1.png",
+                        "assets/event-assets/isro-hackathon/KG-demo.png"
+                    ]
+                },
+                {
+                    name: "Statathon 2025 Govt",
+                    issuer: "AI-Powered Occupational Classification System",
+                    id: "EVT-STA-2025",
+                    rarity: "epic",
+                    desc: "Developed a semantic search and data quality enhancement platform that uses NLP and machine learning to automatically classify free-text job descriptions into NCO codes, improving survey accuracy and reducing manual effort.",
+                    images: [
+                        "assets/event-assets/statathon-2025/image1.png",
+                        "assets/event-assets/statathon-2025/image2.png"
+                    ]
+                },
+                {
+                    name: "Google Cloud AI Series",
+                    issuer: "Google Cloud Ecosystem",
+                    id: "EVT-GC-2025",
+                    rarity: "common",
+                    desc: "Attended a hands-on AI workshop focused on AI agents, agent workflows, and Gemini CLI, gaining practical insights into modern cloud-based AI development and deployment.",
+                    images: [
+                        "assets/event-assets/google-ai-labs/image1.jpeg"
+                    ]
+                },
+                {
+                    name: "NIT Trichy DSA Workshop",
+                    issuer: "NIT Trichy",
+                    id: "EVT-NIT-2025",
+                    rarity: "common",
+                    desc: "Attended a Data Structures and Algorithms workshop at NIT Trichy, gaining practical insights into problem-solving, algorithmic thinking, and real-world applications of core computer science concepts.",
+                    images: [
+                        "assets/event-assets/nit-trichy/certificate.png",
+                        "assets/event-assets/nit-trichy/image1.jpeg"
+                    ]
+                },
+                {
+                    name: "SAP Hackfest 2025",
+                    issuer: "Ethical AI Resume Analysis Platform",
+                    id: "EVT-SAP-2025",
+                    rarity: "legendary",
+                    desc: "Reached the final round for developing an explainable AI system that provides fair, privacy-preserving resume feedback using LLMs and XAI techniques, ensuring transparent recommendations while mitigating bias in hiring.",
+                    images: [
+                        "assets/event-assets/sap-hackfest/image1.jpeg",
+                        "assets/event-assets/sap-hackfest/image2.jpeg"
+                    ]
+                },
+                {
+                    name: "ACM ICPC Selection Attempt",
+                    issuer: "ACM ICPC First Year",
+                    id: "EVT-ICPC-2023",
+                    rarity: "common",
+                    desc: "Participated in ACM ICPC regional selection during the first year of college. Experienced rigorous competitive programming challenges and advanced algorithms under time pressure.",
+                    image: "assets/images/cert-placeholder.png"
+                },
+                {
+                    name: "RTX AI PC Day 2025",
+                    issuer: "NVIDIA RTX AI PC",
+                    id: "EVT-RTX-2025",
+                    rarity: "common",
+                    desc: "Explored emerging AI PC technologies, gaming hardware, and creator-focused workflows through hands-on demonstrations, industry showcases, and community interactions at NVIDIA's RTX AI PC Day event.",
+                    images: [
+                        "assets/event-assets/nvidia-rtx-event/image2.jpeg"
+                    ]
+                },
+                {
                     name: "Accurate Service Locator",
                     issuer: "Vendor Discoverability App",
                     id: "EVT-ASL-2024",
@@ -679,18 +805,7 @@
                         "assets/event-assets/world-youth-federation/image1.png"
                     ]
                 },
-                {
-                    name: "Bharatiya Antariksh Hackathon 2025",
-                    issuer: "Knowledge Graph–Enhanced AI Chatbot",
-                    id: "EVT-BAH-2025",
-                    rarity: "legendary",
-                    desc: "Built an AI assistant combining LLMs, RAG, Knowledge Graphs, and ontology-based reasoning to deliver accurate, context-aware responses with real-time intent detection, adaptive learning, and dynamic visual content generation.",
-                    images: [
-                        "assets/event-assets/isro-hackathon/certificate.png",
-                        "assets/event-assets/isro-hackathon/image1.png",
-                        "assets/event-assets/isro-hackathon/KG-demo.png"
-                    ]
-                },
+                
                 {
                     name: "Moodmate - Emotion-Aware AI Assistant",
                     issuer: "Sankalp 101",
@@ -702,17 +817,7 @@
                         "assets/event-assets/moodmate/image2.jpeg"
                     ]
                 },
-                {
-                    name: "Statathon 2025 Govt",
-                    issuer: "AI-Powered Occupational Classification System",
-                    id: "EVT-STA-2025",
-                    rarity: "epic",
-                    desc: "Developed a semantic search and data quality enhancement platform that uses NLP and machine learning to automatically classify free-text job descriptions into NCO codes, improving survey accuracy and reducing manual effort.",
-                    images: [
-                        "assets/event-assets/statathon-2025/image1.png",
-                        "assets/event-assets/statathon-2025/image2.png"
-                    ]
-                },
+                
                 {
                     name: "IIC Regional Meet 2025",
                     issuer: "Ministry of Education Innovation Cell",
@@ -734,16 +839,7 @@
                         "assets/event-assets/M365/image1.jpeg"
                     ]
                 },
-                {
-                    name: "Google Cloud AI Series",
-                    issuer: "Google Cloud Ecosystem",
-                    id: "EVT-GC-2025",
-                    rarity: "common",
-                    desc: "Attended a hands-on AI workshop focused on AI agents, agent workflows, and Gemini CLI, gaining practical insights into modern cloud-based AI development and deployment.",
-                    images: [
-                        "assets/event-assets/google-ai-labs/image1.jpeg"
-                    ]
-                },
+                
                 {
                     name: "SRCAS Hackathon 2.0",
                     issuer: "AI-Powered Cybercrime Assistance Platform",
@@ -778,17 +874,7 @@
                         "assets/event-assets/thiran-2026/image2.jpeg"
                     ]
                 },
-                {
-                    name: "NIT Trichy DSA Workshop",
-                    issuer: "NIT Trichy",
-                    id: "EVT-NIT-2025",
-                    rarity: "common",
-                    desc: "Attended a Data Structures and Algorithms workshop at NIT Trichy, gaining practical insights into problem-solving, algorithmic thinking, and real-world applications of core computer science concepts.",
-                    images: [
-                        "assets/event-assets/nit-trichy/certificate.png",
-                        "assets/event-assets/nit-trichy/image1.jpeg"
-                    ]
-                },
+                
                 {
                     name: "Inno Blitz",
                     issuer: "Sri Ramakrishna Engineering College",
@@ -808,65 +894,11 @@
                     images: [
                         "assets/event-assets/atomquest-2025/image1.png"
                     ]
-                },
-                {
-                    name: "SAP Hackfest 2025",
-                    issuer: "Ethical AI Resume Analysis Platform",
-                    id: "EVT-SAP-2025",
-                    rarity: "legendary",
-                    desc: "Reached the final round for developing an explainable AI system that provides fair, privacy-preserving resume feedback using LLMs and XAI techniques, ensuring transparent recommendations while mitigating bias in hiring.",
-                    images: [
-                        "assets/event-assets/sap-hackfest/image1.jpeg",
-                        "assets/event-assets/sap-hackfest/image2.jpeg"
-                    ]
-                },
-                {
-                    name: "ACM ICPC Selection Attempt",
-                    issuer: "ACM ICPC First Year",
-                    id: "EVT-ICPC-2023",
-                    rarity: "common",
-                    desc: "Participated in ACM ICPC regional selection during the first year of college. Experienced rigorous competitive programming challenges and advanced algorithms under time pressure.",
-                    image: "assets/images/cert-placeholder.png"
-                },
-                {
-                    name: "RTX AI PC Day 2025",
-                    issuer: "NVIDIA RTX AI PC",
-                    id: "EVT-RTX-2025",
-                    rarity: "common",
-                    desc: "Explored emerging AI PC technologies, gaming hardware, and creator-focused workflows through hands-on demonstrations, industry showcases, and community interactions at NVIDIA's RTX AI PC Day event.",
-                    images: [
-                        "assets/event-assets/nvidia-rtx-event/image2.jpeg"
-                    ]
                 }
+                
+                
             ],
             certificates: [
-                {
-                    name: "C Programming Training",
-                    issuer: "IIT Bombay Spoken Tutorial",
-                    id: "CERT-IITB-C",
-                    rarity: "common",
-                    highlight: "Credits: 2",
-                    desc: "Awarded for the successful completion of C language programming training, verified by IIT Bombay Spoken Tutorial program.",
-                    image: "assets/certificates/iit-b-c.png"
-                },
-                {
-                    name: "C++ Programming Training",
-                    issuer: "IIT Bombay Spoken Tutorial",
-                    id: "CERT-IITB-CPP",
-                    rarity: "common",
-                    highlight: "Credits: 2",
-                    desc: "Awarded for the successful completion of C++ language programming training, verified by IIT Bombay Spoken Tutorial program.",
-                    image: "assets/certificates/iit-b-cpp.png"
-                },
-                {
-                    name: "Python 3.4.3 Training",
-                    issuer: "IIT Bombay Spoken Tutorial",
-                    id: "CERT-IITB-PY",
-                    rarity: "common",
-                    highlight: "Credits: 2",
-                    desc: "Awarded for the successful completion of Python 3.4.3 programming training, verified by IIT Bombay Spoken Tutorial program.",
-                    image: "assets/certificates/iit-b-python.png"
-                },
                 {
                     name: "Design Thinking - A Primer",
                     issuer: "NPTEL",
@@ -886,6 +918,15 @@
                     image: "assets/certificates/nptel-iot.png"
                 },
                 {
+                    name: "C Programming Training",
+                    issuer: "IIT Bombay Spoken Tutorial",
+                    id: "CERT-IITB-C",
+                    rarity: "common",
+                    highlight: "Credits: 2",
+                    desc: "Awarded for the successful completion of C language programming training, verified by IIT Bombay Spoken Tutorial program.",
+                    image: "assets/certificates/iit-b-c.png"
+                },
+                {
                     name: "Introduction to AI Concepts",
                     issuer: "Microsoft Azure",
                     id: "CERT-MS-AI",
@@ -893,6 +934,24 @@
                     highlight: "Azure Certified",
                     desc: "Successfully completed training on fundamental AI concepts, cloud environments, and intelligent system architectures on Microsoft Azure.",
                     image: "assets/certificates/Microsoft-azure-batch.png"
+                },
+                {
+                    name: "C++ Programming Training",
+                    issuer: "IIT Bombay Spoken Tutorial",
+                    id: "CERT-IITB-CPP",
+                    rarity: "common",
+                    highlight: "Credits: 2",
+                    desc: "Awarded for the successful completion of C++ language programming training, verified by IIT Bombay Spoken Tutorial program.",
+                    image: "assets/certificates/iit-b-cpp.png"
+                },
+                {
+                    name: "Python 3.4.3 Training",
+                    issuer: "IIT Bombay Spoken Tutorial",
+                    id: "CERT-IITB-PY",
+                    rarity: "common",
+                    highlight: "Credits: 2",
+                    desc: "Awarded for the successful completion of Python 3.4.3 programming training, verified by IIT Bombay Spoken Tutorial program.",
+                    image: "assets/certificates/iit-b-python.png"
                 },
                 {
                     name: "Basics of Python",
@@ -933,29 +992,6 @@
             ],
             achievements: [
                 {
-                    name: "Atomquest 2024",
-                    issuer: "Atomberg",
-                    id: "ACH-AQ-2024",
-                    rarity: "epic",
-                    highlight: "Finalist - All India",
-                    desc: "Designed an ESP32-based centralized control system that bridges smart and non-smart appliances, enabling seamless control of lights, fans, outlets, and other devices through a single multifunctional knob with Wi-Fi connectivity.",
-                    images: [
-                        "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.jpg",
-                        "assets/event-assets/atomquest-2024/image1.png"
-                    ]
-                },
-                {
-                    name: "Pentathon CTF 2025",
-                    issuer: "Team Gix Notion",
-                    id: "ACH-PCTF-2025",
-                    rarity: "legendary",
-                    highlight: "46th Place Worldwide (Top 1.31%)",
-                    desc: "Secured 46th place out of 3,524+ teams worldwide in a 48-hour cybersecurity competition, solving challenges across Web Exploitation, Forensics, Reverse Engineering, and Miscellaneous categories.",
-                    images: [
-                        "assets/event-assets/pentathon-2025/image1.jpg"
-                    ]
-                },
-                {
                     name: "Shine Healthcare Hackathon 2025",
                     issuer: "Bongos Therapy for Autism Children",
                     id: "ACH-SHH-2025",
@@ -965,44 +1001,6 @@
                     images: [
                         "assets/event-assets/shine-health-care-hackathon/image1.png",
                         "assets/event-assets/shine-health-care-hackathon/image2.jpeg"
-                    ]
-                },
-                {
-                    name: "SIH 2025 - Internal Round",
-                    issuer: "AI-Powered Timetable Management System",
-                    id: "ACH-SIH-2025",
-                    rarity: "rare",
-                    highlight: "2nd Place",
-                    desc: "Developed a smart scheduling platform that automatically generates conflict-free academic timetables by considering faculty availability, room constraints, internships, and NEP activities, with customizable scheduling and multi-view timetable management.",
-                    images: [
-                        "assets/event-assets/SIH-2025-internal/image0.jpeg",
-                        "assets/event-assets/SIH-2025-internal/image1.png",
-                        "assets/event-assets/SIH-2025-internal/image2.png",
-                        "assets/event-assets/SIH-2025-internal/image3.png",
-                        "assets/event-assets/SIH-2025-internal/image4.png"
-                    ]
-                },
-                {
-                    name: "WYF Dr. Kalam Awards 2025",
-                    issuer: "World Youth Federation",
-                    id: "ACH-DKA-2025",
-                    rarity: "epic",
-                    highlight: "Shortlisted",
-                    desc: "Shortlisted for the World Youth Federation (WYF) Dr. Kalam Awards 2025, presenting an innovative project among talented teams and gaining recognition for technical creativity and impact.",
-                    images: [
-                        "assets/event-assets/world-youth-federation/image1.png"
-                    ]
-                },
-                {
-                    name: "IIC Regional Meet 2025",
-                    issuer: "Ministry of Education Innovation Cell",
-                    id: "ACH-IIC-2025",
-                    rarity: "common",
-                    highlight: "National Selection - Top 3000",
-                    desc: "Shortlisted to present a project at the IIC Regional Meet 2025, gaining valuable feedback from industry experts and engaging with innovators, entrepreneurs, and startup-focused communities. Selected in Top 3000 out of 14,000+ teams.",
-                    images: [
-                        "assets/event-assets/iic-regional-meet-psg/certificate.jpg",
-                        "assets/event-assets/iic-regional-meet-psg/image1.jpeg"
                     ]
                 },
                 {
@@ -1031,7 +1029,7 @@
                     ]
                 },
                 {
-                    name: "Thiran 2026",
+                    name: "Thiran 2026 - Finalist",
                     issuer: "AI Agent-Based Phone Validation API",
                     id: "ACH-THI-2026",
                     rarity: "legendary",
@@ -1043,6 +1041,21 @@
                     ]
                 },
                 {
+                    name: "SIH 2025 - Internal Round",
+                    issuer: "AI-Powered Timetable Management System",
+                    id: "ACH-SIH-2025",
+                    rarity: "rare",
+                    highlight: "2nd Place",
+                    desc: "Developed a smart scheduling platform that automatically generates conflict-free academic timetables by considering faculty availability, room constraints, internships, and NEP activities, with customizable scheduling and multi-view timetable management.",
+                    images: [
+                        "assets/event-assets/SIH-2025-internal/image0.jpeg",
+                        "assets/event-assets/SIH-2025-internal/image1.png",
+                        "assets/event-assets/SIH-2025-internal/image2.png",
+                        "assets/event-assets/SIH-2025-internal/image3.png",
+                        "assets/event-assets/SIH-2025-internal/image4.png"
+                    ]
+                },
+                 {
                     name: "Inno Blitz Hackathon",
                     issuer: "Sri Ramakrishna Engineering College",
                     id: "ACH-IB-2025",
@@ -1053,6 +1066,54 @@
                         "assets/event-assets/inno-blitz/image1.png"
                     ]
                 },
+                {
+                    name: "Atomquest 2024",
+                    issuer: "Atomberg",
+                    id: "ACH-AQ-2024",
+                    rarity: "epic",
+                    highlight: "Finalist - All India",
+                    desc: "Designed an ESP32-based centralized control system that bridges smart and non-smart appliances, enabling seamless control of lights, fans, outlets, and other devices through a single multifunctional knob with Wi-Fi connectivity.",
+                    images: [
+                        "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.jpg",
+                        "assets/event-assets/atomquest-2024/image1.png"
+                    ]
+                },
+                {
+                    name: "Pentathon CTF 2025",
+                    issuer: "Team Gix Notion",
+                    id: "ACH-PCTF-2025",
+                    rarity: "legendary",
+                    highlight: "46th Place Worldwide (Top 1.31%)",
+                    desc: "Secured 46th place out of 3,524+ teams worldwide in a 48-hour cybersecurity competition, solving challenges across Web Exploitation, Forensics, Reverse Engineering, and Miscellaneous categories.",
+                    images: [
+                        "assets/event-assets/pentathon-2025/image1.jpg"
+                    ]
+                },
+                
+                {
+                    name: "WYF Dr. Kalam Awards 2025",
+                    issuer: "World Youth Federation",
+                    id: "ACH-DKA-2025",
+                    rarity: "epic",
+                    highlight: "Shortlisted",
+                    desc: "Shortlisted for the World Youth Federation (WYF) Dr. Kalam Awards 2025, presenting an innovative project among talented teams and gaining recognition for technical creativity and impact.",
+                    images: [
+                        "assets/event-assets/world-youth-federation/image1.png"
+                    ]
+                },
+                {
+                    name: "IIC Regional Meet 2025",
+                    issuer: "Ministry of Education Innovation Cell",
+                    id: "ACH-IIC-2025",
+                    rarity: "common",
+                    highlight: "National Selection - Top 3000",
+                    desc: "Shortlisted to present a project at the IIC Regional Meet 2025, gaining valuable feedback from industry experts and engaging with innovators, entrepreneurs, and startup-focused communities. Selected in Top 3000 out of 14,000+ teams.",
+                    images: [
+                        "assets/event-assets/iic-regional-meet-psg/certificate.jpg",
+                        "assets/event-assets/iic-regional-meet-psg/image1.jpeg"
+                    ]
+                },
+               
                 {
                     name: "SAP Hackfest 2025",
                     issuer: "Ethical AI Resume Analysis Platform",

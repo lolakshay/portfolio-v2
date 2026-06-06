@@ -3163,9 +3163,29 @@ input[type="range"]::-webkit-slider-thumb {
         gap: 8px !important;
     }
 
-    .volume-container,
     .hq-badge {
-        display: none !important; /* Hide non-essential volume slider and badges on mobile */
+        display: none !important; /* Hide badges on mobile */
+    }
+
+    .volume-container {
+        gap: 0 !important;
+    }
+
+    .volume-slider {
+        display: block !important;
+        width: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        margin-left: 0 !important;
+        transition: width 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), margin-left 0.25s ease !important;
+    }
+
+    .volume-container:hover .volume-slider,
+    .volume-container:focus-within .volume-slider {
+        width: 65px !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        margin-left: 8px !important;
     }
 
     .rating-btn {
