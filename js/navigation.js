@@ -224,7 +224,7 @@
         const link = e.target.closest('a');
         if (link) {
             const href = link.getAttribute('href');
-            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !link.hasAttribute('download') && !href.endsWith('.pdf')) {
                 e.preventDefault();
                 
                 // If it's an asteroid navigation, trigger crumble disintegration and play select sound
@@ -386,9 +386,8 @@
         const overlay = document.getElementById('cosmic-menu-overlay');
         const headerVolumeSlider = document.getElementById('header-volume-slider');
 
-        // Apply saved theme on init
-        const savedTheme = localStorage.getItem('cosmic-theme') || 'purple';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        // Apply default theme on init
+        document.documentElement.setAttribute('data-theme', 'purple');
 
         // Sync header volume slider with saved preference
         if (headerVolumeSlider) {
@@ -433,17 +432,11 @@
             };
         }
 
-        // Theme Toggle Button (cycles colors)
+        // Theme Toggle Button (disabled/locked to default theme)
         if (themeBtn) {
             themeBtn.onclick = (e) => {
                 e.stopPropagation();
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'purple';
-                const themes = ['purple', 'blue', 'pink', 'cyan'];
-                const nextIndex = (themes.indexOf(currentTheme) + 1) % themes.length;
-                const nextTheme = themes[nextIndex];
-                
-                document.documentElement.setAttribute('data-theme', nextTheme);
-                localStorage.setItem('cosmic-theme', nextTheme);
+                document.documentElement.setAttribute('data-theme', 'purple');
                 if (window.playSfx) window.playSfx('go');
             };
         }
