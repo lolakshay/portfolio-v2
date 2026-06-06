@@ -244,6 +244,32 @@
         updateAudioButtonUI();
     }
 
+    // Global ESC Key Handler to close overlays/modals
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            // 1. If menu overlay is open, close it
+            if (document.body.classList.contains('menu-active')) {
+                document.body.classList.remove('menu-active');
+                if (window.playSfx) window.playSfx('hover');
+                return;
+            }
+
+            // 2. If a close button exists and is visible, click it
+            const closeButton = document.getElementById('closeButton');
+            if (closeButton && closeButton.offsetParent !== null) {
+                closeButton.click();
+                return;
+            }
+
+            // 3. If a list-space-close button exists and is visible, click it
+            const listSpaceClose = document.querySelector('.list-space-close');
+            if (listSpaceClose && listSpaceClose.offsetParent !== null) {
+                listSpaceClose.click();
+                return;
+            }
+        }
+    });
+
     // Handle browser back/forward buttons
     window.addEventListener('popstate', (e) => {
         const targetUrl = window.location.href;
@@ -276,6 +302,13 @@
                 if (currentContainer && newContainer) {
                     currentContainer.className = newContainer.className;
                     currentContainer.innerHTML = newContainer.innerHTML;
+                }
+
+                // Sync Easter Egg game name in navbar menu footer
+                const currentFooterMeta = document.querySelector('.menu-overlay-footer .footer-meta');
+                const newFooterMeta = newDoc.querySelector('.menu-overlay-footer .footer-meta');
+                if (currentFooterMeta && newFooterMeta) {
+                    currentFooterMeta.innerHTML = newFooterMeta.innerHTML;
                 }
 
                 // Update document title

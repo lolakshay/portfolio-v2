@@ -23,7 +23,7 @@
         "demo_video": "",
         "link" : "https://lolakshay.github.io/wocal/",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/wocal-demo-video.mp4"
     },
@@ -49,7 +49,7 @@
         "link": "https://tgnas-anything-sharer.onrender.com/",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/tgnas-anything-sharer.mp4"
     },
@@ -68,7 +68,7 @@
         "demo_video": "",
         "link":"https://srit.org/vihansa",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/vihansa-2k25.mp4"
     },
@@ -93,7 +93,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_python-ai-googlegemini-activity-7385916352844427264-0f8t?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/AI-reelsReactor.mp4"
     },
@@ -116,7 +116,7 @@
         "link": "https://lolakshay.github.io/speedchecker/",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/tgnas-speedchecker.mp4"
     },
@@ -144,7 +144,7 @@
         "link": "https://lolakshay.github.io/no-due-form-srit/",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/tgnas-no-due-generator.mp4"
     },
@@ -324,7 +324,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_automation-productivity-developerlife-activity-7390727264323280896-ifgF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/custom-script-command.mp4"
     },
@@ -346,7 +346,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_i-got-tired-of-standard-git-commands-so-activity-7417926662715260929-2aJE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/tamil-git-commands.mp4"
     },
@@ -399,7 +399,7 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/ai-agentic-municiple-corpration-thiran-1st-project.mp4"
     },
@@ -445,7 +445,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_buildinpublic-ai-developertools-activity-7375432830769729536-aWr7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/tgnas-chatgpt-style-interface.mp4"
     },
@@ -462,7 +462,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_portfoliowebsite-webdevelopment-frontend-activity-7337868466781110275-atsw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": "assets/project-demo-videos/portfolio.mp4"
     },
@@ -616,7 +616,7 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": ""
     },
@@ -638,7 +638,7 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/images/cert-placeholder.png"
+            "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": ""
     },
@@ -753,7 +753,7 @@
         document.getElementById('modalLinks').innerHTML = getLinksHTML(p);
 
         // Load media (combining video and images)
-        const images = p.images || ["assets/images/cert-placeholder.png"];
+        const images = p.images || ["assets/images/tgnas-project-loading-screen.webp"];
         const slidesContainer = document.getElementById('modalSlides');
         slidesContainer.innerHTML = '';
         
@@ -893,7 +893,7 @@
         if (grid) {
             grid.innerHTML = '';
             projectsData.forEach((p, idx) => {
-                const images = p.images || ["assets/images/cert-placeholder.png"];
+                const images = p.images || ["assets/images/tgnas-project-loading-screen.webp"];
                 const firstImage = images[0];
                 const name = p.project_name;
                 const shortDesc = truncateDescription(p.project_description);
