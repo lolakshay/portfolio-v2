@@ -311,6 +311,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), 
                 inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
 }
 
 /* Unified Volume System */
@@ -318,7 +319,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 8px 0;
 }
 
 .volume-slider {

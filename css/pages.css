@@ -2827,6 +2827,8 @@ input[type="range"]::-webkit-slider-thumb {
     width: 35%;
 }
 
+
+
 .util-btn svg {
     width: 20px;
     height: 20px;
@@ -3034,8 +3036,9 @@ input[type="range"]::-webkit-slider-thumb {
         grid-auto-columns: max-content !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
+        justify-content: start !important;
         gap: 16px !important;
-        padding: 8px 4px !important;
+        padding: 8px 16px !important;
         width: 100% !important;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
@@ -3400,7 +3403,7 @@ a.telemetry-value:hover {
 
 .section-title-glow {
     font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: var(--color-certificates, #ff007f);
     text-shadow: 0 0 10px rgba(255, 0, 127, 0.35);
     letter-spacing: 2px;
@@ -3503,13 +3506,13 @@ a.telemetry-value:hover {
 }
 
 .node-role {
-    font-size: 0.95rem;
+    font-size:2rem;
     font-weight: 700;
     color: #fff;
 }
 
 .node-company {
-    font-size: 0.75rem;
+    font-size:1rem;
     color: var(--color-resume, #00ffcc);
     font-weight: 700;
 }
@@ -3522,7 +3525,7 @@ a.telemetry-value:hover {
 }
 
 .node-body {
-    font-size: 0.78rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.78);
 }
 
@@ -3562,7 +3565,7 @@ a.telemetry-value:hover {
 }
 
 .project-log-title {
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #fff;
 }
@@ -3574,7 +3577,7 @@ a.telemetry-value:hover {
 }
 
 .project-log-tech {
-    font-size: 0.7rem;
+    font-size: 1rem;
     color: var(--color-certificates, #ff007f);
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -3584,7 +3587,7 @@ a.telemetry-value:hover {
 .project-log-bullets {
     padding-left: 14px;
     margin: 0 0 12px 0;
-    font-size: 0.75rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.78);
     display: flex;
     flex-direction: column;
@@ -3635,7 +3638,7 @@ a.telemetry-value:hover {
 
 .skills-category-title {
     font-family: var(--font-heading);
-    font-size: 0.72rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.4);
     letter-spacing: 1.5px;
     margin-bottom: 10px;
@@ -3648,7 +3651,7 @@ a.telemetry-value:hover {
 }
 
 .skill-tag-glow {
-    font-size: 0.72rem;
+    font-size: 0.9rem;
     color: #fff;
     background: rgba(0, 255, 204, 0.04);
     border: 1px solid rgba(0, 255, 204, 0.15);
@@ -3683,14 +3686,17 @@ a.telemetry-value:hover {
 .edu-degree {
     font-weight: 700;
     color: #fff;
+    font-size: 1.15rem;
 }
 
 .edu-inst {
     color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
 }
 
 .edu-meta {
     color: var(--color-resume, #00ffcc);
+    font-size: 0.9rem;
 }
 
 .achievements-checklist {
@@ -3705,9 +3711,9 @@ a.telemetry-value:hover {
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.75);
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 .node-bullet {
@@ -3738,6 +3744,9 @@ a.telemetry-value:hover {
 .download-cv-btn {
     padding: 10px 20px !important;
     font-size: 0.78rem !important;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
 }
 
 /* RESPONSIVE LAYOUT */
@@ -3893,6 +3902,21 @@ a.telemetry-value:hover {
 
 .print-only {
     display: none;
+}
+
+/* FOUC Prevention for GSAP ScrollTrigger Animations */
+.js-enabled .resume-dashboard .resume-profile-top,
+.js-enabled .resume-dashboard .resume-section,
+.js-enabled .resume-dashboard .timeline-node-item,
+.js-enabled .resume-dashboard .project-log-card,
+.js-enabled .resume-dashboard .skills-category-card {
+    opacity: 0;
+}
+
+.resume-scroll-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 

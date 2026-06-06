@@ -1,4 +1,5 @@
 (function () {
+    document.documentElement.classList.add('js-enabled');
     // Sound FX volume and mute preference state
     let sfxVolume = parseFloat(localStorage.getItem('cosmic-sfx-volume') || '0.5');
     let lastNonZeroSfxVolume = parseFloat(localStorage.getItem('cosmic-sfx-last-volume') || '0.5');
@@ -9,6 +10,7 @@
     const soundDisabledSVG = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
 
     function updateAudioButtonUI() {
+        isSfxMuted = localStorage.getItem('cosmic-sfx-muted') === 'true';
         const audioBtns = document.querySelectorAll('.audio-btn');
         audioBtns.forEach(btn => {
             btn.innerHTML = isSfxMuted ? soundDisabledSVG : soundEnabledSVG;
@@ -264,14 +266,18 @@
         }
         
         // Sync music player
-        if (window.globalAudioElement) {
-            window.globalAudioElement.volume = sfxVolume;
-        }
-        
-        // Sync music page player slider if present
-        const musicSlider = document.getElementById('volume-slider');
-        if (musicSlider) {
-            musicSlider.value = sfxVolume;
+        if (typeof window.setMusicVolume === 'function') {
+            window.setMusicVolume(sfxVolume);
+        } else {
+            if (window.globalAudioElement) {
+                window.globalAudioElement.volume = sfxVolume;
+            }
+            
+            // Sync music page player slider if present
+            const musicSlider = document.getElementById('volume-slider');
+            if (musicSlider) {
+                musicSlider.value = sfxVolume;
+            }
         }
         
         updateAudioButtonUI();
@@ -320,6 +326,11 @@
         if (typeof window.cleanupMusicPlayer === 'function') {
             window.cleanupMusicPlayer();
             window.cleanupMusicPlayer = null;
+        }
+
+        if (typeof window.cleanupResume === 'function') {
+            window.cleanupResume();
+            window.cleanupResume = null;
         }
 
         fetch(url)
@@ -678,6 +689,12 @@
             const activePanel = document.getElementById(`panel-${tabId}`);
             if (activeBtn) activeBtn.classList.add('active');
             if (activePanel) activePanel.classList.add('active');
+
+            if (typeof ScrollTrigger !== 'undefined') {
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 100);
+            }
         };
 
         window.triggerResumePrint = function() {
@@ -692,6 +709,145 @@
                 if (window.playSfx) window.playSfx('hover');
             });
         });
+
+        // Dynamic load sequence for scroll animations
+        const gsapPromise = (typeof gsap === 'undefined') 
+            ? loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js") 
+            : Promise.resolve();
+
+        gsapPromise.then(() => {
+            if (typeof Lenis === 'undefined') {
+                return loadScript("https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js");
+            }
+            return Promise.resolve();
+        }).then(() => {
+            setupResumeScrollAnimations();
+        }).catch(err => {
+            console.error("Error loading resume dependencies:", err);
+        });
+    }
+
+    function setupResumeScrollAnimations() {
+        if (typeof gsap === 'undefined' || typeof Lenis === 'undefined') {
+            return;
+        }
+
+        const dashboard = document.querySelector('.resume-dashboard');
+        const scrollContainer = document.querySelector('.resume-scroll-container');
+        if (!dashboard || !scrollContainer) return;
+
+        // Disable standard CSS smooth scrolling to prevent conflicts with Lenis
+        document.documentElement.style.scrollBehavior = 'auto';
+        document.body.style.scrollBehavior = 'auto';
+
+        // 1. Initialize Lenis (Smooth Scroll)
+        const lenis = new Lenis({
+            wrapper: dashboard,
+            content: scrollContainer,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            smoothTouch: false,
+            wheelMultiplier: 1.0,
+            touchMultiplier: 1.5
+        });
+
+        let rafId;
+        function raf(time) {
+            lenis.raf(time);
+            rafId = requestAnimationFrame(raf);
+        }
+        rafId = requestAnimationFrame(raf);
+
+        // 2. IntersectionObserver for scroll animations scoped to .resume-dashboard
+        const observerOptions = {
+            root: dashboard,
+            rootMargin: '0px 0px -8% 0px',
+            threshold: 0.02
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+
+                    if (target.classList.contains('resume-profile-top')) {
+                        gsap.fromTo(target, 
+                            { opacity: 0, y: 30 }, 
+                            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+                        );
+                    } else if (target.classList.contains('resume-section')) {
+                        const title = target.querySelector('.section-title-glow');
+                        const contentElements = target.querySelectorAll('.terminal-card, .glowing-timeline, .project-logs-grid, .skills-dashboard-grid, .edu-card');
+                        
+                        const tl = gsap.timeline();
+                        tl.fromTo(target, 
+                            { opacity: 0 },
+                            { opacity: 1, duration: 0.1 }
+                        );
+                        if (title) {
+                            tl.fromTo(title, 
+                                { opacity: 0, x: -30 }, 
+                                { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
+                                "-=0.1"
+                            );
+                        }
+                        if (contentElements.length > 0) {
+                            tl.fromTo(contentElements, 
+                                { opacity: 0, y: 20 }, 
+                                { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+                                "-=0.3"
+                            );
+                        }
+                    } else if (target.classList.contains('timeline-node-item')) {
+                        const siblings = Array.from(target.parentNode.children);
+                        const idx = siblings.indexOf(target);
+                        gsap.fromTo(target,
+                            { opacity: 0, x: idx % 2 === 0 ? -35 : 35 },
+                            { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+                        );
+                    } else if (target.classList.contains('project-log-card')) {
+                        gsap.fromTo(target,
+                            { opacity: 0, scale: 0.96, y: 20 },
+                            { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" }
+                        );
+                    } else if (target.classList.contains('skills-category-card')) {
+                        gsap.fromTo(target,
+                            { opacity: 0, scale: 0.97, y: 15 },
+                            { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power3.out" }
+                        );
+                    }
+
+                    obs.unobserve(target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        const selectors = [
+            '.resume-profile-top',
+            '.resume-section',
+            '.timeline-node-item',
+            '.project-log-card',
+            '.skills-category-card'
+        ];
+
+        selectors.forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => observer.observe(el));
+        });
+
+        // Clean up global function
+        window.cleanupResume = () => {
+            cancelAnimationFrame(rafId);
+            lenis.destroy();
+            observer.disconnect();
+            gsap.killTweensOf('*');
+            document.documentElement.style.scrollBehavior = '';
+            document.body.style.scrollBehavior = '';
+            console.log("Resume scroll animations and Lenis destroyed.");
+        };
     }
 
     /* --- CERTIFICATES 3D MODULE --- */

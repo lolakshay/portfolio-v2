@@ -102,6 +102,10 @@
     window.initMusicPlayer = function() {
         console.log("Initializing premium music player...");
 
+        // Re-sync state variables from localStorage on init
+        isMuted = localStorage.getItem('cosmic-sfx-muted') === 'true';
+        lastVolume = parseFloat(localStorage.getItem('cosmic-sfx-last-volume') || '0.5');
+
         // Clean up previous event listeners and frames to avoid leakage
         if (typeof window.cleanupMusicPlayer === 'function') {
             window.cleanupMusicPlayer();
@@ -396,6 +400,12 @@
         const headerSlider = document.getElementById('header-volume-slider');
         if (headerSlider) {
             headerSlider.value = val;
+        }
+
+        // Sync with music page player slider
+        const pageSlider = document.getElementById('volume-slider');
+        if (pageSlider) {
+            pageSlider.value = val;
         }
         
         // Save preferences
@@ -767,7 +777,18 @@
                 
                 ctx.translate(cx, cy);
                 ctx.rotate(coverRotation);
-                ctx.drawImage(coverImg, -baseRadius, -baseRadius, baseRadius * 2, baseRadius * 2);
+                
+                let sx = 0, sy = 0;
+                let sWidth = coverImg.naturalWidth;
+                let sHeight = coverImg.naturalHeight;
+                if (sWidth > sHeight) {
+                    sx = (sWidth - sHeight) / 2;
+                    sWidth = sHeight;
+                } else if (sHeight > sWidth) {
+                    sy = (sHeight - sWidth) / 2;
+                    sHeight = sWidth;
+                }
+                ctx.drawImage(coverImg, sx, sy, sWidth, sHeight, -baseRadius, -baseRadius, baseRadius * 2, baseRadius * 2);
                 
                 ctx.restore();
             } else {

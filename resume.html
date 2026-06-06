@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/pages.css">
     <script>
         document.documentElement.setAttribute('data-theme', localStorage.getItem('cosmic-theme') || 'purple');
+        document.documentElement.classList.add('js-enabled');
     </script>
 </head>
 <body>
@@ -29,9 +30,8 @@
     <div class="nebula-glow"></div>
 
     <!-- Standalone Floating Controls -->
-    <div class="volume-container header-volume" id="header-volume-container">
+    <div class="header-volume" id="header-volume-container">
         <button class="floating-control-btn audio-btn" id="nav-audio-btn" aria-label="Toggle ambient soundwaves"></button>
-        <input type="range" class="volume-slider header-volume-slider" id="header-volume-slider" min="0" max="1" step="0.05" value="0.5">
     </div>
 
     <div class="floating-right-controls">
@@ -86,8 +86,9 @@
     <main class="hero-container" id="app-root" tabindex="-1">
         
         <div class="page-wrapper resume-dashboard glass-panel">
-            <!-- Header bar with diagnostics status -->
-            <div class="resume-header">
+            <div class="resume-scroll-container">
+                <!-- Header bar with diagnostics status -->
+                <div class="resume-header">
                 <div class="sys-dossier-label">SYSTEM USER DOSSIER: AS-8.67</div>
                 <h1 class="page-title" style="display:none;">Akshay Srinivas N Resume</h1>
                 <div class="sys-status-bar">
@@ -144,7 +145,9 @@
                         <div class="typewriter-text">
                             <span class="prompt">> DECRYPTING SUMMARY DATABANK... SUCCESS</span><br><br>
                             <p class="summary-paragraph">
-                                Backend-focused Software Engineer with hands-on experience building production AI pipelines, scalable full-stack web platforms, and leading engineering teams end-to-end. Deployed a YOLO-based computer vision system for a manufacturing client and built applications with active users across real-world workflows. Strong in backend development, API engineering, system design, and taking products from idea to production deployment.
+                                Backend-focused Software Engineer with experience building AI-powered systems, multi-agent applications, computer vision 
+solutions, and scalable full-stack platforms. Led engineering teams, deployed production AI solutions for industry clients, and 
+developed intelligent systems spanning autonomous decision-making, RAG pipelines, and real-time APIs.
                             </p>
                         </div>
                     </div>
@@ -159,7 +162,8 @@
                         <div class="node-header">
                             <div class="node-dot"></div>
                             <div class="node-meta">
-                                <span class="node-role">Team Lead – Web Development</span>
+                                <span class="node-role">Team Lead – Web Development (Internship)
+                                </span>
                                 <span class="node-company">@ Spirezen Enterprises</span>
                             </div>
                             <span class="node-duration">Nov 2025 – Mar 2026</span>
@@ -320,9 +324,9 @@
                 <section class="resume-section flex-1">
                     <h2 class="section-title-glow">// 05_ ACADEMIC PROFILE</h2>
                     <div class="edu-card" style="padding: 16px;">
-                        <div class="edu-degree" style="font-size: 1rem;">B.E. Computer Science & Eng.</div>
-                        <div class="edu-inst" style="font-size: 0.8rem; margin: 4px 0 8px 0;">Sri Ramakrishna Institute of Technology</div>
-                        <div class="edu-meta" style="font-size: 0.75rem;">Sep 2024 - May 2028 | CGPA: 8.67 / 10</div>
+                        <div class="edu-degree">B.E. Computer Science & Eng.</div>
+                        <div class="edu-inst" style="margin: 4px 0 8px 0;">Sri Ramakrishna Institute of Technology</div>
+                        <div class="edu-meta">Sep 2024 - May 2028 | <span style="color: #fff;">CGPA: 8.67 / 10</span></div>
                     </div>
                 </section>
 
@@ -341,12 +345,13 @@
 
             <!-- Footer area with print download button -->
             <div class="resume-footer" style="margin-top: 20px;">
-                <div class="footer-system-path">D:\\SEC_YEAR\\TGNAS\\USER_CV</div>
-                <button class="btn-cosmic download-cv-btn" onclick="triggerResumePrint()">
+                <div class="footer-system-path">YES TGNAS is real</div>
+                <a href="assets/resume.pdf" download="Akshay_Srinivas_Resume.pdf" class="btn-cosmic download-cv-btn">
                     <span class="btn-icon">⚡</span> DOWNLOAD CV (PDF ARCHIVE)
-                </button>
+                </a>
             </div>
         </div>
+    </div>
 
         <!-- Hidden printable container designed for clean A4 printing -->
         <div id="printable-resume" class="print-only">
