@@ -623,6 +623,57 @@
 
     /* --- CONTACT TERMINAL MODULE --- */
     function initContactModule() {
+        const contactForm = document.getElementById('cosmic-contact-form');
+        if (contactForm) {
+            const submitBtn = document.getElementById('submit-transmission');
+            const successOverlay = document.getElementById('success-overlay');
+            const resetBtn = document.getElementById('reset-transmission');
+            const inputs = contactForm.querySelectorAll('.cosmic-input');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Play sound effect
+                if (window.playSfx) window.playSfx('go');
+                
+                // Transition button to loading state
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Transmitting...';
+                    submitBtn.style.opacity = '0.7';
+                }
+                
+                inputs.forEach(input => input.disabled = true);
+
+                // Simulate sub-space network latency
+                setTimeout(() => {
+                    if (successOverlay) {
+                        successOverlay.classList.add('active');
+                        if (window.playSfx) window.playSfx('come');
+                    }
+                }, 1500);
+            });
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    if (window.playSfx) window.playSfx('hover');
+                    
+                    // Reset form and overlay
+                    contactForm.reset();
+                    inputs.forEach(input => input.disabled = false);
+                    if (successOverlay) {
+                        successOverlay.classList.remove('active');
+                    }
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit';
+                        submitBtn.style.opacity = '1';
+                    }
+                });
+            }
+            return;
+        }
+
         const input = document.getElementById('terminal-input');
         const output = document.getElementById('terminal-output');
         const form = document.getElementById('terminal-form');
