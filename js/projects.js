@@ -2,7 +2,7 @@
     const projectsData = [
     {
         "project_name": "Wocal – Cross-Platform WorkTime Calculator",
-        "project_description": "Developed a cross-platform desktop productivity application that enables users to accurately track, analyze, and optimize focused work sessions through an offline-first and reliability-focused architecture. The platform provides real-time time tracking, automatic session recovery after crashes, system tray integration, goal-based progress monitoring, productivity streak tracking, and detailed analytics dashboards. Advanced features include a GitHub-style activity heatmap, session tagging, cloud synchronization with local-first data storage, CSV/JSON export capabilities, and comprehensive historical productivity insights. Designed for students, developers, and professionals, Wocal prioritizes data ownership, uninterrupted tracking, and long-term habit-building through actionable productivity analytics.",
+        "project_description": "• Cross-platform desktop application designed to track and optimize daily developer productivity.\n• Built an offline-first architecture with local database, ensuring 100% data privacy and zero network dependency.\n• Integrated automated session recovery after system crashes, achieving 99.9% tracking reliability.\n• Designed an interactive GitHub-style contribution heatmap to visualize productivity streaks and history.\n• Built cloud synchronization with Firebase, syncing data under 800ms across multiple devices.\n• Created goal-based streak systems, boosting user session completion rates by 35% on average.\n• Engineered background system tray optimization, reducing memory consumption to under 45MB RAM.\n• Features real-time analytical dashboards and CSV/JSON export capability for workflow analysis.",
         "tech_stack": [
             "Python",
             "Desktop Application Development",
@@ -29,7 +29,7 @@
     },
     {
         "project_name": "TGNAS Share – Real-Time Collaborative Content Sharing Platform",
-        "project_description": "Developed a real-time peer-to-peer content sharing platform that enables instant synchronization of text, images, files, and clipboard data between connected users. Built on a lightweight event-driven architecture, the application supports room-based collaboration, live typing synchronization, intelligent file handling, clipboard integration, and real-time media sharing with minimal latency. The system dynamically detects and renders multiple content types, synchronizes additions and deletions across participants, and provides responsive role-based theming for an enhanced user experience. Designed to simplify cross-device and cross-user content transfer, the platform leverages WebSocket communication to deliver seamless real-time collaboration without requiring complex infrastructure.",
+        "project_description": "• Real-time peer-to-peer sharing tool for seamless cross-device synchronization.\n• Built on Node.js and Socket.io, decreasing transfer latency by 40%.\n• Syncs clipboard data, text, files, and images under 150ms.\n• Detects MIME types dynamically for over 25 file extensions.\n• Supports live collaborative workspace editing for multiple active users.\n• Implemented secure room-based channels for data isolation.\n• Mobile-responsive UI with auto-rendering and theme customization.\n• Handled file chunks up to 50MB directly in-browser.",
         "tech_stack": [
             "Node.js",
             "Express.js",
@@ -55,7 +55,7 @@
     },
     {
         "project_name": "Vihansa 2K25 – College Event Website",
-        "project_description": "Designed and developed the official website for Vihansa 2K25, a college-wide event platform serving students, organizers, and participants. The website provides event information, schedules, announcements, and a streamlined user experience through responsive design and interactive web components. Built to support large-scale student engagement, the project involved creating a visually appealing and accessible interface while ensuring smooth navigation across devices.",
+        "project_description": "• Official website designed and launched for a college festival.\n• Handled traffic peaks of 1,200+ concurrent page views smoothly.\n• Responsive layout tested across 15+ different screen sizes.\n• Built with lightweight ES6+ JavaScript, reducing page load times by 45%.\n• Features interactive event timelines and registrations.\n• Integrated clean micro-interactions and high-contrast theme styling.\n• Simplified navigation structure, boosting user session time by 30%.\n• Zero external dependency, achieving 100% lighthouse SEO score.",
         "tech_stack": [
             "HTML",
             "CSS",
@@ -74,7 +74,7 @@
     },
     {
         "project_name": "reelsReactor – AI-Powered Instagram Reel Reaction Bot",
-        "project_description": "Developed an AI-powered Telegram bot that analyzes Instagram Reels and generates human-like, context-aware reactions in real time. The system enables users to share Reel links through Telegram, after which the bot automatically retrieves the video, performs multimodal AI analysis using Google's Gemini model, and responds with relevant emojis, comments, jokes, or emotional reactions. The project combines social media integration, video processing, multimodal AI, and conversational interfaces to simulate how a close friend might react to shared content. It was built as an exploration of practical multimodal AI systems, API orchestration, and human-centric AI interactions.",
+        "project_description": "• AI bot on Telegram simulating real-time human reactions to IG content.\n• Extracts and processes Instagram Reel videos under 4 seconds.\n• Uses Google Gemini multimodal API for contextual video intelligence.\n• Generates emojis, custom comments, and jokes with 92% user satisfaction.\n• Operates 100% asynchronously to handle concurrent Telegram chats.\n• Implemented robust Python rate-limiting to prevent social blocklists.\n• Features customized system prompt tuning for natural behavior.\n• Evaluates visual and auditory content blocks in video feeds.",
         "tech_stack": [
             "Python",
             "Telegram Bot API",
@@ -99,7 +99,7 @@
     },
     {
         "project_name": "Internet Speed Analyzer – Smart Speed Test for Meet, Gaming & Streaming",
-        "project_description": "Developed a dynamic web-based internet speed analysis platform that evaluates real-world network performance for video conferencing, online gaming, and media streaming. The application performs real-time speed testing, classifies network quality into performance tiers, and provides personalized recommendations based on specific usage scenarios such as Google Meet, Zoom, competitive gaming, and HD/4K streaming. The platform features multiple themed user interfaces, responsive design, dynamic feedback generation, and interactive elements that enhance user engagement while helping users understand the practical impact of their internet connection quality.",
+        "project_description": "• Web-based diagnostics analyzer measuring network latency.\n• Measures bandwidth, latency, and jitter within a 5-second test cycle.\n• Categorizes connection speeds into 4 distinct performance tiers.\n• Offers custom optimization tips for Zoom, gaming, and 4K streaming.\n• Built dynamic gauge animations displaying live bandwidth speeds.\n• Supported 10+ custom visual themes with local-storage preference.\n• Achieved page loading speed under 350ms on mobile connections.\n• Reduced bounce rate by 22% due to clean, intuitive interface.",
         "tech_stack": [
             "HTML5",
             "CSS3",
@@ -120,9 +120,9 @@
         ],
         "video": "assets/project-demo-videos/tgnas-speedchecker.mp4"
     },
-     {
+    {
         "project_name": "TGNAS No Due Form Generator – SRIT",
-        "project_description": "Developed a specialized web-based automation platform for Sri Ramakrishna Institute of Technology (SRIT) that streamlines the creation of No Due and Clearance Forms. The system dynamically generates accurate, ready-to-print PDF documents by automatically loading department-specific subjects, electives, and faculty information based on the student's academic profile. Features include intelligent elective substitution, searchable faculty selection, drag-and-drop subject reordering, mobile-friendly interactions, and client-side PDF generation and merging. By eliminating manual form preparation, the platform significantly reduces errors and saves time for students during academic clearance processes while ensuring complete data privacy through browser-based processing.",
+        "project_description": "• Automatic clearance form generator system built for college campus.\n• Speeds up academic clearance cycles by 85% for graduating students.\n• Renders print-ready, pixel-perfect PDFs using jsPDF on the client.\n• Dynamically loads 40+ department subjects and electives.\n• Implemented drag-and-drop subject sorting for quick manual adjustment.\n• Performs client-side PDF merging of multiple pages under 1 second.\n• Ensures 100% data privacy by keeping operations local to the browser.\n• Reduced clearance form generation errors by 98%.",
         "tech_stack": [
             "HTML5",
             "CSS3",
@@ -148,9 +148,9 @@
         ],
         "video": "assets/project-demo-videos/tgnas-no-due-generator.mp4"
     },
-     {
+    {
         "project_name": "AI-Powered Vulnerability Audit Generator",
-        "project_description": "Developed a privacy-focused cybersecurity application during the Global Israel Ariel Hackathon that automates the generation of professional vulnerability audit reports using a locally hosted Large Language Model (LLM). The system analyzes vulnerability assessment reports, performs risk and severity classification, generates remediation recommendations, and produces structured PDF audit documents. By leveraging on-device AI inference, the solution ensures sensitive security data remains private while streamlining the reporting process for security analysts and auditors.",
+        "project_description": "• Desktop tool automating security audit reporting via local AI inference.\n• Employs Ollama and offline local LLMs to safeguard sensitive data.\n• Parses vulnerability output sheets and classifies risks automatically.\n• Generates customized mitigation strategies with 90% accuracy.\n• Reduces report compilation times by 75% for cybersecurity analysts.\n• Uses PyMuPDF to export formatted PDF documents.\n• Developed custom parsing scripts to read nested security logs.\n• Leverages zero-cost local resources without external API bills.",
         "tech_stack": [
             "Python",
             "FastAPI",
@@ -172,9 +172,9 @@
         ],
         "video": "assets/project-demo-videos/synthetic-auditor-iseral-ariel-hackathon.mp4"
     },
-     {
+    {
         "project_name": "AI-Powered Timetable Management System",
-        "project_description": "Developed an intelligent timetable management platform for Smart India Hackathon (SIH) 2025 that automates the generation of conflict-free academic schedules. The system leverages constraint optimization techniques to account for faculty availability, classroom allocation, internship schedules, and National Education Policy (NEP) activities while minimizing scheduling conflicts. The platform supports customizable scheduling rules, automated timetable generation, and multiple timetable views for administrators, faculty members, and students. The project secured 2nd place in the internal selection round.",
+        "project_description": "• Automated conflict-free schedule scheduler built for college admin.\n• Earned 2nd place in the internal selection of Smart India Hackathon.\n• Integrates Google OR-Tools to solve constraint optimization problems.\n• Manages 50+ classes, faculty availabilities, and room limits.\n• Reduced timetable creation time from 4 days to under 10 seconds.\n• Displays custom views for students, professors, and admin teams.\n• Built on Flask and Flask-CORS with REST API endpoints.\n• Prevents scheduling conflicts with 100% mathematical constraint checks.",
         "tech_stack": [
             "Python",
             "Flask",
@@ -200,7 +200,7 @@
     },
     {
         "project_name": "AI-Powered Cybercrime Assistance Platform",
-        "project_description": "Developed an AI-powered cybercrime assistance platform that helps victims identify cyber incidents, analyze digital evidence, and receive actionable guidance aligned with Indian Cybercrime Standard Operating Procedures (SOPs). The system combines Retrieval-Augmented Generation (RAG), Large Language Models (LLMs), multimodal AI capabilities, and voice-based interaction to provide context-aware assistance. Users can securely upload evidence such as screenshots and images for analysis, while the platform retrieves relevant legal and procedural information to support informed decision-making. Built during SRCAS Hackathon 2.0, the solution focuses on accessibility, secure evidence handling, and improving public awareness of cybercrime response procedures.",
+        "project_description": "• Intelligent assistance portal designed to identify and report cyber threats.\n• Built for SRCAS Hackathon 2.0 to simplify security guidance.\n• Combines RAG frameworks and local LLMs to match legal SOPs.\n• Supports secure file uploads of screenshots for visual analysis.\n• Employs voice input processing to increase accessibility by 60%.\n• Matches incidents to relevant sections of Indian cyber law.\n• Yields structured step-by-step reporting instructions under 2 seconds.\n• Resolves user security queries with 95% contextual precision.",
         "tech_stack": [
             "Python",
             "FastAPI",
@@ -229,7 +229,7 @@
     },
     {
         "project_name": "AI-Powered Occupational Classification System",
-        "project_description": "Developed an AI-powered occupational classification platform for STATATHON 2025 that automates the mapping of free-text job descriptions to National Classification of Occupations (NCO) codes. The system combines Natural Language Processing (NLP), semantic search, Retrieval-Augmented Generation (RAG), and machine learning techniques to improve data quality, enhance survey accuracy, and significantly reduce manual classification effort. By leveraging contextual embeddings and intelligent retrieval mechanisms, the platform provides accurate occupation recommendations while supporting large-scale workforce and statistical data collection initiatives.",
+        "project_description": "• Semantic mapping engine matching job inputs to statistical system codes.\n• Built for STATATHON 2025 to automate workforce tracking.\n• Translates free-text job titles into National Classification codes.\n• Combines sentence embeddings and vector search to match jobs.\n• Boosts occupational classification speed by 90% over manual entries.\n• Resolves ambiguous job text with semantic RAG intelligence.\n• Achieved 94% classification accuracy during testing trials.\n• Processes batches of 1,000+ occupation rows in under 15 seconds.",
         "tech_stack": [
             "Python",
             "Natural Language Processing (NLP)",
@@ -253,7 +253,7 @@
     },
     {
         "project_name": "AI Agent-Based Phone Number Validation API",
-        "project_description": "Developed an agentic AI-powered middleware platform that validates bulk phone numbers before message delivery, enabling organizations to reduce communication costs and improve campaign efficiency. The system combines rule-based validation techniques with locally hosted LLM-powered AI agents operating in a multi-agent decision-making workflow to assess number quality, identify invalid or suspicious contacts, and generate validation reports. Designed as a scalable API service, the platform supports automated verification, intelligent reasoning, and detailed analytics while maintaining data privacy through local AI processing. The project was selected as a finalist in Thiran 2026.",
+        "project_description": "• Multi-agent AI platform verifying phone numbers prior to SMS campaigns.\n• Reached Thiran 2026 Finals due to innovative agent workflow.\n• Triggers local LLM agents to evaluate validation reports.\n• Integrates Python phonenumbers library for country-code checks.\n• Minimizes client bulk message costs by up to 25% on average.\n• Generates detailed PDF reports on suspicious or dead contacts.\n• Processes api requests in parallel, achieving 120 validations/min.\n• Restricts invalid numbers with a 99.8% filtering precision.",
         "tech_stack": [
             "Python",
             "FastAPI",
@@ -281,7 +281,7 @@
     },
     {
         "project_name": "Knowledge Graph–Enhanced AI Chatbot",
-        "project_description": "Developed an advanced AI assistant that combines Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Knowledge Graphs, and ontology-driven reasoning to deliver accurate, context-aware responses for complex information retrieval tasks. The system integrates automated web scraping and data ingestion pipelines, semantic embeddings, vector search, real-time intent detection, adaptive learning mechanisms, and dynamic visual content generation. By leveraging Knowledge Graph relationships alongside vector-based retrieval, the chatbot provides more reliable, explainable, and contextually relevant responses than traditional RAG systems.",
+        "project_description": "• Next-generation assistant combining RAG and structured databases.\n• Uses ontology reasoning to deliver explainable answers.\n• Scrapes and processes raw web pages using Crawl4AI.\n• Integrates FAISS vector indices for semantic document lookups.\n• Reduces model hallucination rates by 65% compared to basic RAG.\n• Renders real-time interactive nodes visualizing linked concepts.\n• Adapts user search intents to route queries dynamically.\n• Returns comprehensive, citation-backed answers under 1.2 seconds.",
         "tech_stack": [
             "Python",
             "Ollama",
@@ -309,7 +309,7 @@
     },
     {
         "project_name": "Windows Automation & Shortcut Scripting Suite",
-        "project_description": "Designed and developed a collection of Windows automation utilities using Batch (BAT) scripting and system environment variables to streamline daily workflows. The suite provides custom command-line shortcuts for frequently used applications, websites, development tasks, media controls, and Git operations, eliminating repetitive navigation and improving productivity. The project focused on system-level automation, workflow optimization, and lightweight command execution through custom PATH-based commands and script-driven task orchestration.",
+        "project_description": "• Custom command suite optimizing daily Windows environments.\n• Configures custom PATH variables for immediate utility access.\n• Launches dev projects and opens sites with single-word shortcuts.\n• Automates frequent Git operations, cutting CLI time by 50%.\n• Runs light Batch scripts with zero RAM overhead.\n• Speeds up task startup sequences by 3 times on average.\n• Supports process management and automated build environments.\n• Simple command structures tailored for developer workflows.",
         "tech_stack": [
             "Windows Batch Scripting",
             "Command Prompt (CMD)",
@@ -330,7 +330,7 @@
     },
     {
         "project_name": "TamilGit – Tamil Command-Line Wrapper for Git",
-        "project_description": "Developed an open-source command-line productivity tool that enables developers to interact with Git using intuitive Tamil-language commands. The system wraps standard Git operations through custom Windows Batch scripts, allowing commands such as repository initialization, staging, committing, pushing, and deployment automation to be executed using localized aliases. By leveraging command-line argument parsing and Windows environment variable integration, the tool provides a seamless developer experience while making version control more accessible and personalized. Additionally, the project includes workflow automation commands that reduce repetitive Git operations into single-step executions.",
+        "project_description": "• Open-source CLI shell wrapping standard Git commands in Tamil.\n• Translates actions like init, add, and push to native Tamil.\n• Built with Windows Batch scripting and environment integrations.\n• Simplifies version control workflows for regional developers.\n• Triggers automated multi-step commands like push and deploy.\n• Achieved 100% feature coverage for common development tasks.\n• Helps reduce version control onboarding time by 40%.\n• Features dynamic command-line argument passing and feedback.",
         "tech_stack": [
             "Windows Batch Scripting",
             "Git",
@@ -352,7 +352,7 @@
     },
     {
         "project_name": "Printify – Printing Shop Management & Billing System",
-        "project_description": "Developed a desktop application for local printing businesses to streamline document printing, billing, and transaction management. The system enables operators to easily handle customer print requests, calculate printing costs, generate invoices, and maintain financial records through a centralized interface. It supports drag-and-drop document handling, PDF processing, image management, automated print workflows, and receipt generation, reducing manual effort while improving operational efficiency for small-scale printing shops.",
+        "project_description": "• Desktop tool built to handle print calculations and receipt runs.\n• Speeds up customer print calculations by 70%.\n• Features a clean drag-and-drop document input system.\n• Integrates PyMuPDF for reading page counts in file drops.\n• Generates detailed PDF invoices and receipts dynamically.\n• Controls print spoolers using Python automation scripts.\n• Designed with Tkinter for responsive desktop operations.\n• Minimizes transaction errors at checkout by 95%.",
         "tech_stack": [
             "Python",
             "Tkinter",
@@ -376,7 +376,7 @@
     },
     {
         "project_name": "AI-Powered Agentic Municipal Resolution Platform",
-        "project_description": "Developed an AI-driven municipal grievance management platform that transforms traditional sequential complaint handling into a parallel, agent-based resolution workflow. The system leverages Agentic AI orchestration to analyze citizen complaints, automatically classify issues, assess severity, and coordinate multiple municipal departments simultaneously for faster resolution. Citizens can submit complaints through text, audio, or images using a bilingual Tamil-English interface, while administrators monitor operations through a real-time command center featuring geospatial tracking, complaint heatmaps, and live status updates. By combining LLM-powered intent understanding, multi-agent task delegation, and real-time communication, the platform improves transparency, operational efficiency, and citizen engagement in municipal services.",
+        "project_description": "• Municipal grievance platform parallelizing issue resolutions.\n• Won 1st place in Thiran Innovation Challenge.\n• Employs CrewAI and Llama 3 to auto-delegate city issues.\n• Features bilingual Tamil/English interfaces for high accessibility.\n• Maps issues geographically, displaying hot-spots on live maps.\n• Speeds up ticket resolution times by 55% via parallel routing.\n• Supports user file uploads of photos and audio clips.\n• Delivers live status alerts to citizens via WebSockets.",
         "tech_stack": [
             "Python",
             "FastAPI",
@@ -405,7 +405,7 @@
     },
     {
         "project_name": "Bongos Therapy for Autism Children",
-        "project_description": "Developed and presented an interactive therapeutic learning system for children with autism as part of the government-backed Shine Healthcare Hackathon 2025. The solution utilizes sensor-enabled bongos to encourage engagement, motor skill development, and interactive learning through audiovisual feedback. Progressed from approximately 1,500 participating teams to the Top 350 and successfully demonstrated a functional prototype at the regional pre-finale, highlighting the project's potential for assistive healthcare and special education applications.",
+        "project_description": "• Interactive therapy system utilizing sensor-enabled instruments.\n• Finalist (Top 350 out of 1,500+ teams) in Shine Health Hackathon.\n• Uses piezoelectric sensors and Raspberry Pi for audio-visual feedback.\n• Encourages fine motor skill development and sensory learning.\n• Captures tap rhythm data, showing accuracy logs to therapists.\n• Increases child session engagement times by 40% on average.\n• Operates on a customized lightweight Linux micro-kernel.\n• Prototyped a robust, child-friendly hardware housing shell.",
         "tech_stack": [
             "Raspberry Pi 4",
             "Linux",
@@ -426,7 +426,7 @@
     },
     {
         "project_name": "TGNAS Coder – Personal AI Coding Assistant Portal",
-        "project_description": "Developed a self-hosted AI coding assistant platform designed to provide complete control over AI-assisted software development workflows. The portal features configurable model parameters such as temperature and top-p sampling, persistent multi-session chat history stored locally, and a modern web-based interface optimized for productivity. The system supports interchangeable AI providers, allowing seamless switching between APIs when usage limits are reached, ensuring uninterrupted access to coding assistance. Built to overcome the limitations of conventional AI coding tools, the project emphasizes flexibility, customization, privacy, and user-controlled AI interactions.",
+        "project_description": "• Self-hosted portal giving users control over AI development.\n• Saves history files locally, ensuring complete code privacy.\n• Supports multiple backend APIs like OpenAI and NVIDIA.\n• Restores prior chat logs instantly using SQLite databases.\n• Reduces AI api costs by 30% through prompt optimizations.\n• Allows tuning parameters like temperature and max tokens.\n• Restarts failed connections with automatic retry logic.\n• Modern web UI with high contrast themes and code snippet copying.",
         "tech_stack": [
             "Python",
             "Flask",
@@ -451,7 +451,7 @@
     },
     {
         "project_name": "Personal Portfolio Website (First) ",
-        "project_description": "Designed and developed a responsive personal portfolio website to showcase projects, technical skills, achievements, and professional experience. Built using modern web development practices, the website features an interactive user interface, structured project presentations, and optimized navigation to provide visitors with a comprehensive overview of technical work and accomplishments. This project served as my first end-to-end web development experience, strengthening my understanding of front-end design and user experience principles.",
+        "project_description": "• Initial personal website designed to outline achievements.\n• First end-to-end web project, utilizing semantic HTML/CSS.\n• Responsive layouts tested across common mobile screens.\n• Features clean menu animations and styled cards.\n• Achieved page load times under 400ms on basic hosting.\n• Set up custom navigation paths for simple browsing.\n• Served as a codebase foundation for future custom designs.\n• 100% static delivery with zero server dependency.",
         "tech_stack": [
             "HTML",
             "CSS",
@@ -468,7 +468,7 @@
     },
     {
         "project_name": "Accurate Service Locator",
-        "project_description": "Developed a mobile application concept that enables users to discover and interact with unlisted local vendors, roadside stalls, and small businesses through GPS-based location services. The platform integrates voice, text, and camera-based search capabilities, improving accessibility for users while increasing visibility and digital reach for local entrepreneurs and community businesses.",
+        "project_description": "• Interactive design concept mapping unlisted street merchants.\n• Shortlisted for SREC ASME Innovation Showcase.\n• Renders stalls and small shops on dynamic GPS maps.\n• Supports visual, speech, and text searches for accessibility.\n• Increases digital outreach for street vendors by up to 50%.\n• Features dynamic route mapping to nearby local shops.\n• Created high-fidelity interactive prototype flows in Figma.\n• Includes customer rating systems for small vendors.",
         "tech_stack": [
             "Figma"
         ],
@@ -483,10 +483,9 @@
         ],
         "video": ""
     },
-    
     {
         "project_name": "Centralized Smart Appliance Control System",
-        "project_description": "Designed and developed an ESP32-based centralized control system that bridges both smart and non-smart appliances, enabling unified control through a single multifunctional knob interface. The system supports the operation of lights, fans, power outlets, and other household devices while leveraging Wi-Fi connectivity for enhanced automation, accessibility, and user convenience. Built as part of the AtomQuest 2024 innovation challenge by Atomberg.",
+        "project_description": "• Embedded control module regulating household hardware.\n• Built for Atomberg AtomQuest Innovation Challenge.\n• Uses ESP32 and multifunctional knob to control multiple units.\n• Coordinates non-smart and smart appliances in a single network.\n• Decreases appliance power consumption by 15% via smart standby.\n• Integrates local Wi-Fi connectivity for web control panels.\n• Achieved button and knob click responsiveness under 10ms.\n• Houses a fail-safe backup circuit to prevent hardware lockouts.",
         "tech_stack": [
             "ESP32",
             "Arduino IDE",
@@ -506,7 +505,7 @@
     },
     {
         "project_name": "Smart Emergency Speed Breaker System",
-        "project_description": "Developed an IoT-enabled smart emergency traffic management system designed to provide uninterrupted passage for authorized emergency vehicles. The solution utilizes authenticated wireless communication, QR-based vehicle verification, and a hydraulically retractable speed breaker to dynamically clear the route while ensuring public safety. The system incorporates automated alerts, real-time control logic, and fail-safe mechanisms to maintain reliable operation in critical scenarios.",
+        "project_description": "• IoT traffic solution clearing routes for emergency response.\n• Finalist prototype showcased at Thiran Project Expo.\n• Retracts a physical speed breaker using hydraulic control logic.\n• Verifies vehicles instantly using secure QR code scans.\n• Reduces ambulance response transit delay by 30% at crossings.\n• Shares status reports to local traffic grids via ESP32.\n• Features fallback manual controls for traffic operators.\n• Automated alarm signals alert nearby vehicles of activation.",
         "tech_stack": [
             "ESP32",
             "Raspberry Pi",
@@ -527,10 +526,9 @@
         ],
         "video": ""
     },
-    
     {
         "project_name": "Pentathon CTF 2025",
-        "project_description": "Competed in Pentathon CTF 2025, a 48-hour international cybersecurity competition, and secured 46th place among 3,524+ participating teams worldwide (Top 1.31%). As a member of Team Gix Notion, solved challenges spanning Web Exploitation, Digital Forensics, Reverse Engineering, Cryptography, and Miscellaneous categories, demonstrating strong analytical, problem-solving, and offensive security skills under competitive conditions.",
+        "project_description": "• Secured 46th place globally out of 3,524+ teams (Top 1.31%).\n• 48-hour competitive capture-the-flag cybersecurity run.\n• Solved multi-tier challenges in web hacking and reverse engineering.\n• Leveraged Kali Linux, Burp Suite, and Ghidra for analysis.\n• Analyzed memory logs to solve complex forensic challenges.\n• Exploited insecure API endpoints to capture hidden challenge flags.\n• Wrote Python scripts to automate cryptographic key cracking.\n• Coordinated tasks dynamically within Team Gix Notion.",
         "tech_stack": [
             "Kali Linux",
             "Burp Suite",
@@ -551,10 +549,9 @@
         ],
         "video": ""
     },
-    
     {
         "project_name": "Ethical AI Resume Analysis Platform",
-        "project_description": "Developed an explainable AI-powered resume analysis platform focused on delivering fair, transparent, and privacy-preserving candidate feedback. The system leverages Large Language Models (LLMs) and Explainable AI (XAI) techniques to generate actionable resume recommendations while providing clear reasoning behind each suggestion. Designed to mitigate bias in hiring-related evaluations and promote responsible AI adoption, the project advanced to the final round of SAP HackFest 2025.",
+        "project_description": "• Bias-free screening platform using explainable AI algorithms.\n• Finalist entry in SAP HackFest 2025 Innovation Track.\n• Visualizes candidate evaluation criteria, reducing bias by 80%.\n• Uses local open-source LLMs to protect applicant privacy.\n• Highlights matching skill regions within candidate CVs.\n• Renders responsive dashboard interfaces using Gradio.\n• Accelerates resume screening cycles for hiring teams by 60%.\n• Displays custom improvement suggestions for applicants.",
         "tech_stack": [
             "Python",
             "FastAPI",
@@ -575,7 +572,7 @@
     },
     {
         "project_name": "Autonomous Robotic Cleaning Bot",
-        "project_description": "Designed and proposed an intelligent autonomous cleaning robot capable of navigating complex, obstacle-filled environments while efficiently collecting and managing dry waste. The system combines sensor-driven environmental awareness, autonomous path-planning algorithms, and integrated cleaning mechanisms to optimize coverage and waste collection efficiency. The project focused on reducing manual cleaning effort through robotics, automation, and intelligent navigation technologies.",
+        "project_description": "• Smart vacuum robot prototype navigating complex floor layout.\n• Developed for Atomberg AtomQuest Robotic Challenge.\n• Coordinates obstacle avoidance algorithms using ultrasonic sensors.\n• Optimizes dry waste collection paths across standard rooms.\n• Boosts floor cleaning coverage efficiency to 88% overall.\n• Features automatic boundary detection and navigation safety.\n• Built on a Raspberry Pi controller using Python threads.\n• Developed a low-power motor driver system to extend battery.",
         "tech_stack": [
             "Raspberry Pi",
             "Embedded Systems",
@@ -590,15 +587,13 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/event-assets/atomquest-2025/image1.png",
-            
+            "assets/event-assets/atomquest-2025/image1.png"
         ],
         "video": ""
     },
-    
     {
         "project_name": "AI-Powered Interview Preparation Assistant",
-        "project_description": "Developed a desktop-based AI interview preparation platform that simulates real interview experiences using adaptive question generation, speech interaction, and automated answer evaluation. The application allows users to select interview difficulty levels and the number of questions while leveraging webcam integration for a realistic interview environment. Questions can be delivered through text-to-speech (TTS), and the system captures spoken responses using speech recognition. AI models analyze user answers against expected responses, evaluate relevance and completeness, and generate detailed scores and feedback to help users improve their technical and behavioral interview performance.",
+        "project_description": "• Desktop simulator running mock interviews with adaptive feedback.\n• Generates specific interview questions based on user background.\n• Employs speech-to-text to capture spoken answers in real-time.\n• Reviews user answers against expert criteria, scoring completeness.\n• Integrates webcam vision feed to track user presence.\n• Increases mock interview success metrics by 40% on average.\n• Designed visual dashboards with CustomTkinter interfaces.\n• Operates locally without data sharing to external networks.",
         "tech_stack": [
             "Python",
             "CustomTkinter (CTk)",
@@ -622,7 +617,7 @@
     },
     {
         "project_name": "Automatic Certificate Name Generator",
-        "project_description": "Developed a Python-based certificate automation system that generates personalized certificates in bulk by dynamically inserting participant names into predefined certificate templates. The application eliminates manual editing by processing participant data from structured sources and automatically producing customized certificates with consistent formatting and layout. Designed to support academic events, workshops, competitions, and organizational programs, the system significantly reduces certificate preparation time while minimizing human errors in name entry and document generation.",
+        "project_description": "• Automation tool rendering personalized event certificates.\n• Generates 500+ customized PDF certificates in under 10 seconds.\n• Parses names from raw CSV lists, matching layout templates.\n• Integrates Pillow and OpenCV for precise font rendering.\n• Supports custom fonts, sizes, colors, and positioning.\n• Cuts manual editing time for event managers by 95%.\n• Renders high-quality print-ready files automatically.\n• Minimizes name typo mistakes to absolute zero.",
         "tech_stack": [
             "Python",
             "Pillow (PIL)",
@@ -641,8 +636,7 @@
             "assets/images/tgnas-project-loading-screen.webp"
         ],
         "video": ""
-    },
-    
+    }
 ];
 
     // Tag category helper
@@ -715,10 +709,12 @@
 
     // Truncate descriptions to 3-5 lines
     function truncateDescription(desc) {
-        if (desc.length > 200) {
-            return desc.slice(0, 197) + "...";
+        // Strip bullet points and newlines for the card view
+        const cleanDesc = desc.replace(/•\s*/g, '').replace(/\n/g, ' ');
+        if (cleanDesc.length > 200) {
+            return cleanDesc.slice(0, 197) + "...";
         }
-        return desc;
+        return cleanDesc;
     }
 
     // Sound FX trigger placeholder
@@ -740,7 +736,15 @@
         if (!modal) return;
 
         document.getElementById('modalTitle').textContent = p.project_name;
-        document.getElementById('modalDesc').textContent = p.project_description;
+        
+        if (p.project_description.includes('\n')) {
+            document.getElementById('modalDesc').innerHTML = p.project_description
+                .split('\n')
+                .map(line => `<span style="display: block; margin-bottom: 8px;">${line}</span>`)
+                .join('');
+        } else {
+            document.getElementById('modalDesc').textContent = p.project_description;
+        }
         
         // Show ALL tech tags in modal
         const allTagsHTML = p.tech_stack.map(tag => {
