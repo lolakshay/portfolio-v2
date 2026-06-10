@@ -10,70 +10,70 @@
             title: "I Wanna Be Yours",
             artist: "Arctic Monkeys",
             file: "assets/songs/Arctic Monkeys - I Wanna Be Yours.mp3",
-            cover: "assets/song-album-covers/i-wanna-be-yours.jpg",
+            cover: "assets/song-album-covers/i-wanna-be-yours.webp",
             rating: 68
         },
         {
             title: "The Night Will Always Win",
             artist: "Elbow",
             file: "assets/songs/Black ops 2 intro video...Elbow - The Night Will Always Win.mp3",
-            cover: "assets/song-album-covers/elbow-nights-always-win.jpg",
+            cover: "assets/song-album-covers/elbow-nights-always-win.webp",
             rating: 74
         },
         {
             title: "Careless Whisper",
             artist: "George Michael",
             file: "assets/songs/George Michael - Careless Whisper (Lyrics).mp3",
-            cover: "assets/song-album-covers/careless-whispers-drift.png",
+            cover: "assets/song-album-covers/careless-whispers-drift.webp",
             rating: 89
         },
         {
             title: "Kerosene",
             artist: "Crystal Castles",
             file: "assets/songs/Crystal Castles  KEROSENE Lyrics.mp3",
-            cover: "assets/song-album-covers/kerosene-song-album-cover.png",
+            cover: "assets/song-album-covers/kerosene-song-album-cover.webp",
             rating: 95
         },
         {
             title: "Let Her Go",
             artist: "Passenger",
             file: "assets/songs/Passenger  Let Her Go Official Video.mp3",
-            cover: "assets/song-album-covers/let-her-go.jpg",
+            cover: "assets/song-album-covers/let-her-go.webp",
             rating: 81
         },
         {
             title: "Night Changes",
             artist: "One Direction",
             file: "assets/songs/One Direction  Night Changes Lyrics.mp3",
-            cover: "assets/song-album-covers/one-direction-night-changes.jpg",
+            cover: "assets/song-album-covers/one-direction-night-changes.webp",
             rating: 79
         },
         {
             title: "Roses",
             artist: "Wxrld24",
             file: "assets/songs/Wxrld24 - ROSES (Official Audio).mp3",
-            cover: "assets/song-album-covers/wxrld24-roses.jpg",
+            cover: "assets/song-album-covers/wxrld24-roses.webp",
             rating: 56
         },
         {
             title: "Falling",
             artist: "Trevor Daniel",
             file: "assets/songs/Trevor Daniel  Falling Lyrics.mp3",
-            cover: "assets/song-album-covers/falling-trevor-daniel.jpg",
+            cover: "assets/song-album-covers/falling-trevor-daniel.webp",
             rating: 63
         },
         {
             title: "I Think They Call This Love",
             artist: "Elliot James Reay",
             file: "assets/songs/Elliot James Reay - I Think They Call This Love (Official Lyric Video).mp3",
-            cover: "assets/song-album-covers/i-think-they-call-this-love.jpeg",
+            cover: "assets/song-album-covers/i-think-they-call-this-love.webp",
             rating: 70
         },
         {
             title: "FitGirl Repack Theme",
             artist: "FitGirl",
             file: "assets/songs/fit-girl-song.mp3",
-            cover: "assets/song-album-covers/fitgirl-repack.jpg",
+            cover: "assets/song-album-covers/fitgirl-repack.webp",
             rating: 99
         }
     ];

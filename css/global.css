@@ -84,20 +84,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     height: 100vh;
     z-index: -10;
     pointer-events: none;
-    background: radial-gradient(circle at center, #120524 0%, #08020f 80%);
+    background: 
+        radial-gradient(circle at center, rgba(138, 43, 226, 0.08) 0%, rgba(30, 144, 255, 0.03) 40%, transparent 70%),
+        radial-gradient(circle at center, #120524 0%, #08020f 80%);
 }
 
 .nebula-glow {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 70vw;
-    height: 70vh;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, rgba(30, 144, 255, 0.03) 40%, transparent 70%);
-    z-index: -9;
-    pointer-events: none;
-    will-change: transform;
+    display: none !important;
 }
 
 /* --- MAIN PAGE WRAPPER --- */

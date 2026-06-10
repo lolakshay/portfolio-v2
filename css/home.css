@@ -27,7 +27,7 @@
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    background-image: url('../assets/images/avatar.png');
+    background-image: url('../assets/images/avatar.webp');
     background-size: cover;
     background-position: center;
     box-shadow: 0 0 40px rgba(138, 43, 226, 0.45);
@@ -136,7 +136,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/images/astriod-1.png');
+    background-image: url('../assets/images/astriod-1.webp');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -405,5 +405,297 @@
     100% {
         transform: translateY(var(--planet-size));
         opacity: 0;
+    }
+}
+
+/* Home Page Scrolling Override to support Footer */
+.home-page-body .hero-container {
+    height: auto !important;
+    min-height: 100vh !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Container for full-viewport home page interactive landing section */
+.home-main-section {
+    width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+}
+
+/* --- COSMIC FOOTER --- */
+.cosmic-footer {
+    width: 100%;
+    padding: 60px 40px 40px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 25px;
+    box-sizing: border-box;
+    z-index: 10;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    margin-top: auto;
+    pointer-events: auto;
+}
+
+/* Footer Navigation Links */
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.footer-nav-link {
+    font-family: var(--font-heading);
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-nav-link:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.footer-nav-separator {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+/* Center Giant Translucent Name with Static positioning & Shine */
+.footer-name {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 7vw, 5rem);
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 10px 0 0;
+    user-select: none;
+    pointer-events: none;
+    
+    /* Background clip for horizontal shining beam (pure white/silver) */
+    background: linear-gradient(
+        115deg, 
+        rgba(255, 255, 255, 0.04) 0%, 
+        rgba(255, 255, 255, 0.04) 46%, 
+        rgba(255, 255, 255, 0.3) 49%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(255, 255, 255, 0.3) 51%, 
+        rgba(255, 255, 255, 0.04) 54%, 
+        rgba(255, 255, 255, 0.04) 100%
+    );
+    background-size: 200% auto;
+    background-position: 200% center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+
+    /* Continuous horizontal shimmer animation */
+    animation: textShimmer 8s linear infinite;
+}
+
+@keyframes textShimmer {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+/* Tagline below name */
+.footer-tagline {
+    font-family: var(--font-heading);
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    margin-top: -15px;
+}
+
+/* Social and Contact Links bottom row */
+.footer-socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.footer-social-link {
+    font-family: var(--font-body);
+    font-size: clamp(0.75rem, 1vw, 0.85rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-social-link:hover {
+    color: var(--color-contact, #00ffff);
+}
+
+.footer-social-link.resume-download {
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.footer-social-link.resume-download:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.footer-social-separator {
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    user-select: none;
+}
+
+/* Copyright notice at the very bottom */
+.footer-copyright {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+/* --- Typewriter Caret & Profile Stats Styling --- */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--color-contact) }
+}
+
+.profile-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 25px;
+    font-family: var(--font-body);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-num-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.stat-plus {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--color-contact);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.stat-separator {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 1.2rem;
+    user-select: none;
+}
+
+/* Footer Additional Elements */
+.footer-last-updated {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.18);
+    margin-top: 6px;
+    text-transform: uppercase;
+}
+
+.back-to-top-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 8px 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    z-index: 15;
+}
+
+.back-to-top-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.back-to-top-icon {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.back-to-top-btn:hover .back-to-top-icon {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 15px;
     }
 }

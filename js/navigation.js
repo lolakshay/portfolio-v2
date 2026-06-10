@@ -348,6 +348,11 @@
                     currentContainer.innerHTML = newContainer.innerHTML;
                 }
 
+                // Sync body class list to prevent page class leakage (e.g., home-page-body)
+                if (newDoc.body) {
+                    document.body.className = newDoc.body.className;
+                }
+
                 // Sync Easter Egg game name in navbar menu footer
                 const currentFooterMeta = document.querySelector('.menu-overlay-footer .footer-meta');
                 const newFooterMeta = newDoc.querySelector('.menu-overlay-footer .footer-meta');
@@ -493,6 +498,9 @@
                 initCertificatesModule();
             }
         }
+
+        // Initialize Back to Top button on whatever page we are on
+        initBackToTopButton();
     }
 
     /* --- HOME PAGE MODULES --- */
@@ -500,7 +508,81 @@
         if (window.initDriftingTechStars) {
             window.initDriftingTechStars();
         }
+        initHomeAnimations();
         console.log("Home page module loaded.");
+    }
+
+    function initBackToTopButton() {
+        const btn = document.getElementById('backToTopBtn');
+        if (!btn) return;
+        btn.onclick = () => {
+            const pageWrapper = document.querySelector('.page-wrapper');
+            const projectsFeed = document.querySelector('.projects-feed');
+            const container = document.querySelector('.hero-container');
+            if (pageWrapper && pageWrapper.scrollHeight > pageWrapper.clientHeight) {
+                pageWrapper.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (projectsFeed && projectsFeed.scrollHeight > projectsFeed.clientHeight) {
+                projectsFeed.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (container) {
+                container.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        };
+    }
+
+    function initHomeAnimations() {
+        // Delay start slightly to align with the transition fade-in
+        setTimeout(() => {
+            // 1. Typewriter Animation for Name
+            const nameElement = document.querySelector('.glitch-text');
+            if (nameElement) {
+                const nameText = "Akshay Srinivas";
+                nameElement.textContent = "";
+                nameElement.style.borderRight = "2px solid var(--color-contact)";
+                nameElement.style.animation = "blink-caret .75s step-end infinite";
+                nameElement.style.display = "inline-block";
+                nameElement.style.whiteSpace = "nowrap";
+                
+                let charIndex = 0;
+                function typeName() {
+                    if (charIndex < nameText.length) {
+                        nameElement.textContent += nameText.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeName, 100);
+                    } else {
+                        // Keep blinking caret for 2.5s then remove it
+                        setTimeout(() => {
+                            nameElement.style.borderRight = "none";
+                            nameElement.style.animation = "none";
+                        }, 2500);
+                    }
+                }
+                typeName();
+            }
+
+            // 2. Count-up Animation for Stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'), 10);
+                if (isNaN(target)) return;
+                
+                let current = 0;
+                stat.textContent = "0"; // reset immediately
+                
+                const duration = 2000; // 2 seconds
+                const stepTime = Math.max(Math.floor(duration / target), 30);
+                
+                const timer = setInterval(() => {
+                    current += 1;
+                    stat.textContent = current;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            });
+        }, 300);
     }
 
     // GPU-accelerated drifting tags
@@ -960,9 +1042,9 @@
                     rarity: "legendary",
                     desc: "Built an AI assistant combining LLMs, RAG, Knowledge Graphs, and ontology-based reasoning to deliver accurate, context-aware responses with real-time intent detection, adaptive learning, and dynamic visual content generation.",
                     images: [
-                        "assets/event-assets/isro-hackathon/certificate.png",
-                        "assets/event-assets/isro-hackathon/image1.png",
-                        "assets/event-assets/isro-hackathon/KG-demo.png"
+                        "assets/event-assets/isro-hackathon/certificate.webp",
+                        "assets/event-assets/isro-hackathon/image1.webp",
+                        "assets/event-assets/isro-hackathon/KG-demo.webp"
                     ]
                 },
                 {
@@ -972,8 +1054,8 @@
                     rarity: "epic",
                     desc: "Developed a semantic search and data quality enhancement platform that uses NLP and machine learning to automatically classify free-text job descriptions into NCO codes, improving survey accuracy and reducing manual effort.",
                     images: [
-                        "assets/event-assets/statathon-2025/image1.png",
-                        "assets/event-assets/statathon-2025/image2.png"
+                        "assets/event-assets/statathon-2025/image1.webp",
+                        "assets/event-assets/statathon-2025/image2.webp"
                     ]
                 },
                 {
@@ -983,7 +1065,7 @@
                     rarity: "common",
                     desc: "Attended a hands-on AI workshop focused on AI agents, agent workflows, and Gemini CLI, gaining practical insights into modern cloud-based AI development and deployment.",
                     images: [
-                        "assets/event-assets/google-ai-labs/image1.jpeg"
+                        "assets/event-assets/google-ai-labs/image1.webp"
                     ]
                 },
                 {
@@ -993,8 +1075,8 @@
                     rarity: "common",
                     desc: "Attended a Data Structures and Algorithms workshop at NIT Trichy, gaining practical insights into problem-solving, algorithmic thinking, and real-world applications of core computer science concepts.",
                     images: [
-                        "assets/event-assets/nit-trichy/certificate.png",
-                        "assets/event-assets/nit-trichy/image1.jpeg"
+                        "assets/event-assets/nit-trichy/certificate.webp",
+                        "assets/event-assets/nit-trichy/image1.webp"
                     ]
                 },
                 {
@@ -1004,8 +1086,8 @@
                     rarity: "legendary",
                     desc: "Reached the final round for developing an explainable AI system that provides fair, privacy-preserving resume feedback using LLMs and XAI techniques, ensuring transparent recommendations while mitigating bias in hiring.",
                     images: [
-                        "assets/event-assets/sap-hackfest/image1.jpeg",
-                        "assets/event-assets/sap-hackfest/image2.jpeg"
+                        "assets/event-assets/sap-hackfest/image1.webp",
+                        "assets/event-assets/sap-hackfest/image2.webp"
                     ]
                 },
                 {
@@ -1014,7 +1096,7 @@
                     id: "EVT-ICPC-2023",
                     rarity: "common",
                     desc: "Participated in ACM ICPC regional selection during the first year of college. Experienced rigorous competitive programming challenges and advanced algorithms under time pressure.",
-                    image: "assets/images/cert-placeholder.png"
+                    image: "assets/images/cert-placeholder.webp"
                 },
                 {
                     name: "RTX AI PC Day 2025",
@@ -1023,7 +1105,7 @@
                     rarity: "common",
                     desc: "Explored emerging AI PC technologies, gaming hardware, and creator-focused workflows through hands-on demonstrations, industry showcases, and community interactions at NVIDIA's RTX AI PC Day event.",
                     images: [
-                        "assets/event-assets/nvidia-rtx-event/image2.jpeg"
+                        "assets/event-assets/nvidia-rtx-event/image2.webp"
                     ]
                 },
                 {
@@ -1033,10 +1115,10 @@
                     rarity: "rare",
                     desc: "Developed a mobile application concept that helps users discover and interact with unlisted local vendors and roadside stalls using GPS, voice, text, and camera-based search, promoting small businesses and community growth.",
                     images: [
-                        "assets/event-assets/Accurate-service-locator/certificate-asme.png",
-                        "assets/event-assets/Accurate-service-locator/image1.png",
-                        "assets/event-assets/Accurate-service-locator/image2.png",
-                        "assets/event-assets/Accurate-service-locator/image3.png"
+                        "assets/event-assets/Accurate-service-locator/certificate-asme.webp",
+                        "assets/event-assets/Accurate-service-locator/image1.webp",
+                        "assets/event-assets/Accurate-service-locator/image2.webp",
+                        "assets/event-assets/Accurate-service-locator/image3.webp"
                     ]
                 },
                 {
@@ -1046,8 +1128,8 @@
                     rarity: "epic",
                     desc: "Designed an ESP32-based centralized control system that bridges smart and non-smart appliances, enabling seamless control of lights, fans, outlets, and other devices through a single multifunctional knob with Wi-Fi connectivity.",
                     images: [
-                        "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.jpg",
-                        "assets/event-assets/atomquest-2024/image1.png"
+                        "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.webp",
+                        "assets/event-assets/atomquest-2024/image1.webp"
                     ]
                 },
                 {
@@ -1057,7 +1139,7 @@
                     rarity: "legendary",
                     desc: "Secured 46th place out of 3,524+ teams worldwide (Top 1.31%) in a 48-hour cybersecurity competition, solving challenges across Web Exploitation, Forensics, Reverse Engineering, and Miscellaneous categories as part of Team Gix Notion.",
                     images: [
-                        "assets/event-assets/pentathon-2025/image1.jpg"
+                        "assets/event-assets/pentathon-2025/image1.webp"
                     ]
                 },
                 {
@@ -1067,8 +1149,8 @@
                     rarity: "epic",
                     desc: "Developed an embedded IoT solution that uses authenticated wireless communication and a hydraulic retractable speed breaker to provide uninterrupted passage for emergency vehicles while maintaining public safety through automated alerts and fail-safe mechanisms.",
                     images: [
-                        "assets/event-assets/thiran-2025/banner.jpg",
-                        "assets/event-assets/thiran-2025/image1.jpg"
+                        "assets/event-assets/thiran-2025/banner.webp",
+                        "assets/event-assets/thiran-2025/image1.webp"
                     ]
                 },
                 {
@@ -1078,8 +1160,8 @@
                     rarity: "rare",
                     desc: "Developed and presented an interactive therapy system for children with autism at the Shine Healthcare Hackathon 2025, advancing from ~1500 teams to the Top 350 and showcasing a functional prototype at the regional pre-finale.",
                     images: [
-                        "assets/event-assets/shine-health-care-hackathon/image1.png",
-                        "assets/event-assets/shine-health-care-hackathon/image2.jpeg"
+                        "assets/event-assets/shine-health-care-hackathon/image1.webp",
+                        "assets/event-assets/shine-health-care-hackathon/image2.webp"
                     ]
                 },
                 {
@@ -1089,11 +1171,11 @@
                     rarity: "rare",
                     desc: "Developed a smart scheduling platform that automatically generates conflict-free academic timetables by considering faculty availability, room constraints, internships, and NEP activities, with customizable scheduling and multi-view timetable management.",
                     images: [
-                        "assets/event-assets/SIH-2025-internal/image0.jpeg",
-                        "assets/event-assets/SIH-2025-internal/image1.png",
-                        "assets/event-assets/SIH-2025-internal/image2.png",
-                        "assets/event-assets/SIH-2025-internal/image3.png",
-                        "assets/event-assets/SIH-2025-internal/image4.png"
+                        "assets/event-assets/SIH-2025-internal/image0.webp",
+                        "assets/event-assets/SIH-2025-internal/image1.webp",
+                        "assets/event-assets/SIH-2025-internal/image2.webp",
+                        "assets/event-assets/SIH-2025-internal/image3.webp",
+                        "assets/event-assets/SIH-2025-internal/image4.webp"
                     ]
                 },
                 {
@@ -1103,7 +1185,7 @@
                     rarity: "epic",
                     desc: "Shortlisted for the World Youth Federation (WYF) Dr. Kalam Awards 2025, presenting an innovative project among talented teams and gaining recognition for technical creativity and impact.",
                     images: [
-                        "assets/event-assets/world-youth-federation/image1.png"
+                        "assets/event-assets/world-youth-federation/image1.webp"
                     ]
                 },
                 
@@ -1114,8 +1196,8 @@
                     rarity: "rare",
                     desc: "Proposed an AI system that adapts content and recommendations based on users’ emotional states, enabling personalized, empathetic interactions to improve focus, well-being, and overall user experience.",
                     images: [
-                        "assets/event-assets/moodmate/inage1.jpeg",
-                        "assets/event-assets/moodmate/image2.jpeg"
+                        "assets/event-assets/moodmate/inage1.webp",
+                        "assets/event-assets/moodmate/image2.webp"
                     ]
                 },
                 
@@ -1126,8 +1208,8 @@
                     rarity: "common",
                     desc: "Shortlisted to present a project at the IIC Regional Meet 2025, gaining valuable feedback from industry experts and engaging with innovators, entrepreneurs, and startup-focused communities.",
                     images: [
-                        "assets/event-assets/iic-regional-meet-psg/certificate.jpg",
-                        "assets/event-assets/iic-regional-meet-psg/image1.jpeg"
+                        "assets/event-assets/iic-regional-meet-psg/certificate.webp",
+                        "assets/event-assets/iic-regional-meet-psg/image1.webp"
                     ]
                 },
                 {
@@ -1137,7 +1219,7 @@
                     rarity: "common",
                     desc: "Attended a Microsoft ecosystem event that highlighted the challenges of building scalable, production-ready software, reinforcing the importance of solving real-world problems beyond local development and prototypes.",
                     images: [
-                        "assets/event-assets/M365/image1.jpeg"
+                        "assets/event-assets/M365/image1.webp"
                     ]
                 },
                 
@@ -1148,9 +1230,9 @@
                     rarity: "epic",
                     desc: "Developed a RAG-based web platform that helps cybercrime victims identify incidents, analyze evidence, and receive guidance aligned with Indian Cybercrime SOPs using LLMs, multimodal AI, voice input, and secure evidence handling.",
                     images: [
-                        "assets/event-assets/srcas-2.0/certificate.jpeg",
-                        "assets/event-assets/srcas-2.0/image1.png",
-                        "assets/event-assets/srcas-2.0/image2.png"
+                        "assets/event-assets/srcas-2.0/certificate.webp",
+                        "assets/event-assets/srcas-2.0/image1.webp",
+                        "assets/event-assets/srcas-2.0/image2.webp"
                     ]
                 },
                 {
@@ -1160,8 +1242,8 @@
                     rarity: "legendary",
                     desc: "Developed a secure application that analyzes vulnerability reports using a locally hosted LLM, automatically generating professional audit reports with risk assessments, severity classification, remediation recommendations, and PDF export while preserving data privacy.",
                     images: [
-                        "assets/event-assets/ariel-iseral-international-hackathon/ariel-hackathon-2025-final-round.png",
-                        "assets/event-assets/ariel-iseral-international-hackathon/srec-ariel-hackathon.png"
+                        "assets/event-assets/ariel-iseral-international-hackathon/ariel-hackathon-2025-final-round.webp",
+                        "assets/event-assets/ariel-iseral-international-hackathon/srec-ariel-hackathon.webp"
                     ]
                 },
                 {
@@ -1171,8 +1253,8 @@
                     rarity: "legendary",
                     desc: "Developed an agentic AI middleware that validates bulk phone numbers before message delivery, helping organizations reduce communication costs by filtering invalid contacts through an intelligent multi-agent decision-making workflow.",
                     images: [
-                        "assets/event-assets/thiran-2026/image1.jpeg",
-                        "assets/event-assets/thiran-2026/image2.jpeg"
+                        "assets/event-assets/thiran-2026/image1.webp",
+                        "assets/event-assets/thiran-2026/image2.webp"
                     ]
                 },
                 
@@ -1183,7 +1265,7 @@
                     rarity: "rare",
                     desc: "Secured 3rd place with a cash prize for an IoT project developed and presented at Sri Ramakrishna Engineering College.",
                     images: [
-                        "assets/event-assets/inno-blitz/image1.png"
+                        "assets/event-assets/inno-blitz/image1.webp"
                     ]
                 },
                 {
@@ -1193,7 +1275,7 @@
                     rarity: "epic",
                     desc: "Proposed an intelligent cleaning robot capable of navigating obstacle-filled environments and efficiently collecting diverse dry waste using integrated cleaning mechanisms, sensors, and autonomous path-planning.",
                     images: [
-                        "assets/event-assets/atomquest-2025/image1.png"
+                        "assets/event-assets/atomquest-2025/image1.webp"
                     ]
                 }
                 
@@ -1207,7 +1289,7 @@
                     rarity: "rare",
                     highlight: "Score: 78% (Elite + Silver, Credit: 1)",
                     desc: "Completed the certification course on Design Thinking - A Primer with a final score of 78%, earning an Elite + Silver badge and 1 academic credit.",
-                    image: "assets/certificates/nptel-designer-thinking.png"
+                    image: "assets/certificates/nptel-designer-thinking.webp"
                 },
                 {
                     name: "Introduction to Internet of Things",
@@ -1216,7 +1298,7 @@
                     rarity: "epic",
                     highlight: "Score: 75% (Elite + Silver, Credits: 4)",
                     desc: "Completed the certification course on Introduction to Internet of Things with a final score of 75%, earning an Elite + Silver badge and 4 academic credits.",
-                    image: "assets/certificates/nptel-iot.png"
+                    image: "assets/certificates/nptel-iot.webp"
                 },
                 {
                     name: "C Programming Training",
@@ -1225,7 +1307,7 @@
                     rarity: "common",
                     highlight: "Credits: 2",
                     desc: "Awarded for the successful completion of C language programming training, verified by IIT Bombay Spoken Tutorial program.",
-                    image: "assets/certificates/iit-b-c.png"
+                    image: "assets/certificates/iit-b-c.webp"
                 },
                 {
                     name: "Introduction to AI Concepts",
@@ -1234,7 +1316,7 @@
                     rarity: "rare",
                     highlight: "Azure Certified",
                     desc: "Successfully completed training on fundamental AI concepts, cloud environments, and intelligent system architectures on Microsoft Azure.",
-                    image: "assets/certificates/Microsoft-azure-batch.png"
+                    image: "assets/certificates/Microsoft-azure-batch.webp"
                 },
                 {
                     name: "C++ Programming Training",
@@ -1243,7 +1325,7 @@
                     rarity: "common",
                     highlight: "Credits: 2",
                     desc: "Awarded for the successful completion of C++ language programming training, verified by IIT Bombay Spoken Tutorial program.",
-                    image: "assets/certificates/iit-b-cpp.png"
+                    image: "assets/certificates/iit-b-cpp.webp"
                 },
                 {
                     name: "Python 3.4.3 Training",
@@ -1252,7 +1334,7 @@
                     rarity: "common",
                     highlight: "Credits: 2",
                     desc: "Awarded for the successful completion of Python 3.4.3 programming training, verified by IIT Bombay Spoken Tutorial program.",
-                    image: "assets/certificates/iit-b-python.png"
+                    image: "assets/certificates/iit-b-python.webp"
                 },
                 {
                     name: "Basics of Python",
@@ -1261,7 +1343,7 @@
                     rarity: "common",
                     highlight: "Infosys Verified",
                     desc: "Acquired fundamental knowledge of Python programming, data types, object-oriented concepts, and basic data structures.",
-                    image: "assets/certificates/infosis-python.png"
+                    image: "assets/certificates/infosis-python.webp"
                 },
                 {
                     name: "Full-Stack Development",
@@ -1270,7 +1352,7 @@
                     rarity: "epic",
                     highlight: "Professional Course",
                     desc: "Completed full-stack engineering training covering front-end and back-end integration, database modeling, and server-side deployment.",
-                    image: "assets/certificates/skillshare-fullstack.png"
+                    image: "assets/certificates/skillshare-fullstack.webp"
                 },
                 {
                     name: "MATLAB Onramp",
@@ -1279,7 +1361,7 @@
                     rarity: "common",
                     highlight: "MathWorks Certified",
                     desc: "Completed introductory training on MATLAB variables, syntax, data visualization, and scripting pipelines.",
-                    image: "assets/certificates/matlab-onramp.jpg"
+                    image: "assets/certificates/matlab-onramp.webp"
                 },
                 {
                     name: "MATLAB for Statics Data",
@@ -1288,7 +1370,7 @@
                     rarity: "rare",
                     highlight: "Data Science",
                     desc: "Completed MathWorks certification on applying MATLAB routines for statistical analysis, structural statics data modeling, and mathematical calculations.",
-                    image: "assets/certificates/matlab-2nd.png"
+                    image: "assets/certificates/matlab-2nd.webp"
                 }
             ],
             achievements: [
@@ -1300,8 +1382,8 @@
                     highlight: "Top 350 Finalist",
                     desc: "Developed and presented an interactive therapy system for children with autism at the Shine Healthcare Hackathon 2025, advancing from ~1500 teams to the Top 350 and showcasing a functional prototype at the regional pre-finale.",
                     images: [
-                        "assets/event-assets/shine-health-care-hackathon/image1.png",
-                        "assets/event-assets/shine-health-care-hackathon/image2.jpeg"
+                        "assets/event-assets/shine-health-care-hackathon/image1.webp",
+                        "assets/event-assets/shine-health-care-hackathon/image2.webp"
                     ]
                 },
                 {
@@ -1312,9 +1394,9 @@
                     highlight: "Top 10 Finalist",
                     desc: "Developed a RAG-based web platform that helps cybercrime victims identify incidents, analyze evidence, and receive guidance aligned with Indian Cybercrime SOPs using LLMs, multimodal AI, voice input, and secure evidence handling. Ranked top 10 out of 100 teams of 3.",
                     images: [
-                        "assets/event-assets/srcas-2.0/certificate.jpeg",
-                        "assets/event-assets/srcas-2.0/image1.png",
-                        "assets/event-assets/srcas-2.0/image2.png"
+                        "assets/event-assets/srcas-2.0/certificate.webp",
+                        "assets/event-assets/srcas-2.0/image1.webp",
+                        "assets/event-assets/srcas-2.0/image2.webp"
                     ]
                 },
                 {
@@ -1325,8 +1407,8 @@
                     highlight: "International Finalist",
                     desc: "Developed a secure application that analyzes vulnerability reports using a locally hosted LLM, automatically generating professional audit reports with risk assessments, severity classification, remediation recommendations, and PDF export while preserving data privacy.",
                     images: [
-                        "assets/event-assets/ariel-iseral-international-hackathon/ariel-hackathon-2025-final-round.png",
-                        "assets/event-assets/ariel-iseral-international-hackathon/srec-ariel-hackathon.png"
+                        "assets/event-assets/ariel-iseral-international-hackathon/ariel-hackathon-2025-final-round.webp",
+                        "assets/event-assets/ariel-iseral-international-hackathon/srec-ariel-hackathon.webp"
                     ]
                 },
                 {
@@ -1337,8 +1419,8 @@
                     highlight: "Finalist",
                     desc: "Developed an agentic AI middleware that validates bulk phone numbers before message delivery, helping organizations reduce communication costs by filtering invalid contacts through an intelligent multi-agent decision-making workflow.",
                     images: [
-                        "assets/event-assets/thiran-2026/image1.jpeg",
-                        "assets/event-assets/thiran-2026/image2.jpeg"
+                        "assets/event-assets/thiran-2026/image1.webp",
+                        "assets/event-assets/thiran-2026/image2.webp"
                     ]
                 },
                 {
@@ -1349,11 +1431,11 @@
                     highlight: "2nd Place",
                     desc: "Developed a smart scheduling platform that automatically generates conflict-free academic timetables by considering faculty availability, room constraints, internships, and NEP activities, with customizable scheduling and multi-view timetable management.",
                     images: [
-                        "assets/event-assets/SIH-2025-internal/image0.jpeg",
-                        "assets/event-assets/SIH-2025-internal/image1.png",
-                        "assets/event-assets/SIH-2025-internal/image2.png",
-                        "assets/event-assets/SIH-2025-internal/image3.png",
-                        "assets/event-assets/SIH-2025-internal/image4.png"
+                        "assets/event-assets/SIH-2025-internal/image0.webp",
+                        "assets/event-assets/SIH-2025-internal/image1.webp",
+                        "assets/event-assets/SIH-2025-internal/image2.webp",
+                        "assets/event-assets/SIH-2025-internal/image3.webp",
+                        "assets/event-assets/SIH-2025-internal/image4.webp"
                     ]
                 },
                  {
@@ -1364,7 +1446,7 @@
                     highlight: "3rd Place - Cash Prize",
                     desc: "Secured 3rd place with a cash prize for an innovative IoT project designed and prototyped during the Inno Blitz event at Sri Ramakrishna Engineering College.",
                     images: [
-                        "assets/event-assets/inno-blitz/image1.png"
+                        "assets/event-assets/inno-blitz/image1.webp"
                     ]
                 },
                 {
@@ -1375,8 +1457,8 @@
                     highlight: "Finalist - All India",
                     desc: "Designed an ESP32-based centralized control system that bridges smart and non-smart appliances, enabling seamless control of lights, fans, outlets, and other devices through a single multifunctional knob with Wi-Fi connectivity.",
                     images: [
-                        "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.jpg",
-                        "assets/event-assets/atomquest-2024/image1.png"
+                        "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.webp",
+                        "assets/event-assets/atomquest-2024/image1.webp"
                     ]
                 },
                 {
@@ -1387,7 +1469,7 @@
                     highlight: "46th Place Worldwide (Top 1.31%)",
                     desc: "Secured 46th place out of 3,524+ teams worldwide in a 48-hour cybersecurity competition, solving challenges across Web Exploitation, Forensics, Reverse Engineering, and Miscellaneous categories.",
                     images: [
-                        "assets/event-assets/pentathon-2025/image1.jpg"
+                        "assets/event-assets/pentathon-2025/image1.webp"
                     ]
                 },
                 
@@ -1399,7 +1481,7 @@
                     highlight: "Shortlisted",
                     desc: "Shortlisted for the World Youth Federation (WYF) Dr. Kalam Awards 2025, presenting an innovative project among talented teams and gaining recognition for technical creativity and impact.",
                     images: [
-                        "assets/event-assets/world-youth-federation/image1.png"
+                        "assets/event-assets/world-youth-federation/image1.webp"
                     ]
                 },
                 {
@@ -1410,8 +1492,8 @@
                     highlight: "National Selection - Top 3000",
                     desc: "Shortlisted to present a project at the IIC Regional Meet 2025, gaining valuable feedback from industry experts and engaging with innovators, entrepreneurs, and startup-focused communities. Selected in Top 3000 out of 14,000+ teams.",
                     images: [
-                        "assets/event-assets/iic-regional-meet-psg/certificate.jpg",
-                        "assets/event-assets/iic-regional-meet-psg/image1.jpeg"
+                        "assets/event-assets/iic-regional-meet-psg/certificate.webp",
+                        "assets/event-assets/iic-regional-meet-psg/image1.webp"
                     ]
                 },
                
@@ -1423,8 +1505,8 @@
                     highlight: "Final Round Finalist",
                     desc: "Reached the final round at SAP Hackfest 2025. Developed an explainable AI system that provides fair, privacy-preserving resume feedback using LLMs and XAI techniques, ensuring transparent recommendations while mitigating bias in hiring.",
                     images: [
-                        "assets/event-assets/sap-hackfest/image1.jpeg",
-                        "assets/event-assets/sap-hackfest/image2.jpeg"
+                        "assets/event-assets/sap-hackfest/image1.webp",
+                        "assets/event-assets/sap-hackfest/image2.webp"
                     ]
                 }
             ]
@@ -1591,7 +1673,7 @@
                         } else if (item.image) {
                             images = [item.image];
                         } else {
-                            images = ["assets/images/cert-placeholder.png"];
+                            images = ["assets/images/cert-placeholder.webp"];
                         }
 
                         let slideImagesHTML = '';
@@ -1627,7 +1709,7 @@
 
                 let menuItemsHTML = '';
                 items.forEach((item, index) => {
-                    const thumbImg = Array.isArray(item.images) ? item.images[0] : (item.image || "assets/images/cert-placeholder.png");
+                    const thumbImg = Array.isArray(item.images) ? item.images[0] : (item.image || "assets/images/cert-placeholder.webp");
                     menuItemsHTML += `
                         <div class="mobile-menu-item-card ${index === 0 ? 'active' : ''}" data-index="${index}">
                             <div class="mobile-menu-thumb">
@@ -1928,7 +2010,7 @@
                     } else if (item.image) {
                         images = [item.image];
                     } else {
-                        images = ["assets/images/cert-placeholder.png"];
+                        images = ["assets/images/cert-placeholder.webp"];
                     }
 
                     if (previewImgContainer) {
@@ -2056,7 +2138,7 @@
                     gridCard.style.setProperty('--glow-color', glowColor);
                     gridCard.style.setProperty('--border-color', borderCol);
 
-                    const thumbImg = Array.isArray(item.images) ? item.images[0] : (item.image || "assets/images/cert-placeholder.png");
+                    const thumbImg = Array.isArray(item.images) ? item.images[0] : (item.image || "assets/images/cert-placeholder.webp");
                     const highlightHTML = item.highlight ? `<span class="grid-card-highlight">${item.highlight}</span>` : '';
                     gridCard.innerHTML = `
                         <div class="grid-card-thumbnail">

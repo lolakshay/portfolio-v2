@@ -167,8 +167,8 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_i-was-grateful-for-the-shortlisting-of-my-activity-7407229435860611072-M3Cv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/event-assets/ariel-iseral-international-hackathon/ariel-hackathon-2025-final-round.png",
-            "assets/event-assets/ariel-iseral-international-hackathon/srec-ariel-hackathon.png"
+            "assets/event-assets/ariel-iseral-international-hackathon/ariel-hackathon-2025-final-round.webp",
+            "assets/event-assets/ariel-iseral-international-hackathon/srec-ariel-hackathon.webp"
         ],
         "video": "assets/project-demo-videos/synthetic-auditor-iseral-ariel-hackathon.mp4"
     },
@@ -190,11 +190,11 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_smartindiahackathon2025-2ndrankinsoftware-activity-7374416603729256448-BN2F?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "https://youtu.be/cZvVrea5N_0",
         "images": [
-            "assets/event-assets/SIH-2025-internal/image1.png",
-            "assets/event-assets/SIH-2025-internal/image2.png",
-            "assets/event-assets/SIH-2025-internal/image3.png",
-            "assets/event-assets/SIH-2025-internal/image4.png",
-            "assets/event-assets/SIH-2025-internal/image0.jpeg"
+            "assets/event-assets/SIH-2025-internal/image1.webp",
+            "assets/event-assets/SIH-2025-internal/image2.webp",
+            "assets/event-assets/SIH-2025-internal/image3.webp",
+            "assets/event-assets/SIH-2025-internal/image4.webp",
+            "assets/event-assets/SIH-2025-internal/image0.webp"
         ],
         "video": "assets/project-demo-videos/SIH-project-2025.mp4"
     },
@@ -221,9 +221,9 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_i-was-grateful-for-the-shortlisting-of-my-activity-7407229435860611072-M3Cv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/event-assets/srcas-2.0/image1.png",
-            "assets/event-assets/srcas-2.0/image2.png",
-            "assets/event-assets/srcas-2.0/certificate.jpeg"
+            "assets/event-assets/srcas-2.0/image1.webp",
+            "assets/event-assets/srcas-2.0/image2.webp",
+            "assets/event-assets/srcas-2.0/certificate.webp"
         ],
         "video": "assets/project-demo-videos/SRCAS-cybercrime-rag.mp4"
     },
@@ -246,8 +246,8 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_im-glad-to-share-one-of-the-projects-our-activity-7396922650096271360-fsGF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "https://youtu.be/ibzveRHWlvs",
         "images": [
-            "assets/event-assets/statathon-2025/image1.png",
-            "assets/event-assets/statathon-2025/image2.png"
+            "assets/event-assets/statathon-2025/image1.webp",
+            "assets/event-assets/statathon-2025/image2.webp"
         ],
         "video": "assets/project-demo-videos/statathon-2-25.mp4"
     },
@@ -274,8 +274,8 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_sri-eshwars-thiran-college-event-maybe-just-activity-7425749118612037633-_yoY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/event-assets/thiran-2026/image1.jpeg",
-            "assets/event-assets/thiran-2026/image2.jpeg"
+            "assets/event-assets/thiran-2026/image1.webp",
+            "assets/event-assets/thiran-2026/image2.webp"
         ],
         "video": "assets/project-demo-videos/thiran-2-phone-ai-agent.mp4"
     },
@@ -301,9 +301,9 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_ai-dataengineering-llm-activity-7378990382363217920-Xpcg?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/event-assets/isro-hackathon/image1.png",
-            "assets/event-assets/isro-hackathon/KG-demo.png",
-            "assets/event-assets/isro-hackathon/certificate.png"
+            "assets/event-assets/isro-hackathon/image1.webp",
+            "assets/event-assets/isro-hackathon/KG-demo.webp",
+            "assets/event-assets/isro-hackathon/certificate.webp"
         ],
         "video": "assets/project-demo-videos/isro-hackathon.mp4"
     },
@@ -370,7 +370,7 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/event-assets/project-printify/image1.png"
+            "assets/event-assets/project-printify/image1.webp"
         ],
         "video": ""
     },
@@ -419,8 +419,8 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_thrilled-to-share-that-our-team-was-shortlisted-activity-7365738870962802688-IkCo?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "https://youtu.be/OByPd4BrNpI",
         "images": [
-            "assets/event-assets/shine-health-care-hackathon/image1.png",
-            "assets/event-assets/shine-health-care-hackathon/image2.jpeg"
+            "assets/event-assets/shine-health-care-hackathon/image1.webp",
+            "assets/event-assets/shine-health-care-hackathon/image2.webp"
         ],
         "video": ""
     },
@@ -476,10 +476,10 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_inovation-asme-sriramakrishnainsituteoftechnology-activity-7261546918781108224-vxrq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "https://github.com/lolakshay/Accurate-Service-Locator",
         "images": [
-            "assets/event-assets/Accurate-service-locator/image1.png",
-            "assets/event-assets/Accurate-service-locator/image2.png",
-            "assets/event-assets/Accurate-service-locator/image3.png",
-            "assets/event-assets/Accurate-service-locator/certificate-asme.png"
+            "assets/event-assets/Accurate-service-locator/image1.webp",
+            "assets/event-assets/Accurate-service-locator/image2.webp",
+            "assets/event-assets/Accurate-service-locator/image3.webp",
+            "assets/event-assets/Accurate-service-locator/certificate-asme.webp"
         ],
         "video": ""
     },
@@ -498,8 +498,8 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_iot-esp32-homeautomation-activity-7279050287460278272-PlXe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "https://youtu.be/p5M1e6pX1iQ",
         "images": [
-            "assets/event-assets/atomquest-2024/image1.png",
-            "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.jpg"
+            "assets/event-assets/atomquest-2024/image1.webp",
+            "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.webp"
         ],
         "video": ""
     },
@@ -521,8 +521,8 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_smartcities-emergencytech-arduinoprojects-activity-7318892880020865025-GNNE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/event-assets/thiran-2025/image1.jpg",
-            "assets/event-assets/thiran-2025/banner.jpg"
+            "assets/event-assets/thiran-2025/image1.webp",
+            "assets/event-assets/thiran-2025/banner.webp"
         ],
         "video": ""
     },
@@ -545,7 +545,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_pentathon-phase-1-2025-from-what-activity-7317565560102268931-IE2J?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "",
         "images": [
-            "assets/event-assets/pentathon-2025/image1.jpg"
+            "assets/event-assets/pentathon-2025/image1.webp"
         ],
         "video": ""
     },
@@ -565,8 +565,8 @@
         "linkedin": "",
         "demo_video": "https://youtu.be/GPcrNKd57vM",
         "images": [
-            "assets/event-assets/sap-hackfest/image1.jpeg",
-            "assets/event-assets/sap-hackfest/image2.jpeg"
+            "assets/event-assets/sap-hackfest/image1.webp",
+            "assets/event-assets/sap-hackfest/image2.webp"
         ],
         "video": ""
     },
@@ -587,7 +587,7 @@
         "linkedin": "",
         "demo_video": "",
         "images": [
-            "assets/event-assets/atomquest-2025/image1.png"
+            "assets/event-assets/atomquest-2025/image1.webp"
         ],
         "video": ""
     },
