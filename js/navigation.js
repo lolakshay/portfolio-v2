@@ -363,6 +363,29 @@
                 // Update document title
                 document.title = newDoc.title;
 
+                // Sync important SEO and Social meta tags on dynamic page load
+                const metaTagsToSync = [
+                    'meta[name="description"]',
+                    'meta[name="keywords"]',
+                    'link[rel="canonical"]',
+                    'meta[property="og:title"]',
+                    'meta[property="og:description"]',
+                    'meta[property="og:url"]',
+                    'meta[name="twitter:title"]',
+                    'meta[name="twitter:description"]'
+                ];
+                metaTagsToSync.forEach(selector => {
+                    const newEl = newDoc.querySelector(selector);
+                    const currentEl = document.querySelector(selector);
+                    if (newEl && currentEl) {
+                        if (newEl.tagName.toLowerCase() === 'link') {
+                            currentEl.setAttribute('href', newEl.getAttribute('href'));
+                        } else {
+                            currentEl.setAttribute('content', newEl.getAttribute('content'));
+                        }
+                    }
+                });
+
                 // Sync HUD Audio Button state if present
                 updateAudioButtonUI();
 
@@ -516,17 +539,23 @@
         const btn = document.getElementById('backToTopBtn');
         if (!btn) return;
         btn.onclick = () => {
-            const pageWrapper = document.querySelector('.page-wrapper');
-            const projectsFeed = document.querySelector('.projects-feed');
-            const container = document.querySelector('.hero-container');
-            if (pageWrapper && pageWrapper.scrollHeight > pageWrapper.clientHeight) {
-                pageWrapper.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (projectsFeed && projectsFeed.scrollHeight > projectsFeed.clientHeight) {
-                projectsFeed.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (container) {
-                container.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window.lenis) {
+                window.lenis.scrollTo(0);
             } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const pageWrapper = document.querySelector('.page-wrapper');
+                const projectsFeed = document.querySelector('.projects-feed');
+                const container = document.querySelector('.hero-container');
+                if (pageWrapper && pageWrapper.scrollHeight > pageWrapper.clientHeight) {
+                    pageWrapper.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (projectsFeed && projectsFeed.scrollHeight > projectsFeed.clientHeight) {
+                    projectsFeed.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (container && container.scrollHeight > container.clientHeight && window.getComputedStyle(container).overflowY !== 'hidden') {
+                    container.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+                    document.body.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             }
         };
     }
@@ -879,6 +908,7 @@
             wheelMultiplier: 1.0,
             touchMultiplier: 1.5
         });
+        window.lenis = lenis;
 
         let rafId;
         function raf(time) {
@@ -968,6 +998,7 @@
         window.cleanupResume = () => {
             cancelAnimationFrame(rafId);
             lenis.destroy();
+            window.lenis = null;
             observer.disconnect();
             gsap.killTweensOf('*');
             document.documentElement.style.scrollBehavior = '';
@@ -1725,6 +1756,27 @@
 
                 const prettyCatName = catId === 'events' ? 'Events' : (catId === 'achievements' ? 'Achievements' : 'Certificates');
 
+                const showTutorial = !localStorage.getItem('has-visited-shorts-tutorial-v1');
+                const tutorialHTML = showTutorial ? `
+                    <div class="shorts-tutorial-overlay">
+                        <div class="tutorial-step step-1 active">
+                            <div class="tutorial-gesture">
+                                <div class="swipe-hand-icon">👆</div>
+                            </div>
+                            <h3 class="tutorial-text">Swipe up to see next</h3>
+                        </div>
+                        <div class="tutorial-step step-2">
+                            <div class="tutorial-gesture">
+                                <div class="double-tap-indicator">
+                                    <span class="tap-finger">👆</span>
+                                    <span class="tap-glow"></span>
+                                </div>
+                            </div>
+                            <h3 class="tutorial-text">Double tap to like</h3>
+                        </div>
+                    </div>
+                ` : '';
+
                 overlay.innerHTML = `
                     <div class="list-space-close">✕</div>
                     <div class="mobile-shorts-header">
@@ -1733,6 +1785,7 @@
                     <div class="mobile-shorts-container">
                         ${slidesHTML}
                     </div>
+                    ${tutorialHTML}
                     <div class="mobile-menu-backdrop"></div>
                     <div class="mobile-select-menu">
                         <div class="mobile-menu-header">
@@ -1747,6 +1800,16 @@
 
                 document.body.appendChild(overlay);
 
+                let tutorialTimeoutId = null;
+                if (showTutorial) {
+                    tutorialTimeoutId = setTimeout(() => {
+                        const tutorialOverlay = overlay.querySelector('.shorts-tutorial-overlay');
+                        if (tutorialOverlay && !localStorage.getItem('has-visited-shorts-tutorial-v1')) {
+                            tutorialOverlay.classList.add('active');
+                        }
+                    }, 3500); // 3.5 seconds delay
+                }
+
                 // Add close overlay listener
                 const closeBtn = overlay.querySelector('.list-space-close');
                 closeBtn.addEventListener('click', () => {
@@ -1755,6 +1818,10 @@
                     isRenderPaused = false;
                     const homeBtn = document.querySelector(".home-btn");
                     if (homeBtn && opened) homeBtn.style.display = "none";
+                    if (showTutorial) {
+                        if (tutorialTimeoutId) clearTimeout(tutorialTimeoutId);
+                        localStorage.setItem('has-visited-shorts-tutorial-v1', 'true');
+                    }
                 });
 
                 // Set up mobile double-tap and slides logic
@@ -1796,6 +1863,19 @@
                         if (targetSlide) {
                             targetSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
+
+                        // Dismiss tutorial since they are manually selecting an item
+                        if (showTutorial && tutorialTimeoutId) {
+                            clearTimeout(tutorialTimeoutId);
+                        }
+                        const tutorialOverlay = overlay.querySelector('.shorts-tutorial-overlay');
+                        if (tutorialOverlay) {
+                            tutorialOverlay.classList.remove('active');
+                            setTimeout(() => {
+                                tutorialOverlay.remove();
+                            }, 500);
+                            localStorage.setItem('has-visited-shorts-tutorial-v1', 'true');
+                        }
                     });
                 });
 
@@ -1808,6 +1888,21 @@
                     if (!H) return;
 
                     const scrollTop = container.scrollTop;
+
+                    // If tutorial is active, handle step transition on scroll
+                    if (showTutorial) {
+                        const tutorialOverlay = overlay.querySelector('.shorts-tutorial-overlay');
+                        if (tutorialOverlay && tutorialOverlay.querySelector('.step-1.active')) {
+                            if (Math.abs(scrollTop - N * H) > 50) {
+                                const step1 = tutorialOverlay.querySelector('.step-1');
+                                const step2 = tutorialOverlay.querySelector('.step-2');
+                                if (step1 && step2) {
+                                    step1.classList.remove('active');
+                                    step2.classList.add('active');
+                                }
+                            }
+                        }
+                    }
 
                     // Infinite scroll reset boundaries
                     if (!isResettingScroll) {
@@ -1928,6 +2023,19 @@
                                     }
                                 }
                             );
+
+                            // Dismiss tutorial if active
+                            const tutorialOverlay = document.querySelector('.shorts-tutorial-overlay');
+                            if (tutorialOverlay) {
+                                const step2 = tutorialOverlay.querySelector('.step-2');
+                                if (step2 && step2.classList.contains('active')) {
+                                    tutorialOverlay.classList.remove('active');
+                                    setTimeout(() => {
+                                        tutorialOverlay.remove();
+                                    }, 500);
+                                    localStorage.setItem('has-visited-shorts-tutorial-v1', 'true');
+                                }
+                            }
                         }
                         lastTap = now;
                     });

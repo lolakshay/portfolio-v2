@@ -3,14 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Akshay Srinivas</title>
+    <title>About Akshay Srinivas N (TGNAS / lolakshay) | Why Work With Me</title>
     
     <!-- Meta tags for SEO -->
-    <meta name="description" content="Get to know the developer. The engineering profile, background, and vision of Akshay Srinivas.">
+    <meta name="description" content="Discover why to work with Akshay Srinivas N (TGNAS / lolakshay). Core engineering mindset, independent fast learning, ownership focus, and backend/AI problem-solving.">
+    <meta name="keywords" content="Akshay Srinivas N, TGNAS, lolakshay, Why work with me, Software Engineer Profile, AI Integration, Backend problem solving">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Akshay Srinivas N">
+    <link rel="canonical" href="https://lolakshay.github.io/portfolio-v2/about.html">
+    <meta name="theme-color" content="#8a2bbe">
+
+    <!-- Open Graph (Facebook / LinkedIn / Discord) -->
+    <meta property="og:title" content="About Akshay Srinivas N (TGNAS / lolakshay) | Why Work With Me">
+    <meta property="og:description" content="Get to know the engineer. Learn about my technical workflow, core strengths, and problem-solving approach.">
+    <meta property="og:image" content="https://lolakshay.github.io/portfolio-v2/assets/images/portfolio-preview.webp">
+    <meta property="og:url" content="https://lolakshay.github.io/portfolio-v2/about.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Akshay Srinivas N Portfolio">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Akshay Srinivas N (TGNAS) | Why Work With Me">
+    <meta name="twitter:description" content="Discover my engineering background, core technical capabilities, and professional values.">
+    <meta name="twitter:image" content="https://lolakshay.github.io/portfolio-v2/assets/images/portfolio-preview.webp">
+
+    <!-- Structured Data: JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://lolakshay.github.io/portfolio-v2/#person",
+          "name": "Akshay Srinivas N",
+          "alternateName": ["TGNAS", "lolakshay"],
+          "url": "https://lolakshay.github.io/portfolio-v2/"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://lolakshay.github.io/portfolio-v2/about.html#profile",
+          "url": "https://lolakshay.github.io/portfolio-v2/about.html",
+          "name": "About Akshay Srinivas N (TGNAS / lolakshay)",
+          "mainEntity": {
+            "@id": "https://lolakshay.github.io/portfolio-v2/#person"
+          }
+        }
+      ]
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
     
     <!-- Theme CSS Stylesheets -->
@@ -22,7 +67,7 @@
         document.documentElement.setAttribute('data-theme', 'purple');
     </script>
 </head>
-<body>
+<body class="about-page-body">
 
     <!-- Shared Canvas Starfield backdrop -->
     <canvas id="starfield"></canvas>
@@ -54,29 +99,29 @@
                     <span class="menu-card-title">about</span>
                 </a> -->
                 <a href="resume.html" class="menu-card card-tilt-3">
-                    <span class="menu-card-num">03</span>
+                    <span class="menu-card-num">02</span>
                     <span class="menu-card-title">resume</span>
                 </a>
                 <a href="projects.html" class="menu-card card-tilt-4">
-                    <span class="menu-card-num">04</span>
+                    <span class="menu-card-num">03</span>
                     <span class="menu-card-title">projects</span>
                 </a>
                 <a href="certificates.html" class="menu-card card-tilt-5">
-                    <span class="menu-card-num">05</span>
+                    <span class="menu-card-num">04</span>
                     <span class="menu-card-title">certificates</span>
                 </a>
                 <a href="music.html" class="menu-card card-tilt-6">
-                    <span class="menu-card-num">06</span>
+                    <span class="menu-card-num">05</span>
                     <span class="menu-card-title">music</span>
                 </a>
                 <a href="contact.html" class="menu-card card-tilt-7">
-                    <span class="menu-card-num">07</span>
+                    <span class="menu-card-num">06</span>
                     <span class="menu-card-title">contact</span>
                 </a>
             </div>
 
             <div class="menu-overlay-footer">
-                <div class="footer-meta">SYSTEM CONFIG AS-8.67</div>
+                <div class="footer-meta">little Nightmares</div>
             </div>
         </div>
     </div>
@@ -84,23 +129,64 @@
     <!-- Main Dynamic Application Container -->
     <main class="hero-container" id="app-root" tabindex="-1">
         
-        <div class="page-wrapper glass-panel">
-            <header class="page-header">
-                <h1 class="page-title">About Me</h1>
-                <p class="page-subtitle">A glimpse into the systems, ideas, and engineering mindset of Akshay Srinivas.</p>
+        <div class="about-layout-container">
+            <header class="about-header">
+                <div class="about-title-wrapper">
+                    <h1 class="about-title-reveal">Why work with me</h1>
+                </div>
             </header>
 
-            <div class="about-content">
-                <p class="about-text">
-                    I am a Full-Stack, Backend & AI Engineer passionate about building scalable, high-performance web systems, robust automation architectures, and intelligent digital interfaces.
-                </p>
-                <p class="about-text">
-                    My engineering philosophy centers on clean execution, fast iteration, and deep technical curiosity. Whether architecting secure retrieval-augmented generation systems or tuning high-framerate interactive canvas interfaces, I prioritize stable, production-ready software.
-                </p>
-                <p class="about-text">
-                    Through deliberate planning, rigorous design, and clean abstractions, I build codebases that are both highly reliable and delightful to interact with.
-                </p>
+            <div class="about-cards-grid">
+                <!-- Card 1: Good At -->
+                <div class="about-card floating-card card-good-at">
+                    <h2 class="card-heading">Good At</h2>
+                    <ul class="custom-bullets">
+                        <li><span class="bullet-icon">★</span> REST API Development</li>
+                        <li><span class="bullet-icon">★</span> AI &amp; LLM Integration</li>
+                        <li><span class="bullet-icon">★</span> Python Automation</li>
+                        <li><span class="bullet-icon">★</span> Java + Spring Boot</li>
+                        <li><span class="bullet-icon">★</span> SQL &amp; Database Design</li>
+                        <li><span class="bullet-icon">★</span> Linux &amp; Git Workflow</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: How I Work? -->
+                <div class="about-card floating-card card-how-i-work">
+                    <h2 class="card-heading">How I Work?</h2>
+                    <ol class="custom-numbers">
+                        <li><span class="num-indicator">01</span> Ask the right questions first</li>
+                        <li><span class="num-indicator">02</span> Learn quickly and independently</li>
+                        <li><span class="num-indicator">03</span> Document and share knowledge</li>
+                        <li><span class="num-indicator">04</span> Focus on delivering working solutions</li>
+                    </ol>
+                </div>
+
+                <!-- Card 3: What I Bring -->
+                <div class="about-card floating-card card-what-i-bring">
+                    <h2 class="card-heading">What I Bring</h2>
+                    <ol class="custom-numbers">
+                        <li><span class="num-indicator">01</span> Take ownership from idea to deployment</li>
+                        <li><span class="num-indicator">02</span> Work effectively in teams</li>
+                        <li><span class="num-indicator">03</span> Learn unfamiliar technologies quickly</li>
+                        <li><span class="num-indicator">04</span> Deliver reliable solutions under deadlines</li>
+                    </ol>
+                </div>
+
+                <!-- Card 4: What I Look For -->
+                <div class="about-card floating-card card-what-i-look-for">
+                    <h2 class="card-heading">What I Look For</h2>
+                    <ol class="custom-numbers">
+                        <li><span class="num-indicator">01</span> Collaborative team culture</li>
+                        <li><span class="num-indicator">02</span> Opportunities to learn and grow</li>
+                        <li><span class="num-indicator">03</span> Challenging engineering problems</li>
+                        <li><span class="num-indicator">04</span> Ownership and responsibility</li>
+                    </ol>
+                </div>
             </div>
+
+            <footer class="about-quote-section">
+                <p class="about-quote">I love approaching problems differently — I ride bikes, build things, and occasionally sleep.</p>
+            </footer>
         </div>
 
     </main>
