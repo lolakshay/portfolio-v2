@@ -757,6 +757,17 @@
                 inputs.forEach(input => input.disabled = true);
 
                 const data = new FormData(contactForm);
+                // Fallback: Populate keys manually if HTML is cached/missing name attributes
+                if (!data.has('name') && document.getElementById('contact-name')) {
+                    data.append('name', document.getElementById('contact-name').value);
+                }
+                if (!data.has('email') && document.getElementById('contact-email')) {
+                    data.append('email', document.getElementById('contact-email').value);
+                }
+                if (!data.has('message') && document.getElementById('contact-message')) {
+                    data.append('message', document.getElementById('contact-message').value);
+                }
+
                 fetch(contactForm.action || 'https://formspree.io/f/meoabnaj', {
                     method: contactForm.method || 'POST',
                     body: data,
