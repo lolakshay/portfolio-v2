@@ -2797,15 +2797,15 @@
         window.addEventListener('DOMContentLoaded', () => {
             initPageModules(window.location.href);
             updateAudioButtonUI();
-            if (!sessionStorage.getItem('cosmic-sound-unlocked')) {
-                createSoundConsentModal();
-            }
+            // if (!sessionStorage.getItem('cosmic-sound-unlocked')) {
+            //     createSoundConsentModal();
+            // }
         });
     } else {
         initPageModules(window.location.href);
         updateAudioButtonUI();
-        if (!sessionStorage.getItem('cosmic-sound-unlocked')) {
-            createSoundConsentModal();
-        }
+        // if (!sessionStorage.getItem('cosmic-sound-unlocked')) {
+        //     createSoundConsentModal();
+        // }
     }
 })();
