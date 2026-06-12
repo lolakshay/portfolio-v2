@@ -756,13 +756,44 @@
                 
                 inputs.forEach(input => input.disabled = true);
 
-                // Simulate sub-space network latency
-                setTimeout(() => {
-                    if (successOverlay) {
-                        successOverlay.classList.add('active');
-                        if (window.playSfx) window.playSfx('come');
+                const data = new FormData(contactForm);
+                fetch(contactForm.action || 'https://formspree.io/f/meoabnaj', {
+                    method: contactForm.method || 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                }, 1500);
+                })
+                .then(response => {
+                    if (response.ok) {
+                        if (successOverlay) {
+                            successOverlay.classList.add('active');
+                            if (window.playSfx) window.playSfx('come');
+                        }
+                    } else {
+                        response.json().then(data => {
+                            if (Object.prototype.hasOwnProperty.call(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert("Transmission failed. Please try again.");
+                            }
+                        });
+                        resetSubmitButton();
+                    }
+                })
+                .catch(error => {
+                    alert("Transmission error. Check your network connection.");
+                    resetSubmitButton();
+                });
+
+                function resetSubmitButton() {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit';
+                        submitBtn.style.opacity = '1';
+                    }
+                    inputs.forEach(input => input.disabled = false);
+                }
             });
 
             if (resetBtn) {

@@ -498,7 +498,7 @@
         "linkedin": "https://www.linkedin.com/posts/akshay-srinivas_iot-esp32-homeautomation-activity-7279050287460278272-PlXe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFK_qbcBvPzGNJrkgUA1jwAdy4XkWEgrUn8",
         "demo_video": "https://youtu.be/p5M1e6pX1iQ",
         "images": [
-            "assets/event-assets/atomquest-2024/image1.webp",
+            "assets/event-assets/atomquest-2024/image1.png",
             "assets/event-assets/atomquest-2024/Atomquest_2024_certificate.webp"
         ],
         "video": ""
